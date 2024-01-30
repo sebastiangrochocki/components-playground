@@ -18,6 +18,8 @@ body {
   padding: var(--size-800) 0;
   align-items: center;
   flex-direction: column;
+  font-family: var(--font-body);
+
 }
 .Logo {
   align-self: center;
@@ -81,4 +83,22 @@ body {
 }
 .dashed {
   border: 1px dashed var(--border-neutral-subtle);
+}
+p {
+  font-size: 16px;
+  color: var(--foreground-neutral);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-accent);
+  font-weight: bold;
+  color: var(--foreground-neutral);
 }
