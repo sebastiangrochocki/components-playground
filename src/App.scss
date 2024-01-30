@@ -1,0 +1,84 @@
+@import "./fonts/fonts";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--background-neutral-page-back);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background: rgb(7, 254, 180);
+  background: -moz-linear-gradient(153deg, rgba(7, 254, 180, 1) 20%, rgba(242, 50, 200, 1) 100%);
+  background: -webkit-linear-gradient(153deg, rgba(7, 254, 180, 1) 20%, rgba(242, 50, 200, 1) 100%);
+  background: linear-gradient(153deg, rgba(7, 254, 180, 1) 20%, rgba(242, 50, 200, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#07feb4",endColorstr="#f232c8",GradientType=1);
+  padding: var(--size-800) 0;
+  align-items: center;
+  flex-direction: column;
+}
+.Logo {
+  align-self: center;
+  margin: auto;
+  display: block;
+  margin-bottom: var(--size-300);
+  max-width: 124px;
+}
+.components-playground {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--size-100);
+  padding: var(--size-800) var(--size-100);
+  max-width: 1224px;
+  width: auto;
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    box-shadow: var(--shadow-level-2);
+    // border: 1px solid var(--border-neutral-subtle);
+    background-color: var(--background-neutral-container);
+    box-sizing: border-box;
+    position: relative;
+    border-radius: var(--size-100);
+    padding: var(--size-100);
+    overflow: hidden;
+    align-self: flex-start;
+    &:last-child {
+      margin-right: 308px;
+    }
+    &.box2x {
+      max-width: 608px;
+      height: 300px;
+    }
+    .title {
+      font-size: 12px;
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      color: var(--foreground-neutral);
+      z-index: 7;
+    }
+    @media screen and (max-width: 735px) {
+      max-width: 100%;
+      height: 400px;
+      &.box2x {
+        height: 400px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+.dashed {
+  border: 1px dashed var(--border-neutral-subtle);
+}

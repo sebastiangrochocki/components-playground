@@ -1,0 +1,140 @@
+.button {
+    // font-family: "MuseoModerno";
+    // font-weight: 600;
+    // font-family: "Space Grotesk";
+    font-family: var(--font-accent);
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    &-danger {
+        color: var(--foreground-danger-inverted);
+        background-color: var(--background-danger);
+        &:hover {
+            background-color: var(--background-danger-hover);
+        }
+        &:active {
+            background-color: var(--background-danger-active);
+        }
+    }
+    &-small {
+        padding: 0 var(--size-150);
+        font-size: 16px;
+        height: 40px;
+        min-width: 40px;
+        line-height: 20px;
+        gap: var(--size-50);
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    &-medium {
+        padding: 0 var(--size-200);
+        font-size: 16px;
+        height: 44px;
+        min-width: 44px;
+        line-height: 20px;
+        gap: var(--size-100);
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    &-large {
+        padding: 0 var(--size-300);
+        font-size: 18px;
+        height: 56px;
+        min-width: 56px;
+        line-height: 24px;
+        gap: var(--size-100);
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+    &-fluid {
+        width: 100%;
+    }
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // min-width: 120px;
+    box-sizing: border-box;
+    width: fit-content;
+    border: none;
+    cursor: pointer;
+    &[disabled] {
+        background-color: var(--background-neutral-disabled);
+        color: var(--foreground-neutral-disabled);
+        pointer-events: none;
+    }
+    &[aria-pressed="true"] {
+        background-color: var(--background-primary);
+        color: var(--black-400);
+        &:hover {
+            background-color: var(--background-primary);
+            color: var(--black-400);
+        }
+    }
+    &-solid {
+        color: var(--foreground-primary);
+        background-color: var(--background-primary);
+        &:hover {
+            background-color: var(--background-primary-hover);
+        }
+        &:active {
+            background-color: var(--background-primary-active);
+        }
+    }
+    &-solid-neutral {
+        color: var(--foreground-neutral);
+        background-color: transparent;
+        &:hover {
+            background-color: var(--background-neutral-hover);
+        }
+        &:active {
+            background-color: var(--background-neutral-active);
+        }
+        &[data-state="open"] {
+            background-color: var(--background-neutral);
+            &:hover {
+                background-color: var(--background-neutral-hover);
+            }
+        }
+    }
+    &-outline {
+        color: var(--foreground-neutral);
+        background-color: var(--background-neutral-container);
+        border: 1px solid var(--border-neutral);
+        &:hover {
+            background-color: var(--background-neutral-hover);
+        }
+        &:active {
+            background-color: var(--background-neutral-active);
+        }
+    }
+    &-ghost {
+        color: var(--foreground-neutral);
+        background-color: transparent;
+        border: none;
+        &:hover {
+            background-color: var(--background-neutral-hover);
+        }
+        &:active {
+            background-color: var(--background-neutral-active);
+        }
+    }
+    &-ghost-static {
+        color: var(--black);
+        background-color: transparent;
+        border: none;
+        &:hover {
+            background-color: var(--black-alpha);
+        }
+        &:active {
+            background-color: transparent;
+        }
+    }
+    padding-bottom: 2px !important;
+}

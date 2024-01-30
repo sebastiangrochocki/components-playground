@@ -1,0 +1,189 @@
+/* reset */
+button {
+  all: unset;
+}
+.MenubarContainer {
+  width: calc(100% - var(--size-400));
+  flex: 0;
+  position: fixed;
+  top: 8px;
+  left: var(--size-200);
+  right: var(--size-200);
+  margin: auto;
+  box-sizing: border-box;
+  transition: 250ms ease 0s;
+  z-index: 2;
+  &.LeftSideBar-visible {
+    width: calc(100% - (var(--LeftSideBarWidth) + var(--size-400)));
+    left: calc(var(--size-200) + var(--LeftSideBarWidth));
+  }
+  .MenubarRoot {
+  }
+}
+.MenubarRoot {
+  display: flex;
+  z-index: 2;
+  background-color: var(--background-neutral-container);
+  width: 100%;
+  max-width: calc(1200px - 48px);
+  padding: var(--size-50) var(--size-200);
+  border-radius: 6px;
+  box-shadow: var(--shadow-level-1);
+  align-items: center;
+  .NavLogo {
+    margin-right: var(--size-300);
+    img {
+      max-width: 87px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  .MainNav {
+    gap: var(--size-150);
+  }
+  .NavActions {
+    margin-left: 0;
+  }
+  .NavActionsUser,
+  .NavActionsPage {
+    margin-left: auto;
+  }
+}
+
+.MenubarTrigger {
+  padding: 0 var(--size-150) 0 var(--size-150);
+  outline: none;
+  user-select: none;
+  line-height: 1;
+  border-radius: 4px;
+  color: var(--foreground-neutral);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  min-height: 40px;
+  img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border-neutral-subtle);
+  }
+  cursor: pointer;
+  &:hover {
+    background-color: var(--background-neutral-hover);
+  }
+  &:active {
+    background-color: var(--background-neutral-active);
+  }
+}
+
+.MenubarTrigger[data-highlighted],
+.MenubarTrigger[data-state="open"] {
+  background-color: var(--background-neutral-hover);
+}
+
+.MenubarContent,
+.MenubarSubContent {
+  border: 1px solid var(--border-neutral-subtle);
+  min-width: 220px;
+  background-color: var(--background-neutral-container);
+  border-radius: 4px;
+  padding: var(--size-100);
+  box-shadow: var(--shadow-level-2);
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  z-index: 3;
+}
+
+.MenubarItem,
+.MenubarSubTrigger,
+.MenubarCheckboxItem,
+.MenubarRadioItem {
+  all: unset;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--foreground-neutral);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 var(--size-100);
+  position: relative;
+  user-select: none;
+}
+
+.MenubarItem.inset,
+.MenubarSubTrigger.inset,
+.MenubarCheckboxItem.inset,
+.MenubarRadioItem.inset {
+  padding-left: var(--size-300);
+}
+
+.MenubarItem[data-state="open"],
+.MenubarSubTrigger[data-state="open"] {
+  background-color: var(--background-neutral-hover);
+  color: var(--foreground-neutral);
+}
+
+.MenubarItem[data-highlighted],
+.MenubarSubTrigger[data-highlighted],
+.MenubarCheckboxItem[data-highlighted],
+.MenubarRadioItem[data-highlighted] {
+  // background-image: linear-gradient(135deg, var(--brand-2) 0%, var(--background-neutral) 100%);
+  background-color: var(--brand-2);
+  color: var(--black);
+}
+
+.MenubarItem[data-disabled],
+.MenubarSubTrigger[data-disabled],
+.MenubarCheckboxItem[data-disabled],
+.MenubarRadioItem[data-disabled] {
+  color: var(--foreground-neutral-disabled);
+  pointer-events: none;
+}
+
+.MenubarItemIndicator {
+  position: absolute;
+  left: 0;
+  width: var(--size-300);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MenubarSeparator {
+  height: 1px;
+  background-color: var(--border-neutral-subtle);
+  margin: var(--size-100);
+}
+
+.RightSlot {
+  margin-left: auto;
+  padding-left: ar(--size-300);
+  color: var(--foreground-neutral);
+}
+
+[data-highlighted] > .RightSlot {
+  color: var(--black);
+}
+
+[data-disabled] > .RightSlot {
+  color: var(--foreground-neutral-disabled);
+}
+
+.userNotifications {
+  .ScrollAreaRoot {
+    height: auto;
+    padding-right: 4px;
+  }
+  .ScrollAreaViewport {
+    max-height: 300px;
+    & > div {
+      flex-direction: column;
+      min-height: auto;
+    }
+  }
+}

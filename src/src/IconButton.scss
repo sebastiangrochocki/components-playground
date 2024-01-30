@@ -1,0 +1,101 @@
+.icon-button {
+    position: relative;
+    &-small {
+        height: 40px;
+        width: 40px;
+        min-width: 40px;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    &-medium {
+        height: 44px;
+        width: 44px;
+        min-width: 44px;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    &-large {
+        height: 56px;
+        width: 56px;
+        min-width: 56px;
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    &[aria-pressed="true"] {
+        background-color: var(--background-primary);
+        color: var(--black-400);
+        &:hover {
+            background-color: var(--background-primary);
+            color: var(--black-400);
+        }
+    }
+    &-danger {
+        color: var(--foreground-danger-inverted);
+        background-color: var(--background-danger);
+        &:hover {
+            background-color: var(--background-danger-hover);
+        }
+        &:active {
+            background-color: var(--background-danger-active);
+        }
+    }
+    &-solid {
+        color: var(--black);
+        background-color: var(--background-primary);
+        &:hover {
+            background-color: var(--background-primary-hover);
+        }
+        &:active {
+            background-color: var(--background-primary-active);
+        }
+    }
+    &-outline {
+        color: var(--foreground-neutral);
+        background-color: transparent;
+        border: 1px solid var(--border-neutral);
+        &:hover {
+            background-color: var(--background-neutral-hover);
+        }
+        &:active {
+            background-color: var(--background-neutral-active);
+        }
+    }
+    &-ghost {
+        color: var(--foreground-neutral);
+        background-color: transparent;
+        border: none;
+        &:hover {
+            background-color: var(--background-neutral-hover);
+        }
+        &:active {
+            background-color: var(--background-neutral-active);
+        }
+        &[aria-expanded="true"] {
+            background-color: var(--background-neutral-hover);
+        }
+    }
+    &-ghost-static {
+        color: var(--black);
+        background-color: transparent;
+        border: none;
+        &:hover {
+            background-color: var(--white);
+        }
+        &:active {
+            background-color: transparent;
+        }
+    }
+}

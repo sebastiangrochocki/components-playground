@@ -1,0 +1,18 @@
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    border: 2px solid var(--background-neutral-container);
+    background-color: var(--gray-200);
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+}
+
+.avatarContainer {
+    .avatar:not(:first-child) {
+        margin-left: calc(var(--size-200) - var(--size-400));
+    }
+}

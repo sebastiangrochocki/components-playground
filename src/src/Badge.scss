@@ -1,0 +1,22 @@
+.Badge {
+    position: absolute;
+    top: -8px;
+    left: 100%;
+    transform: translateX(-50%);
+    background-color: var(--brand-1);
+    color: var(--white);
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: bold;
+    min-width: 22px;
+    padding: 0 var(--size-50);
+    height: 22px;
+    display: flex;
+    text-transform: uppercase;
+    padding-bottom: 1px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 2px solid var(--background-neutral-container);
+}
