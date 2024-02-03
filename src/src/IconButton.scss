@@ -34,6 +34,11 @@
     box-sizing: border-box;
     border: none;
     cursor: pointer;
+    &[disabled] {
+        background-color: var(--background-neutral-disabled);
+        color: var(--foreground-neutral-disabled);
+        pointer-events: none;
+    }
     &[aria-pressed="true"] {
         background-color: var(--background-primary);
         color: var(--black-400);

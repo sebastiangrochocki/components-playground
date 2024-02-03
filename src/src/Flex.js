@@ -5,33 +5,50 @@ const Flex = React.forwardRef(
   (
     {
       children,
-      direction,
-      gap,
+      direction = "",
+      gap = "",
+      wrap = "",
       style,
-      align,
-      justify,
+      align = "",
+      justify = "",
       id,
-      customClass,
+      customClass = "",
       onClick,
+      fluid,
     },
     ref
   ) => {
-    const flexClass = `flex-${direction}`;
-    const gapClass = `gap-${gap}`;
-    const alignClass = `align-${align}`;
-    const justifyClass = `justify-${justify}`;
+    // Only add class if the prop is provided
+    const flexClass = direction ? `flex-${direction}` : "";
+    const gapClass = gap ? `gap-${gap}` : "";
+    const alignClass = align ? `align-${align}` : "";
+    const justifyClass = justify ? `justify-${justify}` : "";
+    const wrapClass = wrap ? `wrap-${wrap}` : "";
+    const fluidClass = fluid ? "fluid" : "";
     const combinedStyles = {
       ...style,
-      // Add other default styles if needed
     };
 
-    // Define a variable for id if provided
+    // Construct className string, filtering out empty segments
+    const className = [
+      "flex",
+      flexClass,
+      customClass,
+      alignClass,
+      justifyClass,
+      gapClass,
+      wrapClass,
+      fluidClass,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
     const idAttribute = id ? { id } : {};
 
     return (
       <div
         {...idAttribute}
-        className={`flex ${flexClass} ${customClass} ${alignClass} ${justifyClass} ${gapClass}`}
+        className={className}
         style={combinedStyles}
         ref={ref}
         onClick={onClick}

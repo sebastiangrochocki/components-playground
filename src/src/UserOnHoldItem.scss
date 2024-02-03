@@ -1,0 +1,8 @@
+.UserOnHoldItem {
+    border: 1px solid var(--border-neutral-subtle);
+    padding: var(--size-100);
+    border-radius: var(--size-50);
+    &.fluid {
+        width: 100%;
+    }
+}

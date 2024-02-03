@@ -11,7 +11,8 @@
     position: relative;
 }
 
-.avatarContainer {
+.avatarContainer,
+.AvatarGroup {
     .avatar:not(:first-child) {
         margin-left: calc(var(--size-200) - var(--size-400));
     }

@@ -24,6 +24,7 @@ import {
   UserListItem,
   Youtube,
   Separator,
+  UserOnHoldItem,
 } from "./src/index";
 import { CopyIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import Beaver from "./assets/beaver.jpeg";
@@ -32,11 +33,17 @@ import Logo from "./assets/AppLogo2.svg";
 //
 function App() {
   const [showToastState, setShowToastState] = useState(false);
+  const [showSimpleToastState, setShowSimpleToastState] = useState(false);
+
   //
   //
   //
   function handleShowToast() {
     setShowToastState(true);
+  }
+  //
+  function handleShowSimpleToast() {
+    setShowSimpleToastState(true);
   }
   //
   //
@@ -84,6 +91,27 @@ function App() {
       style: "info",
     },
   ];
+  //
+  //
+  //
+  const user = {
+    firstName: "David",
+    email: "dav@gmail.com",
+    avatar: "./assets/beaver.jpeg",
+    role: "Admin",
+  };
+  //
+  //
+  //
+  const [isLoading, setIsLoading] = useState(false);
+  function handleClickLoading() {
+    setIsLoading(true);
+  }
+  //
+  //
+  //
+  function handleApprove() {}
+  function handleReject() {}
   //
   //
   //
@@ -137,6 +165,39 @@ function App() {
           </Button>
         </div>
         <div className="box">
+          <span className="title">Button: isLoading and Disabled</span>
+          <Button
+            onClick={handleClickLoading}
+            variant="solid"
+            size="large"
+            isLoading={isLoading}
+            disabled={isLoading}
+          >
+            Trigger Loading
+          </Button>
+        </div>
+        <div className="box">
+          <span className="title">
+            Button: isLoading and Disabled and Fluid
+          </span>
+          <Button
+            onClick={handleClickLoading}
+            variant="solid"
+            size="large"
+            isLoading={isLoading}
+            disabled={isLoading}
+            fluid
+          >
+            Trigger Loading
+          </Button>
+        </div>
+        <div className="box">
+          <span className="title">Button: Danger</span>
+          <Button variant="danger" size="large">
+            Delete
+          </Button>
+        </div>
+        <div className="box">
           <span className="title">IconButton</span>
 
           <IconButton size="large">
@@ -144,9 +205,29 @@ function App() {
           </IconButton>
         </div>
         <div className="box">
+          <span className="title">IconButton: isLoading and Disabled</span>
+
+          <IconButton size="large" isLoading disabled>
+            <Pencil1Icon />
+          </IconButton>
+        </div>
+        <div className="box">
           <span className="title">Avatar</span>
 
           <Avatar avatar={Beaver} altText="John Doe" role="Software Engineer" />
+        </div>
+        <div className="box">
+          <span className="title">Avatar: Group (.AvatarGroup class name)</span>
+          <Flex customClass="AvatarGroup">
+            <Avatar
+              avatar={Beaver}
+              altText="John Doe"
+              role="Software Engineer"
+            />
+            <Avatar altText="John Doe" role="Software Engineer" />
+            <Avatar altText="John Doe" role="Software Engineer" />
+            <Avatar altText="John Doe" role="Software Engineer" />
+          </Flex>
         </div>
         <div className="box">
           <span className="title">Badge</span>
@@ -192,6 +273,22 @@ function App() {
           />
         </div>
         <div className="box">
+          <span className="title">CustomToast: Simple</span>
+
+          <Button onClick={handleShowSimpleToast} variant="ghost" size="large">
+            Show Simple Toast
+          </Button>
+          <CustomToast
+            showToast={showSimpleToastState}
+            setShowToast={setShowSimpleToastState}
+            headline="Success!"
+            text="Your action was successful."
+            time={3000}
+            simple
+            // onDismissForever={handleDismissForever}
+          />
+        </div>
+        <div className="box">
           <span className="title">Flex</span>
 
           <Flex
@@ -206,8 +303,6 @@ function App() {
           >
             <Flex
               direction="column"
-              align="center"
-              justify="space-between"
               gap={100}
               style={{ backgroundColor: "var(--white)" }}
             >
@@ -215,8 +310,6 @@ function App() {
             </Flex>
             <Flex
               direction="column"
-              align="center"
-              justify="space-between"
               gap={100}
               style={{ backgroundColor: "var(--white)" }}
             >
@@ -224,12 +317,77 @@ function App() {
             </Flex>
             <Flex
               direction="column"
-              align="center"
-              justify="space-between"
               gap={100}
               style={{ backgroundColor: "var(--white)" }}
             >
               item 3
+            </Flex>
+          </Flex>
+        </div>
+        <div className="box">
+          <span className="title">
+            Flex: direction(rowreverse), wrap(wrapreverse)
+          </span>
+
+          <Flex
+            direction="rowreverse"
+            wrap="wrapreverse"
+            align="center"
+            justify="space-between"
+            gap={100}
+            style={{
+              backgroundColor: "var(--brand-2)",
+              padding: "var(--size-200)",
+            }}
+          >
+            <Flex
+              direction="column"
+              gap={100}
+              style={{ backgroundColor: "var(--white)" }}
+            >
+              item 1
+            </Flex>
+            <Flex
+              direction="column"
+              gap={100}
+              style={{ backgroundColor: "var(--white)" }}
+            >
+              item 2
+            </Flex>
+            <Flex
+              direction="column"
+              gap={100}
+              style={{ backgroundColor: "var(--white)" }}
+            >
+              item 3
+            </Flex>
+            <Flex
+              direction="column"
+              gap={100}
+              style={{ backgroundColor: "var(--white)" }}
+            >
+              item 4
+            </Flex>
+            <Flex
+              direction="column"
+              gap={100}
+              style={{ backgroundColor: "var(--white)" }}
+            >
+              item 5
+            </Flex>
+            <Flex
+              direction="column"
+              gap={100}
+              style={{ backgroundColor: "var(--white)" }}
+            >
+              item 6
+            </Flex>
+            <Flex
+              direction="column"
+              gap={100}
+              style={{ backgroundColor: "var(--white)" }}
+            >
+              item 7
             </Flex>
           </Flex>
         </div>
@@ -263,7 +421,17 @@ function App() {
             // onChange={handleEmailChange}
           />
         </div>
+        <div className="box">
+          <span className="title">Input: type Search</span>
 
+          <Input
+            label="Search"
+            placeholder="Enter search keyword"
+            type="search"
+            // value={email}
+            // onChange={handleEmailChange}
+          />
+        </div>
         <div className="box">
           <span className="title">Loader</span>
 
@@ -273,6 +441,11 @@ function App() {
           <span className="title">Separator</span>
 
           <Separator />
+        </div>
+        <div className="box">
+          <span className="title">Separator</span>
+
+          <Separator vertical />
         </div>
         <div className="box"></div>
         <div className="box">
@@ -309,6 +482,18 @@ function App() {
             badge={3}
             avatar={Beaver}
             role="Developer"
+          />
+        </div>
+        <div className="box"></div>
+
+        <div className="box box2x">
+          <span className="title">UserOnHoldItem</span>
+
+          <UserOnHoldItem
+            user={user}
+            onApprove={handleApprove}
+            onReject={handleReject}
+            fluid
           />
         </div>
         <div className="box">

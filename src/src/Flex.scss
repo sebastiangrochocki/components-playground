@@ -6,6 +6,12 @@
     &-row {
         flex-direction: row;
     }
+    &-rowreverse {
+        flex-direction: row-reverse;
+    }
+    &-columnreverse {
+        flex-direction: column-reverse;
+    }
     &.align {
         &-center {
             align-items: center;
@@ -37,17 +43,30 @@
             justify-content: space-between;
         }
     }
+    &.wrap {
+        &-wrap {
+            flex-wrap: wrap;
+        }
+        &-nowrap {
+            flex-wrap: nowrap;
+        }
+        &-wrapreverse {
+            flex-wrap: wrap-reverse;
+        }
+    }
+    &.fluid {
+        width: 100%;
+    }
 }
 
 $gap-unit: 8px;
 
 .gap {
-  --size-100: #{$gap-unit};
+    --size-100: #{$gap-unit};
 
-  @for $i from 1 through 18 {
-    &-#{$i * 100} {
-      gap: calc(#{$i} * var(--size-100));
+    @for $i from 1 through 18 {
+        &-#{$i * 100} {
+            gap: calc(#{$i} * var(--size-100));
+        }
     }
-  }
 }
-

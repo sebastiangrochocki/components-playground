@@ -1,17 +1,19 @@
 import React from "react";
 import "./IconButton.scss";
 import Badge from "./Badge";
-
+import Spinner from "./Spinner";
 // Forward refs and props
 const IconButton = React.forwardRef(
   (
     {
+      disabled,
       size = "medium",
       variant = "solid",
       onClick,
       children,
       showBadge,
       badgeLabel,
+      isLoading,
       ...props
     },
     ref
@@ -25,8 +27,9 @@ const IconButton = React.forwardRef(
         {...props}
         className={`icon-button ${sizeClass} ${styleClass}`}
         onClick={onClick}
+        disabled={disabled || isLoading}
       >
-        {children}
+        {isLoading ? <Spinner /> : children}
         {showBadge && <Badge label={badgeLabel} />}
       </button>
     );
