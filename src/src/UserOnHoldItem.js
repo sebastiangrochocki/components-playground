@@ -15,7 +15,7 @@ const UserOnHoldItem = ({ fluid, user, onApprove, onReject, onRemove }) => {
       align="center"
       justify={"between"}
     >
-      <Flex gap={100} align={"center"}>
+      <Flex style={{ gap: "var(--size-150)" }} align={"center"}>
         <Avatar
           avatar={user.avatar}
           role={user.role}

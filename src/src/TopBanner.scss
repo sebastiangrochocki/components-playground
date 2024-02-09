@@ -2,7 +2,7 @@
     width: 100%;
     height: var(--size-800);
     border-radius: 4px;
-    padding: var(--size-100) var(--size-200);
+    padding: var(--size-50) var(--size-100) var(--size-50) var(--size-200);
     box-sizing: border-box;
     max-width: 1200px;
     &.warning {
@@ -22,11 +22,12 @@
         }
     }
     h4 {
-        line-height: 1;
+        line-height: 100%;
         color: var(--black);
-        margin-bottom: var(--size-50);
     }
     p {
         color: var(--black);
+        margin-top: var(--size-50);
+        line-height: 120%;
     }
 }

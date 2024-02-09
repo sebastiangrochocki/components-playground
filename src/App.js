@@ -1,6 +1,6 @@
 import "./App.scss";
 import "./src/Variables.scss";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 //
 import {
   Button,
@@ -25,10 +25,12 @@ import {
   Youtube,
   Separator,
   UserOnHoldItem,
+  CustomSwitch,
 } from "./src/index";
-import { CopyIcon, Pencil1Icon } from "@radix-ui/react-icons";
+import { CopyIcon, Pencil1Icon, SliderIcon } from "@radix-ui/react-icons";
 import Beaver from "./assets/beaver.jpeg";
 import Logo from "./assets/AppLogo2.svg";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 // import "./src/shared-styles.scss";
 //
 function App() {
@@ -77,20 +79,6 @@ function App() {
   //
   //
   //
-  const notifications = [
-    {
-      title: "Community is live!",
-      text: "Now you can browse through templates.",
-      id: "1212121214",
-      style: "info",
-    },
-    {
-      title: "New Navigation",
-      text: "New release comes with the brand new LeftSide Panel navigation.",
-      id: "1212121212",
-      style: "info",
-    },
-  ];
   //
   //
   //
@@ -112,6 +100,60 @@ function App() {
   //
   function handleApprove() {}
   function handleReject() {}
+  //
+  //
+  //
+  const notifications = useMemo(
+    () => [
+      {
+        title: "Figma Icons is live!",
+        text: "Now you can generate React Icon Library synced with your Figma source.",
+        id: "080220241",
+        style: "info",
+      },
+      {
+        title: "We will discontinue BlocksIn App!",
+        text: "Please backup your data before closing accounts. You have 30 days left.",
+        id: "0802202412",
+        style: "danger",
+      },
+      {
+        title: "Community is live!",
+        text: "Now you can browse through templates.",
+        id: "121212120",
+        style: "info",
+      },
+      {
+        title: "New Navigation",
+        text: "New release comes with the brand new LeftSide Panel navigation.",
+        id: "1212121211",
+        style: "info",
+      },
+    ],
+    []
+  );
+
+  //
+  const [currentNotification, setCurrentNotification] = useState(null);
+  const username = "dav";
+
+  useEffect(() => {
+    // Example logic to select the first notification that hasn't been dismissed
+    const undismissedNotification = notifications.find((notification) => {
+      const notificationKey = `NotificationShown_${notification.id}_${username}`;
+      return !localStorage.getItem(notificationKey);
+    });
+
+    setCurrentNotification(undismissedNotification);
+  }, [username, notifications]);
+
+  const dismissNotification = () => {
+    if (currentNotification) {
+      const notificationKey = `NotificationShown_${currentNotification.id}_${username}`;
+      localStorage.setItem(notificationKey, "dismissed");
+      setCurrentNotification(null); // Remove the notification from the UI
+    }
+  };
   //
   //
   //
@@ -255,6 +297,35 @@ function App() {
           <span className="title">CodeHighlight</span>
 
           <CodeHighlight text="npm i blocksin-system" />
+        </div>
+        <div className="box">
+          <span className="title">DropdownMenu</span>
+
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild>
+              <IconButton variant="outline">
+                <SliderIcon />
+              </IconButton>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content
+                className="DropdownMenuContent"
+                side="bottom"
+                sideOffset={8}
+                align="left"
+              >
+                <DropdownMenu.Item className="DropdownMenuItem">
+                  Item 1
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="DropdownMenuItem">
+                  Item 2
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="DropdownMenuItem">
+                  Item 3
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
         </div>
         <div className="box">
           <span className="title">CustomToast</span>
@@ -447,16 +518,21 @@ function App() {
 
           <Separator vertical />
         </div>
-        <div className="box"></div>
+        <div className="box">
+          <span className="title">CustomSwitch</span>
+          <CustomSwitch id="switch">Switch</CustomSwitch>
+        </div>
         <div className="box">
           <span className="title">Spinner</span>
 
           <Spinner />
         </div>
-        <div className="box">
-          <span className="title">Spinner</span>
+        <div className="box" style={{ gap: "8px" }}>
+          <span className="title">Tag</span>
 
-          <Tag text="Technology" variant="Primary" />
+          <Tag text="Primary" variant="Primary" />
+          <Tag text="Demo" variant="Demo" />
+          <Tag text="Default" />
         </div>
         <div className="box">
           <span className="title">TextArea</span>
@@ -471,8 +547,13 @@ function App() {
 
         <div className="box box2x">
           <span className="title">TopBanner</span>
-
-          <TopBanner username="johndoe" notifications={notifications} />
+          {currentNotification && (
+            <TopBanner
+              username={username}
+              notification={currentNotification}
+              onDismiss={dismissNotification}
+            />
+          )}
         </div>
         <div className="box">
           <span className="title">UserListItem</span>
@@ -484,7 +565,6 @@ function App() {
             role="Developer"
           />
         </div>
-        <div className="box"></div>
 
         <div className="box box2x">
           <span className="title">UserOnHoldItem</span>
@@ -501,6 +581,8 @@ function App() {
 
           <Youtube videoId="dQw4w9WgXcQ" />
         </div>
+        <div className="box"></div>
+        <div className="box"></div>
         <div className="box"></div>
       </div>
     </>

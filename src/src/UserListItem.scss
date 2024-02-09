@@ -1,15 +1,18 @@
 .UserListItem {
-    padding: var(--size-100) var(--size-200);
+    padding: 0 var(--size-150);
+    height: 56px;
+    box-sizing: border-box;
+
     border-radius: 4px;
     border: 1px solid var(--border-neutral-subtle);
-    // background-color: var(--background-neutral);
+    background-color: var(--background-neutral-container);
     box-sizing: border-box;
     width: 100%;
     align-items: center;
     // gap: var(--size-150);
     .avatar {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         border: 1px solid var(--border-neutral-subtle);
     }

@@ -4,7 +4,7 @@ import Paragraph from "./Paragraph";
 import Flex from "./Flex";
 import BadgeLevel from "./BadgeLevel";
 import IconButton from "./IconButton";
-import { PaperPlaneIcon } from "@radix-ui/react-icons";
+import { Pencil1Icon } from "@radix-ui/react-icons";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Avatar from "./Avatar";
 
@@ -16,15 +16,15 @@ const UserListItem = ({ name, badge, avatar, role }) => {
       justify={"between"}
       align={"center"}
     >
-      <Flex gap={100} align={"center"}>
+      <Flex style={{ gap: "var(--size-150)" }} align={"center"}>
         <Avatar avatar={avatar} altText={name} role={role} />
         <Paragraph size="medium">{name}</Paragraph>
       </Flex>
       <Flex gap={100} align={"center"}>
         <DropdownMenu.Root>
           <DropdownMenu.Trigger asChild>
-            <IconButton size="medium" variant="ghost">
-              <PaperPlaneIcon />
+            <IconButton size="small" variant="ghost">
+              <Pencil1Icon />
             </IconButton>
           </DropdownMenu.Trigger>
 
