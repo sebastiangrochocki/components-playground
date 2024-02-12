@@ -207,6 +207,20 @@ function App() {
           </Button>
         </div>
         <div className="box">
+          <span className="title">Button with Helper</span>
+          <Button
+            // onClick={handleClick}
+            variant="outline"
+            size="large"
+            showBadge
+            badgeLabel="New"
+            helper="Sync files to code"
+            iconLeft={CopyIcon}
+          >
+            Click Me
+          </Button>
+        </div>
+        <div className="box">
           <span className="title">Button: isLoading and Disabled</span>
           <Button
             onClick={handleClickLoading}
@@ -544,6 +558,7 @@ function App() {
             // onChange={handleMessageChange}
           />
         </div>
+        <div className="box"></div>
 
         <div className="box box2x">
           <span className="title">TopBanner</span>
@@ -565,6 +580,7 @@ function App() {
             role="Developer"
           />
         </div>
+        <div className="box"></div>
 
         <div className="box box2x">
           <span className="title">UserOnHoldItem</span>
@@ -581,7 +597,6 @@ function App() {
 
           <Youtube videoId="dQw4w9WgXcQ" />
         </div>
-        <div className="box"></div>
         <div className="box"></div>
         <div className="box"></div>
       </div>

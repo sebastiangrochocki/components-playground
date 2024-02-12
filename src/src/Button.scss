@@ -43,7 +43,7 @@
     &-large {
         padding: 0 var(--size-300);
         font-size: 18px;
-        height: 56px;
+        min-height: 56px;
         min-width: 56px;
         line-height: 24px;
         gap: var(--size-100);
@@ -54,6 +54,17 @@
     }
     &-fluid {
         width: 100%;
+    }
+    .buttonHelper {
+        height: 68px;
+        padding-bottom: var(--size-50);
+        box-sizing: border-box;
+        span {
+            font-size: 12px;
+            font-weight: normal;
+            font-family: var(--font-body);
+            line-height: 1;
+        }
     }
     border-radius: 4px;
     display: flex;
