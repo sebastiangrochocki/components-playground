@@ -14,7 +14,7 @@ const CheckboxCustom = ({
   <Flex align={"center"} gap={100}>
     <Checkbox.Root
       className="CheckboxRoot"
-      defaultChecked
+      // defaultChecked
       id={customID}
       checked={checked}
       onCheckedChange={onChange}
