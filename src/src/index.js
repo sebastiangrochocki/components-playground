@@ -4,6 +4,7 @@ export { default as Badge } from "./Badge";
 export { default as Button } from "./Button";
 export { default as CheckboxCustom } from "./CheckboxCustom";
 export { default as CodeHighlight } from "./CodeHighlight";
+export { default as DropdownMenu } from "./DropdownMenu";
 export { default as Flex } from "./Flex";
 export { default as Heading } from "./Heading";
 export { default as IconButton } from "./IconButton";

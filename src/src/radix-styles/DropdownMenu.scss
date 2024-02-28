@@ -49,11 +49,42 @@ button {
     font-size: 14px;
     color: var(--foreground-neutral);
     position: relative;
-    padding-left: var(--size-300);
+    padding-left: 4px;
     user-select: none;
     outline: none;
     &:focus {
         box-shadow: none;
+    }
+    .RightSlot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 20px;
+        padding-right: 4px;
+        color: var(--black);
+    }
+    .LeftSlot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        margin-right: 12px;
+        // &:empty {
+        //     width: 0;
+        // }
+        color: var(--black);
+        svg {
+            width: 20px;
+            height: auto;
+            display: block;
+        }
+    }
+}
+.DropdownMenuCheckboxItem[data-state="unchecked"] {
+    .RightSlot {
+        svg {
+            display: none;
+        }
     }
 }
 .DropdownMenuSubTrigger[data-state="open"] {

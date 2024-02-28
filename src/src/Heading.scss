@@ -1,9 +1,9 @@
 .heading {
     &-bold {
-        font-weight: bold;
+        font-family: var(--font-accent-bold);
     }
     &-regular {
-        font-weight: normal;
+        font-weight: var(--font-accent);
     }
 }
 

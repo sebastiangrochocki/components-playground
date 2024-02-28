@@ -2,8 +2,8 @@
     // font-family: "MuseoModerno";
     // font-weight: 600;
     // font-family: "Space Grotesk";
-    font-family: var(--font-accent);
-    font-weight: bold;
+    font-family: var(--font-accent-bold);
+    // font-weight: bold;
     text-decoration: none;
     position: relative;
     &-danger {
@@ -90,6 +90,8 @@
     }
     &-solid {
         color: var(--foreground-primary);
+        // color: var(--white);
+
         background-color: var(--background-primary);
         &:hover {
             background-color: var(--background-primary-hover);

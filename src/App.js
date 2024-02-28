@@ -26,11 +26,18 @@ import {
   Separator,
   UserOnHoldItem,
   CustomSwitch,
+  DropdownMenu,
 } from "./src/index";
-import { CopyIcon, Pencil1Icon, SliderIcon } from "@radix-ui/react-icons";
+import {
+  Component2Icon,
+  CopyIcon,
+  FigmaLogoIcon,
+  Pencil1Icon,
+  SliderIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "./assets/beaver.jpeg";
 import Logo from "./assets/AppLogo2.svg";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+// import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 // import "./src/shared-styles.scss";
 //
 function App() {
@@ -157,8 +164,13 @@ function App() {
   //
   //
   //
+  const [isChecked1, setIsChecked1] = useState(true);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+  //
+  //
   return (
-    <>
+    <Flex customClass="Body">
       <CustomToast
         showToast={showToastCopy}
         setShowToast={setShowToastCopy}
@@ -167,7 +179,7 @@ function App() {
         time={3000}
         simple
       />
-      <Flex direction="column" align="center">
+      <Flex direction="column" fluid align="center">
         <img src={Logo} className="Logo" alt="Design System" />
 
         <Heading level={2} weight="bold">
@@ -315,32 +327,86 @@ function App() {
         <div className="box">
           <span className="title">DropdownMenu</span>
 
-          <DropdownMenu.Root>
+          <DropdownMenu>
             <DropdownMenu.Trigger asChild>
               <IconButton variant="outline">
                 <SliderIcon />
               </IconButton>
             </DropdownMenu.Trigger>
-            <DropdownMenu.Portal>
-              <DropdownMenu.Content
-                className="DropdownMenuContent"
-                side="bottom"
-                sideOffset={8}
-                align="left"
-              >
-                <DropdownMenu.Item className="DropdownMenuItem">
-                  Item 1
-                </DropdownMenu.Item>
-                <DropdownMenu.Item className="DropdownMenuItem">
-                  Item 2
-                </DropdownMenu.Item>
-                <DropdownMenu.Item className="DropdownMenuItem">
-                  Item 3
-                </DropdownMenu.Item>
-              </DropdownMenu.Content>
-            </DropdownMenu.Portal>
-          </DropdownMenu.Root>
+            <DropdownMenu.Content side="bottom" align="start">
+              <DropdownMenu.Item icon={CopyIcon}>Item 1</DropdownMenu.Item>
+              <DropdownMenu.Item icon={FigmaLogoIcon}>Item 2</DropdownMenu.Item>
+              <DropdownMenu.Sub>
+                <DropdownMenu.SubTrigger icon={Component2Icon}>
+                  Item3
+                </DropdownMenu.SubTrigger>
+                <DropdownMenu.SubContent>
+                  <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+                  <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+                  <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+                </DropdownMenu.SubContent>
+              </DropdownMenu.Sub>
+            </DropdownMenu.Content>
+          </DropdownMenu>
         </div>
+
+        <div className="box">
+          <span className="title">DropdownMenu Checkbox</span>
+
+          <DropdownMenu>
+            <DropdownMenu.Trigger asChild>
+              <IconButton variant="outline">
+                <SliderIcon />
+              </IconButton>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content side="bottom" align="start">
+              <DropdownMenu.CheckboxItem
+                checked={isChecked1}
+                onCheckedChange={(checked) => setIsChecked1(checked)}
+              >
+                Item 1
+              </DropdownMenu.CheckboxItem>
+              <DropdownMenu.CheckboxItem
+                checked={isChecked2}
+                onCheckedChange={(checked) => setIsChecked2(checked)}
+              >
+                Item 2
+              </DropdownMenu.CheckboxItem>
+              <DropdownMenu.CheckboxItem
+                checked={isChecked3}
+                onCheckedChange={(checked) => setIsChecked3(checked)}
+              >
+                Item 3
+              </DropdownMenu.CheckboxItem>
+            </DropdownMenu.Content>
+          </DropdownMenu>
+        </div>
+
+        <div className="box">
+          <span className="title">DropdownMenu RadioItem</span>
+
+          <DropdownMenu>
+            <DropdownMenu.Trigger asChild>
+              <IconButton variant="outline">
+                <SliderIcon />
+              </IconButton>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content side="bottom" sideOffset={8} align="start">
+              <DropdownMenu.RadioGroup defaultValue="Item1">
+                <DropdownMenu.RadioItem value="Item1">
+                  Item 1
+                </DropdownMenu.RadioItem>
+                <DropdownMenu.RadioItem value="Item2">
+                  Item 1
+                </DropdownMenu.RadioItem>
+                <DropdownMenu.RadioItem value="Item3">
+                  Item 1
+                </DropdownMenu.RadioItem>
+              </DropdownMenu.RadioGroup>
+            </DropdownMenu.Content>
+          </DropdownMenu>
+        </div>
+
         <div className="box">
           <span className="title">CustomToast</span>
 
@@ -600,7 +666,7 @@ function App() {
         <div className="box"></div>
         <div className="box"></div>
       </div>
-    </>
+    </Flex>
   );
 }
 

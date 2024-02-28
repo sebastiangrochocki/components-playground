@@ -1,5 +1,5 @@
 @font-face {
-    font-family: var(--font-body);
+    font-family: "OpenSans";
     src: url("opensans/OpenSans.eot");
     src:
         url("opensans/OpenSans.eot?#iefix") format("embedded-opentype"),
@@ -13,7 +13,7 @@
 }
 
 @font-face {
-    font-family: var(--font-body);
+    font-family: "OpenSans-Bold";
     src: url("opensans/OpenSans-Bold.eot");
     src:
         url("opensans/OpenSans-Bold.eot?#iefix") format("embedded-opentype"),
@@ -27,7 +27,7 @@
 }
 
 @font-face {
-    font-family: var(--font-accent);
+    font-family: "DarkerGrotesque";
     src: url("darker/DarkerGrotesque-Regular.eot");
     src:
         url("darker/DarkerGrotesque-Regular.eot?#iefix") format("embedded-opentype"),
@@ -41,7 +41,7 @@
 }
 
 @font-face {
-    font-family: var(--font-accent);
+    font-family: "DarkerGrotesque-Bold";
     src: url("darker/DarkerGrotesque-Bold.eot");
     src:
         url("darker/DarkerGrotesque-Bold.eot?#iefix") format("embedded-opentype"),
@@ -55,7 +55,7 @@
 }
 
 @font-face {
-    font-family: var(--font-accent);
+    font-family: "DarkerGrotesque-Light";
     src: url("darker/DarkerGrotesque-Light.eot");
     src:
         url("darker/DarkerGrotesque-Light.eot?#iefix") format("embedded-opentype"),
