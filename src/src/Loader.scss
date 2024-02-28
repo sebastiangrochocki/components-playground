@@ -21,10 +21,12 @@
     svg {
         position: relative;
         z-index: 3;
-        width: 100% !important;
+        width: 60% !important;
+        max-width: 200px;
         height: auto !important;
         display: block;
         align-items: center;
+        margin: auto;
         * {
             fill: var(--foreground-neutral);
         }
