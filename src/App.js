@@ -1,6 +1,6 @@
 import "./App.scss";
 import "./src/Variables.scss";
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 //
 import {
   Button,
@@ -27,6 +27,7 @@ import {
   UserOnHoldItem,
   CustomSwitch,
   DropdownMenu,
+  Select,
 } from "./src/index";
 import {
   Component2Icon,
@@ -37,8 +38,6 @@ import {
 } from "@radix-ui/react-icons";
 import Beaver from "./assets/beaver.jpeg";
 import Logo from "./assets/AppLogo2.svg";
-// import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-// import "./src/shared-styles.scss";
 //
 function App() {
   const [showToastState, setShowToastState] = useState(false);
@@ -167,6 +166,12 @@ function App() {
   const [isChecked1, setIsChecked1] = useState(true);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
+  //
+  //
+  // const [role, setRole] = useState("");
+  const [item, setItem] = React.useState("Item1");
+
+  //
   //
   //
   return (
@@ -324,6 +329,26 @@ function App() {
 
           <CodeHighlight text="npm i blocksin-system" />
         </div>
+
+        <div className="box">
+          <span className="title">Select</span>
+          <Select>
+            <Select.Trigger aria-label="Role">
+              <Select.Value placeholder="Select a role" />
+            </Select.Trigger>
+            <Select.Content
+              side="bottom"
+              sideOffset={8}
+              align="start"
+              position="popper"
+            >
+              <Select.Item value="Design">Product Designer</Select.Item>
+              <Select.Item value="Developer">Developer</Select.Item>
+              <Select.Item value="PM">PM</Select.Item>
+              <Select.Item value="Brand">Brand Designer</Select.Item>
+            </Select.Content>
+          </Select>
+        </div>
         <div className="box">
           <span className="title">DropdownMenu</span>
 
@@ -392,15 +417,15 @@ function App() {
               </IconButton>
             </DropdownMenu.Trigger>
             <DropdownMenu.Content side="bottom" sideOffset={8} align="start">
-              <DropdownMenu.RadioGroup defaultValue="Item1">
+              <DropdownMenu.RadioGroup value={item} onValueChange={setItem}>
                 <DropdownMenu.RadioItem value="Item1">
                   Item 1
                 </DropdownMenu.RadioItem>
                 <DropdownMenu.RadioItem value="Item2">
-                  Item 1
+                  Item 2
                 </DropdownMenu.RadioItem>
                 <DropdownMenu.RadioItem value="Item3">
-                  Item 1
+                  Item 3
                 </DropdownMenu.RadioItem>
               </DropdownMenu.RadioGroup>
             </DropdownMenu.Content>
@@ -624,7 +649,6 @@ function App() {
             // onChange={handleMessageChange}
           />
         </div>
-        <div className="box"></div>
 
         <div className="box box2x">
           <span className="title">TopBanner</span>

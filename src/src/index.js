@@ -12,6 +12,7 @@ export { default as Iframe } from "./Iframe";
 export { default as Input } from "./Input";
 export { default as Paragraph } from "./Paragraph";
 export { default as Separator } from "./Separator";
+export { default as Select } from "./Select";
 export { default as Tag } from "./Tag";
 export { default as UserListItem } from "./UserListItem";
 export { default as CustomToast } from "./CustomToast";

@@ -74,6 +74,11 @@ DropdownMenu.RadioItem = ({ children, icon: Icon, ...props }) => {
         <div className="LeftSlot">{Icon && <Icon />}</div>
 
         {children}
+        <div className="RightSlot">
+          <div className="RadioButton">
+            <span></span>
+          </div>
+        </div>
       </>
     </DropdownMenuPrimitive.RadioItem>
   );

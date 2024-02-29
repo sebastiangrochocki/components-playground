@@ -15,12 +15,17 @@
     padding: 0px 12px 0px 12px;
     background-color: var(--background-neutral-container);
     box-sizing: border-box;
+    span:first-child {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+    }
 }
 .SelectTrigger:hover {
     background-color: var(--background-neutral);
 }
 .SelectTrigger:focus {
-box-shadow: var(--focus);
+    box-shadow: var(--focus);
     outline: none;
     border: none;
     animation: none;
@@ -61,10 +66,16 @@ div[role="listbox"] {
     display: flex;
     align-items: center;
     height: 40px;
-    padding: 0 var(--size-400) 0 var(--size-300);
+    padding: 0 var(--size-400) 0 var(--size-400);
     position: relative;
     user-select: none;
+    span:first-child {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+    }
 }
+
 .SelectItem[data-disabled] {
     color: var(--foreground-neutral-disabled);
     pointer-events: none;
@@ -91,7 +102,7 @@ div[role="listbox"] {
 
 .SelectItemIndicator {
     position: absolute;
-    left: 0;
+    left: 4px;
     width: var(--size-300);
     display: inline-flex;
     align-items: center;
@@ -111,10 +122,17 @@ div[role="listbox"] {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    display: block;
+    display: flex;
     overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body-bold);
+    font-size: 14px;
+    color: var(--foreground-neutral);
     margin-right: var(--size-100);
     background-color: var(--background-neutral-hover);
+    text-transform: uppercase;
+    line-height: 1;
     img {
         width: 100%;
         height: auto;
