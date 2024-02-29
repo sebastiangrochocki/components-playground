@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Toast from "@radix-ui/react-toast";
+import * as ToastPrimitive from "@radix-ui/react-toast";
 import * as Progress from "@radix-ui/react-progress";
 import Paragraph from "./Paragraph";
 import "./radix-styles/Toast.scss";
@@ -7,7 +7,7 @@ import "./radix-styles/Progressbar.scss";
 import Flex from "./Flex";
 import Button from "./Button";
 
-const CustomToast = ({
+const Toast = ({
   showToast,
   setShowToast,
   headline,
@@ -54,20 +54,20 @@ const CustomToast = ({
   }, [progress, setShowToast]);
 
   return (
-    <Toast.Provider swipeDirection="right">
-      <Toast.Root
+    <ToastPrimitive.Provider swipeDirection="right">
+      <ToastPrimitive.Root
         className={`ToastRoot ${simple ? "simple" : ""}`}
         open={showToast}
       >
         <Flex direction={"column"} gap={100}>
           {!simple && (
-            <Toast.Title className="ToastTitle">
+            <ToastPrimitive.Title className="ToastTitle">
               <Paragraph size="large" weight="bold">
                 {headline}
               </Paragraph>
-            </Toast.Title>
+            </ToastPrimitive.Title>
           )}
-          <Toast.Description asChild>
+          <ToastPrimitive.Description asChild>
             <Paragraph
               size="large"
               weight="regular"
@@ -75,7 +75,7 @@ const CustomToast = ({
             >
               {text}
             </Paragraph>
-          </Toast.Description>
+          </ToastPrimitive.Description>
         </Flex>
         {showAgain && (
           <Flex direction={"column"} gap={100} style={{ marginLeft: "auto" }}>
@@ -90,10 +90,12 @@ const CustomToast = ({
             style={{ transform: `translateX(-${100 - progress}%)` }}
           />
         </Progress.Root>
-      </Toast.Root>
-      <Toast.Viewport className={`ToastViewport ${simple ? "simple" : ""}`} />
-    </Toast.Provider>
+      </ToastPrimitive.Root>
+      <ToastPrimitive.Viewport
+        className={`ToastViewport ${simple ? "simple" : ""}`}
+      />
+    </ToastPrimitive.Provider>
   );
 };
 
-export default CustomToast;
+export default Toast;

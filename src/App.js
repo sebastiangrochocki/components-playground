@@ -8,9 +8,9 @@ import {
   Avatar,
   Badge,
   BadgeLevel,
-  CheckboxCustom,
+  Checkbox,
   CodeHighlight,
-  CustomToast,
+  Toast,
   Paragraph,
   Heading,
   Flex,
@@ -25,7 +25,7 @@ import {
   Youtube,
   Separator,
   UserOnHoldItem,
-  CustomSwitch,
+  Switch,
   DropdownMenu,
   Select,
 } from "./src/index";
@@ -176,7 +176,7 @@ function App() {
   //
   return (
     <Flex customClass="Body">
-      <CustomToast
+      <Toast
         showToast={showToastCopy}
         setShowToast={setShowToastCopy}
         headline="Notification"
@@ -318,11 +318,9 @@ function App() {
           <BadgeLevel badge={3} />
         </div>
         <div className="box">
-          <span className="title">CheckboxCustom</span>
+          <span className="title">Checkbox</span>
 
-          <CheckboxCustom customID="agreeTerms">
-            I agree to the t&c
-          </CheckboxCustom>
+          <Checkbox customID="agreeTerms">I agree to the t&c</Checkbox>
         </div>
         <div className="box">
           <span className="title">CodeHighlight</span>
@@ -433,12 +431,12 @@ function App() {
         </div>
 
         <div className="box">
-          <span className="title">CustomToast</span>
+          <span className="title">Toast</span>
 
           <Button onClick={handleShowToast} variant="ghost" size="large">
             Show Toast
           </Button>
-          <CustomToast
+          <Toast
             showToast={showToastState}
             setShowToast={setShowToastState}
             headline="Success!"
@@ -449,12 +447,12 @@ function App() {
           />
         </div>
         <div className="box">
-          <span className="title">CustomToast: Simple</span>
+          <span className="title">Toast: Simple</span>
 
           <Button onClick={handleShowSimpleToast} variant="ghost" size="large">
             Show Simple Toast
           </Button>
-          <CustomToast
+          <Toast
             showToast={showSimpleToastState}
             setShowToast={setShowSimpleToastState}
             headline="Success!"
@@ -624,8 +622,8 @@ function App() {
           <Separator vertical />
         </div>
         <div className="box">
-          <span className="title">CustomSwitch</span>
-          <CustomSwitch id="switch">Switch</CustomSwitch>
+          <span className="title">Switch</span>
+          <Switch id="switch">Switch</Switch>
         </div>
         <div className="box">
           <span className="title">Spinner</span>

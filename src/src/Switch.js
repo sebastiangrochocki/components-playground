@@ -1,36 +1,35 @@
 import React from "react";
-import * as Switch from "@radix-ui/react-switch";
-// import "./CustomSwitch.scss";
+import * as SwitchPrimitive from "@radix-ui/react-switch";
 import "./radix-styles/Switch.scss";
 import Flex from "./Flex";
 
-const CustomSwitch = ({ id, checked, onCheckedChange, children }) => {
+const Switch = ({ id, checked, onCheckedChange, children }) => {
   return children ? (
     <Flex customClass="CustomSwitch" gap={200} align="center">
-      <Switch.Root
+      <SwitchPrimitive.Root
         className="SwitchRoot"
         id={id}
         checked={checked}
         onCheckedChange={onCheckedChange}
       >
-        <Switch.Thumb className="SwitchThumb" />
-      </Switch.Root>
+        <SwitchPrimitive.Thumb className="SwitchThumb" />
+      </SwitchPrimitive.Root>
       <label className="Label" htmlFor={id}>
         {children}
       </label>
     </Flex>
   ) : (
     <>
-      <Switch.Root
+      <SwitchPrimitive.Root
         className="SwitchRoot"
         id={id}
         checked={checked}
         onCheckedChange={onCheckedChange}
       >
-        <Switch.Thumb className="SwitchThumb" />
-      </Switch.Root>
+        <SwitchPrimitive.Thumb className="SwitchThumb" />
+      </SwitchPrimitive.Root>
     </>
   );
 };
 
-export default CustomSwitch;
+export default Switch;
