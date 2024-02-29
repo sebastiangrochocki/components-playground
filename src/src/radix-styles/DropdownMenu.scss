@@ -61,7 +61,7 @@ button {
         justify-content: center;
         min-width: 20px;
         padding-right: 4px;
-        color: var(--black);
+        color: var(--foreground-neutral);
         .RadioButton {
             width: 16px;
             height: 16px;
@@ -88,7 +88,7 @@ button {
         // &:empty {
         //     width: 0;
         // }
-        color: var(--black);
+        color: var(--foreground-neutral);
         svg {
             width: 20px;
             height: auto;
