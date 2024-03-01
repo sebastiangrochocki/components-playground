@@ -32,12 +32,15 @@ import {
 import {
   Component2Icon,
   CopyIcon,
+  Cross2Icon,
   FigmaLogoIcon,
   Pencil1Icon,
   SliderIcon,
 } from "@radix-ui/react-icons";
 import Beaver from "./assets/beaver.jpeg";
 import Logo from "./assets/AppLogo2.svg";
+import * as Dialog from "@radix-ui/react-dialog";
+
 //
 function App() {
   const [showToastState, setShowToastState] = useState(false);
@@ -170,12 +173,60 @@ function App() {
   //
   // const [role, setRole] = useState("");
   const [item, setItem] = React.useState("Item1");
+  const [showDialog, setShowDialog] = React.useState(false);
 
   //
   //
   //
   return (
     <Flex customClass="Body">
+      <Dialog.Root
+        className="DialogRoot"
+        open={showDialog}
+        onOpenChange={setShowDialog}
+      >
+        <Dialog.Portal>
+          <Dialog.Overlay className="DialogOverlay" />
+          <Dialog.Content className="DialogContent">
+            <Heading level={3} weight="bold">
+              Add GitHub Widget
+            </Heading>
+
+            <Flex customClass="DialogDescription" direction={"column"}>
+              <Paragraph size="large">
+                Add GitHub intergation to your Control Panel by using endpoint
+                URL / REST API.
+              </Paragraph>
+            </Flex>
+
+            <Flex
+              direction="row"
+              align="end"
+              justify={"end"}
+              gap={200}
+              style={{
+                marginTop: "var(--size-400)",
+                paddingTop: "var(--size-150)",
+                borderTop: "1px solid var(--border-neutral-subtle)",
+              }}
+            >
+              <Dialog.Close asChild>
+                <Button size="medium" variant="solid">
+                  Add integration
+                </Button>
+              </Dialog.Close>
+            </Flex>
+            <Flex customClass="closeButton" gap={100}>
+              <Dialog.Close asChild>
+                <IconButton aria-label="Close" size="small" variant="ghost">
+                  <Cross2Icon />
+                </IconButton>
+              </Dialog.Close>
+            </Flex>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+
       <Toast
         showToast={showToastCopy}
         setShowToast={setShowToastCopy}
@@ -188,7 +239,7 @@ function App() {
         <img src={Logo} className="Logo" alt="Design System" />
 
         <Heading level={2} weight="bold">
-          BlocksIn System
+          BlocksIn System v.1.3.1
         </Heading>
         <Heading level={4}>React Component Library</Heading>
         <Flex
@@ -431,6 +482,34 @@ function App() {
         </div>
 
         <div className="box">
+          <span className="title">DropdownMenu x Dialog</span>
+          <Flex gap={200}>
+            <Button
+              onClick={() => setShowDialog(true)}
+              variant="solid"
+              size="medium"
+            >
+              Trigger Dialog
+            </Button>
+            <DropdownMenu>
+              <DropdownMenu.Trigger asChild>
+                <Button variant="outline" size="medium">
+                  Menu
+                </Button>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content side="bottom" sideOffset={8} align="center">
+                <DropdownMenu.Item
+                  icon={FigmaLogoIcon}
+                  onClick={() => setShowDialog(true)}
+                >
+                  Show Dialog
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu>
+          </Flex>
+        </div>
+
+        <div className="box">
           <span className="title">Toast</span>
 
           <Button onClick={handleShowToast} variant="ghost" size="large">
@@ -647,6 +726,7 @@ function App() {
             // onChange={handleMessageChange}
           />
         </div>
+        <div className="box"></div>
 
         <div className="box box2x">
           <span className="title">TopBanner</span>
@@ -658,6 +738,8 @@ function App() {
             />
           )}
         </div>
+        <div className="box"></div>
+
         <div className="box">
           <span className="title">UserListItem</span>
 
@@ -668,7 +750,6 @@ function App() {
             role="Developer"
           />
         </div>
-        <div className="box"></div>
 
         <div className="box box2x">
           <span className="title">UserOnHoldItem</span>
@@ -685,8 +766,6 @@ function App() {
 
           <Youtube videoId="dQw4w9WgXcQ" />
         </div>
-        <div className="box"></div>
-        <div className="box"></div>
       </div>
     </Flex>
   );
