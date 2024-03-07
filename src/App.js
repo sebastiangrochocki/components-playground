@@ -242,7 +242,7 @@ function App() {
         <img src={Logo} className="Logo" alt="Design System" />
 
         <Heading level={2} weight="bold">
-          BlocksIn System v.1.3.2
+          BlocksIn System v.1.3.3
         </Heading>
         <Heading level={4}>React Component Library</Heading>
         <Flex
@@ -764,7 +764,6 @@ function App() {
             // onChange={handleMessageChange}
           />
         </div>
-        <div className="box"></div>
 
         <div className="box box2x">
           <span className="title">TopBanner</span>
