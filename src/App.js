@@ -28,6 +28,7 @@ import {
   Switch,
   DropdownMenu,
   Select,
+  Tabs,
 } from "./src/index";
 import {
   Component2Icon,
@@ -239,7 +240,7 @@ function App() {
         <img src={Logo} className="Logo" alt="Design System" />
 
         <Heading level={2} weight="bold">
-          BlocksIn System v.1.3.1
+          BlocksIn System v.1.3.2
         </Heading>
         <Heading level={4}>React Component Library</Heading>
         <Flex
@@ -507,6 +508,26 @@ function App() {
               </DropdownMenu.Content>
             </DropdownMenu>
           </Flex>
+        </div>
+
+        <div className="box box2x">
+          <span className="title">Tabs</span>
+          <Tabs defaultValue="tab1" fluid>
+            <Tabs.List ariaLabel="Manage your account">
+              <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
+              <Tabs.Trigger value="tab2">Sign In</Tabs.Trigger>
+            </Tabs.List>
+            <Tabs.Content value="tab1">
+              <Flex style={{ padding: "var(--size-200)" }}>
+                Content for Sign Up tab
+              </Flex>
+            </Tabs.Content>
+            <Tabs.Content value="tab2">
+              <Flex style={{ padding: "var(--size-200)" }}>
+                Content for Sign In tab
+              </Flex>
+            </Tabs.Content>
+          </Tabs>
         </div>
 
         <div className="box">
