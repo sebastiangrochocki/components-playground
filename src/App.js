@@ -29,6 +29,7 @@ import {
   DropdownMenu,
   Select,
   Tabs,
+  Tooltip,
 } from "./src/index";
 import {
   Component2Icon,
@@ -37,6 +38,7 @@ import {
   FigmaLogoIcon,
   Pencil1Icon,
   SliderIcon,
+  ChatBubbleIcon,
 } from "@radix-ui/react-icons";
 import Beaver from "./assets/beaver.jpeg";
 import Logo from "./assets/AppLogo2.svg";
@@ -562,6 +564,21 @@ function App() {
             // onDismissForever={handleDismissForever}
           />
         </div>
+
+        <div className="box">
+          <span className="title">Tooltip</span>
+          <Tooltip delayDuration={200}>
+            <Tooltip.Trigger asChild>
+              <IconButton>
+                <ChatBubbleIcon />
+              </IconButton>
+            </Tooltip.Trigger>
+            <Tooltip.Content side="right">
+              <Paragraph size="medium">Test</Paragraph>
+            </Tooltip.Content>
+          </Tooltip>
+        </div>
+
         <div className="box">
           <span className="title">Flex</span>
 

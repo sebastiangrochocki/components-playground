@@ -16,6 +16,7 @@ export { default as Select } from "./Select";
 export { default as Tag } from "./Tag";
 export { default as UserListItem } from "./UserListItem";
 export { default as Toast } from "./Toast";
+export { default as Tooltip } from "./Tooltip";
 export { default as Tabs } from "./Tabs";
 export { default as Switch } from "./Switch";
 export { default as Youtube } from "./Youtube";
