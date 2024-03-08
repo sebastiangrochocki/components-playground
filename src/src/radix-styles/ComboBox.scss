@@ -1,5 +1,8 @@
-.MultiSelect {
-  .MultiSelectTrigger__control {
+.ComboBox {
+  &.fluid {
+    width: 100%;
+  }
+  .ComboBoxTrigger__control {
     min-height: 44px;
     min-width: 220px;
     border: 1px solid var(--border-neutral);
@@ -16,12 +19,12 @@
     background-color: var(--background-neutral-container);
     box-sizing: border-box;
   }
-  .MultiSelectTrigger__value-container {
+  .ComboBoxTrigger__value-container {
     padding: 0;
     margin: 0;
     display: flex;
     gap: var(--size-50);
-    .MultiSelectTrigger__multi-value {
+    .ComboBoxTrigger__multi-value {
       margin: 0;
       padding: var(--size-50);
       border-radius: var(--size-50);
@@ -36,7 +39,7 @@
         height: 24px;
         margin-left: var(--size-50);
       }
-      .MultiSelectTrigger__multi-value__remove {
+      .ComboBoxTrigger__multi-value__remove {
         width: 28px;
         height: 28px;
         border-radius: 4px;
@@ -52,7 +55,7 @@
           height: 16px;
         }
       }
-      .MultiSelectTrigger__multi-value__label {
+      .ComboBoxTrigger__multi-value__label {
         display: flex;
         flex-direction: row;
         padding: 0;
@@ -65,12 +68,12 @@
       }
     }
   }
-  .MultiSelectTrigger__placeholder {
+  .ComboBoxTrigger__placeholder {
     margin: 0;
-    color: var(--foreground-neutral-placeholder);
+    color: var(--foreground-neutral);
   }
 
-  .MultiSelectTrigger__control--is-focused {
+  .ComboBoxTrigger__control--is-focused {
     box-shadow:
       0px 0px 0px 2px var(--focus-inner),
       0px 0px 0px 6px var(--focus-outer),
@@ -80,11 +83,11 @@
     animation: none;
   }
 
-  .MultiSelectTrigger__input-container {
+  .ComboBoxTrigger__input-container {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    .MultiSelectTrigger__input {
+    .ComboBoxTrigger__input {
       color: var(--foreground-neutral) !important;
       &:active,
       &:focus {
@@ -94,18 +97,18 @@
       }
     }
   }
-  .MultiSelectTrigger__indicators {
+  .ComboBoxTrigger__indicators {
     align-items: center;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-left: var(--size-100);
     gap: var(--size-100);
-    .MultiSelectTrigger__indicator-separator {
+    .ComboBoxTrigger__indicator-separator {
       background-color: var(--border-neutral);
       margin: 4px 0;
     }
-    .MultiSelectTrigger__dropdown-indicator {
+    .ComboBoxTrigger__dropdown-indicator {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -119,7 +122,7 @@
         color: var(--foreground-neutral);
       }
     }
-    .MultiSelectTrigger__clear-indicator {
+    .ComboBoxTrigger__clear-indicator {
       width: 36px;
       height: 36px;
       border-radius: 4px;
@@ -146,7 +149,7 @@
   }
 }
 
-.MultiSelectTrigger__menu {
+.ComboBoxTrigger__menu {
   overflow: hidden;
   border-radius: 4px !important;
   z-index: 9 !important;
@@ -157,12 +160,12 @@
   flex-direction: column;
   background-color: var(--background-neutral-container) !important;
 
-  .MultiSelectTrigger__menu-list {
+  .ComboBoxTrigger__menu-list {
     gap: var(--size-50);
     display: flex;
     flex-direction: column;
 
-    .MultiSelectTrigger__option {
+    .ComboBoxTrigger__option {
       font-size: 16px;
       line-height: 1;
       color: var(--foreground-neutral);
@@ -173,7 +176,15 @@
       padding: 0 var(--size-400) 0 var(--size-300);
       position: relative;
       user-select: none;
-      &.MultiSelectTrigger__option--is-focused {
+      &.ComboBoxTrigger__option--is-selected {
+        background-color: var(--background-neutral-hover);
+        color: var(--foreground-neutral);
+        .OptionEmail {
+          color: var(--foreground-neutral-subtle);
+        }
+      }
+
+      &.ComboBoxTrigger__option--is-focused {
         background-color: var(--background-primary);
         color: var(--black);
         .OptionEmail {

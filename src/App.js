@@ -30,6 +30,7 @@ import {
   Select,
   Tabs,
   Tooltip,
+  ComboBox,
 } from "./src/index";
 import {
   Component2Icon,
@@ -181,6 +182,43 @@ function App() {
   //
   //
   //
+  // eslint-disable-next-line
+  const [usersData, setUsersData] = useState([
+    {
+      _id: "1",
+      username: "John Doe",
+      email: "john@example.com",
+      avatar: Beaver,
+    },
+    {
+      _id: "2",
+      username: "Zeb Bonk",
+      email: "jane@example.com",
+      avatar: Beaver,
+    },
+    {
+      _id: "3",
+      username: "Beaver Zoe",
+      email: "jane@example.com",
+      avatar: Beaver,
+    },
+  ]); // Mock users data
+  const [selectedOwners, setSelectedOwners] = useState([]);
+  //
+  //
+  const options = usersData.map((user) => ({
+    label: user.username,
+    value: user._id,
+    avatar: user.avatar,
+  }));
+
+  const handleChange = (selectedOptions) => {
+    setSelectedOwners(selectedOptions);
+  };
+  //
+  //
+  //
+
   return (
     <Flex customClass="Body">
       <Dialog.Root
@@ -242,7 +280,7 @@ function App() {
         <img src={Logo} className="Logo" alt="Design System" />
 
         <Heading level={2} weight="bold">
-          BlocksIn System v.1.3.3
+          BlocksIn System v.1.3.4
         </Heading>
         <Heading level={4}>React Component Library</Heading>
         <Flex
@@ -400,6 +438,18 @@ function App() {
               <Select.Item value="Brand">Brand Designer</Select.Item>
             </Select.Content>
           </Select>
+        </div>
+
+        <div className="box box2x" style={{ overflow: "visible" }}>
+          <span className="title">ComboBox</span>
+
+          <ComboBox
+            options={options}
+            value={selectedOwners}
+            onChange={handleChange}
+            placeholder="Select owners..."
+            isMulti={true}
+          />
         </div>
         <div className="box">
           <span className="title">DropdownMenu</span>
@@ -565,7 +615,7 @@ function App() {
           />
         </div>
 
-        <div className="box">
+        <div className="box box2x">
           <span className="title">Tooltip</span>
           <Tooltip delayDuration={200}>
             <Tooltip.Trigger asChild>
@@ -754,7 +804,7 @@ function App() {
           <Tag text="Demo" variant="Demo" />
           <Tag text="Default" />
         </div>
-        <div className="box">
+        <div className="box box2x">
           <span className="title">TextArea</span>
 
           <TextArea
