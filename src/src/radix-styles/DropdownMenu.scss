@@ -78,6 +78,19 @@ button {
                 background-color: var(--brand-1);
             }
         }
+        .Hotkey {
+            background-color: var(--background-neutral);
+            padding: 2px var(--size-50);
+            border-radius: var(--size-50);
+            height: 24px;
+            display: flex;
+            align-items: center;
+            span {
+                color: var(--foreground-neutral-placeholder);
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
     }
     .LeftSlot {
         display: flex;

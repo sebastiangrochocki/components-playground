@@ -29,7 +29,7 @@ DropdownMenu.Content = React.forwardRef(({ children, ...props }, ref) => {
 });
 
 DropdownMenu.Item = React.forwardRef(
-  ({ children, icon: Icon, ...props }, ref) => {
+  ({ children, hotkey, icon: Icon, ...props }, ref) => {
     return (
       <DropdownMenuPrimitive.Item
         ref={ref}
@@ -38,13 +38,20 @@ DropdownMenu.Item = React.forwardRef(
       >
         <div className="LeftSlot">{Icon && <Icon />}</div>
         {children}
+        {hotkey && (
+          <div className="RightSlot">
+            <div className="Hotkey">
+              <span>{hotkey}</span>
+            </div>
+          </div>
+        )}
       </DropdownMenuPrimitive.Item>
     );
   }
 );
 
 DropdownMenu.CheckboxItem = React.forwardRef(
-  ({ children, icon: Icon, ...props }, ref) => {
+  ({ children, hotkey, icon: Icon, ...props }, ref) => {
     return (
       <DropdownMenuPrimitive.CheckboxItem
         ref={ref}
@@ -55,6 +62,11 @@ DropdownMenu.CheckboxItem = React.forwardRef(
         {children}
         <div className="RightSlot">
           <CheckIcon />
+          {hotkey && (
+            <div className="Hotkey">
+              <span>{hotkey}</span>
+            </div>
+          )}
         </div>
       </DropdownMenuPrimitive.CheckboxItem>
     );
@@ -70,7 +82,7 @@ DropdownMenu.RadioGroup = ({ children, ...props }) => {
 };
 
 DropdownMenu.RadioItem = React.forwardRef(
-  ({ children, icon: Icon, ...props }, ref) => {
+  ({ children, hotkey, icon: Icon, ...props }, ref) => {
     return (
       <DropdownMenuPrimitive.RadioItem
         ref={ref}
@@ -83,6 +95,11 @@ DropdownMenu.RadioItem = React.forwardRef(
           <div className="RadioButton">
             <span></span>
           </div>
+          {hotkey && (
+            <div className="Hotkey">
+              <span>{hotkey}</span>
+            </div>
+          )}
         </div>
       </DropdownMenuPrimitive.RadioItem>
     );

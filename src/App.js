@@ -280,7 +280,7 @@ function App() {
         <img src={Logo} className="Logo" alt="Design System" />
 
         <Heading level={2} weight="bold">
-          BlocksIn System v.1.3.4
+          BlocksIn System v.1.3.5
         </Heading>
         <Heading level={4}>React Component Library</Heading>
         <Flex
@@ -470,7 +470,9 @@ function App() {
                 <DropdownMenu.SubContent>
                   <DropdownMenu.Item>Item 1</DropdownMenu.Item>
                   <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-                  <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+                  <DropdownMenu.Item hotkey="ctrl + S">
+                    Item 3
+                  </DropdownMenu.Item>
                 </DropdownMenu.SubContent>
               </DropdownMenu.Sub>
             </DropdownMenu.Content>
