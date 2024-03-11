@@ -29,7 +29,7 @@ const Avatar = forwardRef(({ avatar, altText, role }, ref) => {
 
         <Tooltip.Content>
           <Paragraph size="medium">
-            {altText} : {role}
+            {altText && altText} {role && role}
           </Paragraph>
         </Tooltip.Content>
       </Tooltip>

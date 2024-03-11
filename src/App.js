@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 //
 import {
   Button,
+  AvatarGroup,
   IconButton,
   Avatar,
   Badge,
@@ -31,6 +32,8 @@ import {
   Tabs,
   Tooltip,
   ComboBox,
+  UserItem,
+  Table,
 } from "./src/index";
 import {
   Component2Icon,
@@ -40,6 +43,9 @@ import {
   Pencil1Icon,
   SliderIcon,
   ChatBubbleIcon,
+  DotsHorizontalIcon,
+  TrashIcon,
+  CheckIcon,
 } from "@radix-ui/react-icons";
 import Beaver from "./assets/beaver.jpeg";
 import Logo from "./assets/AppLogo2.svg";
@@ -219,6 +225,108 @@ function App() {
   //
   //
 
+  const columns = [
+    {
+      Header: "Name",
+      accessor: "name",
+      Cell: (value, row) => (
+        <UserItem
+          altText={row.name}
+          avatar={row.avatar}
+          name={row.name}
+          helper={row.email}
+        />
+      ),
+    },
+    { Header: "Age", accessor: "age" },
+    { Header: "Country", accessor: "country" },
+    {
+      Header: (
+        <DropdownMenu>
+          <DropdownMenu.Trigger>
+            <IconButton size="small" variant="ghost">
+              <DotsHorizontalIcon />
+            </IconButton>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content align="end" sideOffset={4}>
+            <DropdownMenu.Item
+              icon={CheckIcon}
+              onClick={() => alert("Multi-selection action")}
+            >
+              Approve
+            </DropdownMenu.Item>
+
+            <DropdownMenu.Item icon={TrashIcon}>Delete</DropdownMenu.Item>
+          </DropdownMenu.Content>
+        </DropdownMenu>
+      ),
+      accessor: "actions",
+      Cell: (value, row) => (
+        <DropdownMenu>
+          <DropdownMenu.Trigger>
+            <IconButton size="small" variant="ghost">
+              <DotsHorizontalIcon />
+            </IconButton>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content align="end" sideOffset={4}>
+            <DropdownMenu.Item
+              icon={CheckIcon}
+              onClick={() => alert(`Editing ${row.name}`)}
+            >
+              Approve
+            </DropdownMenu.Item>
+
+            <DropdownMenu.Item icon={TrashIcon}>Delete</DropdownMenu.Item>
+          </DropdownMenu.Content>
+        </DropdownMenu>
+      ),
+    },
+  ];
+
+  const data = [
+    {
+      name: "Alice",
+      age: 25,
+      country: "USA",
+      email: "john@example.com",
+      avatar: Beaver,
+    },
+    {
+      name: "Bob",
+      age: 30,
+      country: "Canada",
+      email: "john@example.com",
+      avatar: Beaver,
+    },
+    {
+      name: "Charlie",
+      age: 35,
+      country: "UK",
+      email: "john@example.com",
+      avatar: Beaver,
+    },
+    { name: "Diana", age: 28, country: "Germany" },
+    { name: "Ethan", age: 22, country: "Australia" },
+    { name: "Fiona", age: 27, country: "Spain" },
+    { name: "George", age: 31, country: "France" },
+    { name: "Hannah", age: 24, country: "Netherlands" },
+    { name: "Ian", age: 29, country: "Italy" },
+    { name: "Julia", age: 32, country: "Portugal" },
+    { name: "Kevin", age: 26, country: "Norway" },
+    { name: "Lily", age: 34, country: "Sweden" },
+    { name: "Michael", age: 29, country: "Denmark" },
+    { name: "Nora", age: 23, country: "Ireland" },
+    { name: "Oscar", age: 37, country: "Belgium" },
+    { name: "Pamela", age: 33, country: "Switzerland" },
+    { name: "Quentin", age: 25, country: "Austria" },
+    { name: "Rachel", age: 30, country: "Finland" },
+    { name: "Steven", age: 36, country: "Greece" },
+    { name: "Tina", age: 28, country: "Czech Republic" },
+  ];
+
+  //
+  //
+  //
   return (
     <Flex customClass="Body">
       <Dialog.Root
@@ -280,7 +388,7 @@ function App() {
         <img src={Logo} className="Logo" alt="Design System" />
 
         <Heading level={2} weight="bold">
-          BlocksIn System v.1.3.5
+          BlocksIn System v.1.3.6
         </Heading>
         <Heading level={4}>React Component Library</Heading>
         <Flex
@@ -383,7 +491,7 @@ function App() {
         </div>
         <div className="box">
           <span className="title">Avatar: Group (.AvatarGroup class name)</span>
-          <Flex customClass="AvatarGroup">
+          <AvatarGroup>
             <Avatar
               avatar={Beaver}
               altText="John Doe"
@@ -392,7 +500,7 @@ function App() {
             <Avatar altText="John Doe" role="Software Engineer" />
             <Avatar altText="John Doe" role="Software Engineer" />
             <Avatar altText="John Doe" role="Software Engineer" />
-          </Flex>
+          </AvatarGroup>
         </div>
         <div className="box">
           <span className="title">Badge</span>
@@ -562,6 +670,56 @@ function App() {
               </DropdownMenu.Content>
             </DropdownMenu>
           </Flex>
+        </div>
+
+        <div className="box box2x tall">
+          <span className="title">Table</span>
+          <Table
+            columns={columns}
+            data={data}
+            pageSize={2}
+            maxPagination={2}
+            fluid
+          />
+        </div>
+
+        <div className="box box2x tall">
+          <span className="title">Table multiSelect, search, sorting</span>
+          <Table
+            columns={columns}
+            data={data}
+            pageSize={2}
+            maxPagination={2}
+            fluid
+            multiSelect
+            search
+            sorting
+          />
+        </div>
+
+        <div className="box box2x tall">
+          <span className="title">Table sorting</span>
+          <Table
+            columns={columns}
+            data={data}
+            pageSize={2}
+            maxPagination={2}
+            fluid
+            sorting
+          />
+        </div>
+
+        <div className="box box2x tall">
+          <span className="title">Table multiSelect</span>
+          <Table
+            columns={columns}
+            data={data}
+            pageSize={2}
+            maxPagination={2}
+            fluid
+            multiSelect
+            sorting
+          />
         </div>
 
         <div className="box box2x">
@@ -827,7 +985,6 @@ function App() {
             />
           )}
         </div>
-        <div className="box"></div>
 
         <div className="box">
           <span className="title">UserListItem</span>
@@ -838,6 +995,12 @@ function App() {
             avatar={Beaver}
             role="Developer"
           />
+        </div>
+
+        <div className="box">
+          <span className="title">UserItem</span>
+
+          <UserItem name="John Doe" avatar={Beaver} helper="Developer" />
         </div>
 
         <div className="box box2x">

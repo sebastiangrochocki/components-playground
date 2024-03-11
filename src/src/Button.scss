@@ -6,6 +6,10 @@
     // font-weight: bold;
     text-decoration: none;
     position: relative;
+    &:focus-visible {
+        box-shadow: var(--focus);
+        outline: none;
+    }
     &-danger {
         color: var(--foreground-danger-inverted);
         background-color: var(--background-danger);

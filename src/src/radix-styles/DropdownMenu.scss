@@ -55,6 +55,13 @@ button {
     &:focus {
         box-shadow: none;
     }
+    &:focus-visible {
+        box-shadow: var(--focus);
+        outline: none;
+    }
+    &:hover {
+        box-shadow: none;
+    }
     .RightSlot {
         display: flex;
         align-items: center;

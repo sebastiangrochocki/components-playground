@@ -1,5 +1,6 @@
 // index.js
 export { default as Avatar } from "./Avatar";
+export { default as AvatarGroup } from "./AvatarGroup";
 export { default as Badge } from "./Badge";
 export { default as Button } from "./Button";
 export { default as Checkbox } from "./Checkbox";
@@ -16,12 +17,14 @@ export { default as Separator } from "./Separator";
 export { default as Select } from "./Select";
 export { default as Tag } from "./Tag";
 export { default as UserListItem } from "./UserListItem";
+export { default as UserItem } from "./UserItem";
 export { default as Toast } from "./Toast";
 export { default as Tooltip } from "./Tooltip";
 export { default as Tabs } from "./Tabs";
 export { default as Switch } from "./Switch";
 export { default as Youtube } from "./Youtube";
 export { default as BadgeLevel } from "./BadgeLevel";
+export { default as Table } from "./Table";
 export { default as TextArea } from "./TextArea";
 export { default as TopBanner } from "./TopBanner";
 export { default as Loader } from "./Loader";

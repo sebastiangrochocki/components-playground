@@ -37,6 +37,11 @@ input {
   cursor: pointer;
   position: relative;
   text-wrap: nowrap;
+  &:focus-visible {
+    box-shadow: var(--focus);
+    outline: none;
+    z-index: 2;
+  }
 }
 .TabsTrigger:hover {
   color: var(--foreground-neutral);

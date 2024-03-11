@@ -15,14 +15,15 @@ const Input = ({
   onClick,
   validation,
   name,
+  fluid,
   // hideLabel = false,
 }) => {
   const isSearchInput = type === "search";
   return (
     <div
       className={`inputfield ${isSearchInput ? "inputSearch" : ""} ${
-        className || ""
-      }`}
+        fluid ? "fluid" : ""
+      } ${className || ""}`}
       disabled={disabled}
     >
       {isSearchInput && <MagnifyingGlassIcon />}

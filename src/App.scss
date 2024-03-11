@@ -69,6 +69,9 @@ body {
       max-width: 608px;
       height: 300px;
     }
+    &.tall {
+      height: 450px;
+    }
     .title {
       font-size: 12px;
       position: absolute;
