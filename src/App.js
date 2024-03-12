@@ -34,6 +34,9 @@ import {
   ComboBox,
   UserItem,
   Table,
+  ScrollArea,
+  ToggleGroup,
+  Toggle,
 } from "./src/index";
 import {
   Component2Icon,
@@ -46,6 +49,8 @@ import {
   DotsHorizontalIcon,
   TrashIcon,
   CheckIcon,
+  ViewGridIcon,
+  ViewHorizontalIcon,
 } from "@radix-ui/react-icons";
 import Beaver from "./assets/beaver.jpeg";
 import Logo from "./assets/AppLogo2.svg";
@@ -327,6 +332,14 @@ function App() {
   //
   //
   //
+  const [toggleViewState, setToggleViewState] = useState("Grid");
+  const onToggleGrid = (checked) => {
+    alert("Toggle clicked, checked:", checked);
+  };
+  //
+  //
+  //
+  //
   return (
     <Flex customClass="Body">
       <Dialog.Root
@@ -388,7 +401,7 @@ function App() {
         <img src={Logo} className="Logo" alt="Design System" />
 
         <Heading level={2} weight="bold">
-          BlocksIn System v.1.3.6
+          BlocksIn System v.1.3.7
         </Heading>
         <Heading level={4}>React Component Library</Heading>
         <Flex
@@ -743,6 +756,32 @@ function App() {
         </div>
 
         <div className="box">
+          <span className="title">ToggleGroup</span>
+
+          <ToggleGroup
+            type="single"
+            value={toggleViewState}
+            onValueChange={setToggleViewState}
+            aria-label="Project view"
+          >
+            <ToggleGroup.Item value="Grid" aria-label="Grid view">
+              <ViewGridIcon />
+            </ToggleGroup.Item>
+            <ToggleGroup.Item value="List" aria-label="List view">
+              <ViewHorizontalIcon />
+            </ToggleGroup.Item>
+          </ToggleGroup>
+        </div>
+
+        <div className="box">
+          <span className="title">Toggle</span>
+
+          <Toggle onPressedChange={onToggleGrid} aria-label="Toggle grid lines">
+            <ViewGridIcon />
+          </Toggle>
+        </div>
+
+        <div className="box">
           <span className="title">Toast</span>
 
           <Button onClick={handleShowToast} variant="ghost" size="large">
@@ -933,7 +972,7 @@ function App() {
             // onChange={handleEmailChange}
           />
         </div>
-        <div className="box">
+        <div className="box box2x">
           <span className="title">Loader</span>
 
           <Loader />
@@ -947,6 +986,32 @@ function App() {
           <span className="title">Separator</span>
 
           <Separator vertical />
+        </div>
+        <div className="box box2x">
+          <span className="title">ScrollArea</span>
+
+          <ScrollArea
+            style={{
+              height: "220px",
+              width: "220px",
+              borderRadius: "4px",
+              boxShadow: "var(--shadow-level-1)",
+              border: "1px solid var(--border-neutral-subtle)",
+            }}
+          >
+            <Flex
+              style={{
+                height: "900px",
+                background: "var(--gray-100)",
+                padding: "8px",
+                boxSizing: "border-box",
+              }}
+              fluid
+              justify="center"
+            >
+              Long rectangle
+            </Flex>
+          </ScrollArea>
         </div>
         <div className="box">
           <span className="title">Switch</span>
@@ -964,7 +1029,7 @@ function App() {
           <Tag text="Demo" variant="Demo" />
           <Tag text="Default" />
         </div>
-        <div className="box box2x">
+        <div className="box">
           <span className="title">TextArea</span>
 
           <TextArea

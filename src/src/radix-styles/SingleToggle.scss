@@ -22,6 +22,6 @@
     background-color: var(--brand-2);
     color: var(--black);
 }
-.Toggle:focus {
+.Toggle:focus-visible {
     box-shadow: var(--focus);
 }
