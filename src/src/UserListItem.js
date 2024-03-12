@@ -17,7 +17,7 @@ const UserListItem = ({ name, badge, avatar, role }) => {
       align={"center"}
     >
       <Flex style={{ gap: "var(--size-150)" }} align={"center"}>
-        <Avatar avatar={avatar} altText={name} role={role} />
+        <Avatar size="medium" avatar={avatar} altText={name} role={role} />
         <Paragraph size="medium">{name}</Paragraph>
       </Flex>
       <Flex gap={100} align={"center"}>

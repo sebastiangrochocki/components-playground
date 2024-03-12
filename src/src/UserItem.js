@@ -7,7 +7,7 @@ import Avatar from "./Avatar";
 const UserItem = ({ name, avatar, helper, role }) => {
   return (
     <Flex direction={"row"} customClass={"UserItem"} align={"center"} gap={200}>
-      <Avatar avatar={avatar} altText={name} role={role} />
+      <Avatar size="medium" avatar={avatar} altText={name} role={role} />
 
       <Flex direction="column" customClass="UserInfo">
         <Paragraph size="medium" weight="bold">

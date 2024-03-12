@@ -4,12 +4,6 @@
     width: 100%;
     align-items: center;
     // gap: var(--size-150);
-    .avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: 1px solid var(--border-neutral-subtle);
-    }
     .UserInfo {
         p.text-small {
             color: var(--foreground-neutral-subtle);

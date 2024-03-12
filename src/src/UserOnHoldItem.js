@@ -20,6 +20,7 @@ const UserOnHoldItem = ({ fluid, user, onApprove, onReject, onRemove }) => {
           avatar={user.avatar}
           role={user.role}
           altText={user.firstName}
+          size="medium"
         />
         <Paragraph>{user.firstName}</Paragraph>
         <Paragraph>{user.email}</Paragraph>

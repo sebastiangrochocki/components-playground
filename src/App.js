@@ -401,7 +401,7 @@ function App() {
         <img src={Logo} className="Logo" alt="Design System" />
 
         <Heading level={2} weight="bold">
-          BlocksIn System v.1.3.7
+          BlocksIn System v.1.3.8
         </Heading>
         <Heading level={4}>React Component Library</Heading>
         <Flex
