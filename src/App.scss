@@ -49,6 +49,9 @@ body {
   min-height: 100%;
   min-width: 100%;
   background-color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   div {
     svg {
       min-width: 100%;
@@ -77,8 +80,9 @@ body {
   flex-wrap: wrap;
   gap: var(--size-100);
   padding: var(--size-800) var(--size-100);
-  max-width: 1224px;
-  width: auto;
+  max-width: calc(1224px + var(--size-200));
+  width: 100%;
+  box-sizing: border-box;
   .box {
     display: flex;
     align-items: center;
@@ -127,4 +131,11 @@ body {
 }
 .dashed {
   border: 1px dashed var(--border-neutral-subtle);
+}
+@media screen and (max-width: 735px) {
+  .CTAs {
+    flex-direction: column !important;
+    padding: 0 var(--size-200);
+    box-sizing: border-box;
+  }
 }

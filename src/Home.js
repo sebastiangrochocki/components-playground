@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
 // import MenubarPage from "../menubarPage";
 import Nav from "./pages/Nav";
 import {
@@ -19,7 +18,6 @@ import {
 import usernotifications from "./pages/userNotifications.json";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import NotificationItem from "./pages/NotificationItem";
-import "./pages/WebPage.scss";
 import {
   FileTextIcon,
   TrashIcon,
@@ -247,7 +245,7 @@ const Home = () => {
   return (
     <Flex
       direction={"column"}
-      customClass={"DesignSystem WebPage"}
+      customClass={"DesignSystem"}
       align={"center"}
     >
       {/* <Flex direction={"column"} customClass={"PrivacyPolicyHeader"}>

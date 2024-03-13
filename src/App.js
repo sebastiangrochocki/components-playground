@@ -425,7 +425,7 @@ function App() {
         />
       </Helmet>
       <Routes>
-        <Route path="/home" element={<Home/>} />
+        <Route path="/components" element={<Home />} />
 
         <Route
           path="/"
@@ -490,10 +490,27 @@ function App() {
                 time={3000}
                 simple
               />
-              <Flex direction="column" fluid align="center">
+              <Flex
+                direction="column"
+                fluid
+                align="center"
+                style={{
+                  padding: "0 var(--size-200)",
+                  boxSizing: "border-box",
+                  marginTop: "var(--size-200)",
+                }}
+              >
                 {/* <img src={Logo} className="Logo" alt="Design System" /> */}
                 <Logo2 />
-                <Heading level={2} weight="bold">
+                <Heading
+                  level={2}
+                  weight="bold"
+                  style={{
+                    textAlign: "center",
+                    lineHeight: "1",
+                    marginBottom: "16px",
+                  }}
+                >
                   BlocksIn System v.1.3.9
                 </Heading>
                 <Heading level={4}>React Component Library</Heading>
@@ -506,6 +523,7 @@ function App() {
                     width: "100%",
                     maxWidth: "440px",
                   }}
+                  customClass="CTAs"
                 >
                   <Button
                     fluid
