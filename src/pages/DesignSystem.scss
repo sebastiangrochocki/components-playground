@@ -1,0 +1,324 @@
+
+.DesignSystem {
+    padding: var(--size-1600) 0;
+    width: 100%;
+    position: relative;
+    div[role="menubar"] {
+        width: 100%;
+        max-width: 600px;
+        align-self: center;
+    }
+
+    .flareGreen {
+        position: relative;
+        &:after {
+            position: absolute;
+            left: 0;
+            top: -200px;
+            width: 300px;
+            height: 600px;
+            filter: blur(124px);
+            background-color: var(--brand-2);
+            opacity: 0.6;
+            content: "";
+            display: block;
+            border-radius: 20%;
+            transform: rotate(-45deg);
+            z-index: -1;
+        }
+    }
+
+    .ComponentPreview {
+        padding: var(--size-400);
+        border-radius: var(--size-100);
+        border: 1px solid var(--border-neutral-subtle);
+        background-color: var(--background-neutral-container);
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        gap: var(--size-200);
+        min-height: 248px;
+
+        & + .ComponentPreview,
+        & + .ComponentPreviewCode {
+            margin-top: var(--size-400);
+        }
+    }
+
+    .NavigationMenuRoot.scrolled {
+        padding-left: 296px;
+        // max-width: 1440px;
+        max-width: 1248px;
+
+        > div {
+            ul {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .Error {
+        position: absolute;
+        bottom: var(--size-100);
+        left: var(--size-100);
+        right: var(--size-100);
+        width: 100%;
+        color: var(--foreground-danger) !important;
+        pre {
+            line-height: var(--size-300);
+        }
+        &:empty {
+            display: none;
+        }
+    }
+    .TabsList {
+        border-bottom: 0;
+    }
+    .TabsContent {
+        background-color: transparent;
+        margin-top: var(--size-200);
+    }
+    .TabsTrigger {
+        background-color: transparent !important;
+    }
+    .ComponentPreviewCode {
+        padding: 0;
+        position: relative;
+        border-radius: var(--size-100);
+        border: 1px solid var(--border-neutral-subtle);
+        background-color: var(--background-neutral-container);
+        align-items: flex-start;
+        justify-content: center;
+        overflow: hidden;
+        gap: 0;
+        box-sizing: border-box;
+        flex-direction: row-reverse;
+        max-height: 320px;
+        &.Expanded {
+            max-height: 100%;
+        }
+        & + .ComponentPreview,
+        & + .ComponentPreviewCode {
+            margin-top: var(--size-400);
+        }
+        .actions {
+            position: absolute;
+            bottom: var(--size-100);
+            right: var(--size-100);
+        }
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: calc(50% - var(--size-200));
+            left: 0px;
+            bottom: 0px;
+            height: 48px;
+            background: linear-gradient(360deg, #04000a 0%, rgba(4, 0, 10, 0.6) 50%, rgba(4, 0, 10, 0) 100%);
+        }
+        h4 + p {
+            margin: 0 !important;
+        }
+        > div {
+            flex: 1;
+            box-sizing: border-box;
+            &:nth-of-type(1) {
+                padding: var(--size-200);
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-self: stretch;
+            }
+            &:nth-of-type(2) {
+                flex: 1;
+                box-sizing: border-box;
+            }
+        }
+
+        .prism-code {
+            padding: var(--size-200) !important;
+            box-sizing: border-box;
+            width: 100%;
+            padding-bottom: var(--size-400) !important;
+            overflow: hidden;
+            ::selection {
+                background-color: var(--brand-2);
+                color: var(--black) !important;
+            }
+        }
+    }
+
+    .DesignSystemBodyContainer {
+        // max-width: 1440px;
+        max-width: 1248px;
+
+        padding: 0 var(--size-200);
+        width: 100%;
+        box-sizing: border-box;
+        .sidebarMenu {
+            width: 100%;
+            max-width: 248px;
+            box-sizing: border-box;
+            padding: var(--size-300) var(--size-150);
+            border-radius: var(--size-100);
+            border: 1px solid var(--border-neutral-subtle);
+            background-color: var(--background-neutral-container);
+            gap: var(--size-50);
+            max-height: 70vh;
+            z-index: 3;
+            label.Logo {
+                color: var(--foreground-neutral);
+                svg {
+                    max-width: 87px;
+                    height: auto;
+                    display: block;
+                    width: 100%;
+                    * {
+                        fill: currentColor;
+                    }
+                }
+                margin-bottom: var(--size-200);
+                display: flex;
+            }
+            .inputfield {
+                min-width: auto;
+                width: 100%;
+                margin-bottom: var(--size-150);
+            }
+            &.Touched {
+                position: fixed;
+                top: 64px;
+                left: 16px;
+            }
+            h4 {
+                margin-bottom: var(--size-150);
+                padding-bottom: var(--size-50);
+                border-bottom: 1px solid var(--border-neutral-subtle);
+            }
+            button {
+                text-align: left;
+                justify-content: flex-start;
+
+                span {
+                    width: 100%;
+                    overflow: hidden;
+                    word-wrap: none;
+                    text-wrap: nowrap;
+                    text-overflow: ellipsis;
+                }
+                svg {
+                    min-width: 20px;
+                }
+            }
+            .ScrollAreaViewport > div {
+                display: flex !important;
+                flex-direction: column;
+                gap: var(--size-50);
+                width: 100%;
+                min-height: auto;
+            }
+            .ScrollAreaViewport {
+                overflow-x: visible;
+            }
+        }
+
+        .DesignSystemBody {
+            // max-width: 1000px;
+            width: 100%;
+            position: relative;
+            z-index: 0;
+            box-sizing: border-box;
+            &.Touched {
+                // max-width: calc(1000px + (248px + 32px));
+                padding-left: calc(248px + 32px);
+            }
+            h1,
+            h2,
+            h3,
+            h4 {
+                max-width: 32ch;
+                & + h1 {
+                    margin-top: var(--size-100);
+                }
+                & + h2 {
+                    margin-top: var(--size-100);
+                }
+                & + h3 {
+                    margin-top: var(--size-100);
+                }
+                & + p {
+                    margin-top: var(--size-200);
+                }
+                & + .CodeHighlight {
+                    margin-top: var(--size-300);
+                }
+                & + .Table {
+                    margin-top: var(--size-300);
+                }
+            }
+            p {
+                line-height: 180%;
+                // font-size: 20px;
+                color: var(--foreground-neutral-subtle);
+                max-width: 86ch;
+                & + p {
+                    margin-top: var(--size-200);
+                }
+                & + h1 {
+                    margin-top: var(--size-600);
+                }
+                & + h2 {
+                    margin-top: var(--size-600);
+                }
+                & + h3 {
+                    margin-top: var(--size-600);
+                }
+                & + .CodeHighlight {
+                    margin-top: var(--size-600);
+                }
+                & + .Table {
+                    margin-top: var(--size-600);
+                }
+            }
+            .Table {
+                & + p,
+                & + h1,
+                & + h2,
+                & + h3,
+                & + h4,
+                & + .container,
+                & + .CodeHighlight,
+                & + .iframeComponent {
+                    margin-top: var(--size-400);
+                }
+            }
+            .container {
+                flex-direction: row;
+                align-items: stretch;
+                justify-content: flex-start;
+                gap: var(--size-400);
+                display: flex;
+                flex: 1;
+                flex-wrap: wrap;
+                margin: var(--size-400) 0;
+                flex-wrap: wrap;
+            }
+
+            .iframeComponent {
+                min-height: 540px;
+                border-radius: 8px;
+            }
+            .FigmaIntegrationMessage {
+                margin: 0;
+                p {
+                    color: var(--foreground-neutral-inverted);
+                }
+                img {
+                    max-width: 40px;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}

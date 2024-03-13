@@ -1,0 +1,43 @@
+.notificationItem {
+    border-radius: var(--size-50);
+    max-width: 248px;
+    box-sizing: border-box;
+    padding: var(--size-50) var(--size-50) var(--size-100) var(--size-100);
+    gap: var(--size-50);
+    &.read {
+        background-color: var(--background-neutral);
+        &:hover {
+            background-color: var(--background-neutral);
+        }
+    }
+    .notificationSeen {
+        color: var(--foreground-neutral);
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        min-width: 32px;
+        svg {
+            width: 15px;
+            height: 15px;
+        }
+    }
+    &:not(:last-child) {
+        margin-bottom: var(--size-100);
+    }
+    &:hover {
+        background-color: var(--background-neutral-hover);
+    }
+
+    img {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 1px solid var(--border-neutral-subtle);
+    }
+    button {
+        &:hover {
+            background-color: var(--background-neutral-container);
+            color: var(--brand-1);
+        }
+    }
+}

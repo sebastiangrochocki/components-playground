@@ -1,6 +1,8 @@
 import "./App.scss";
 import "./src/Variables.scss";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import { Helmet } from "react-helmet";
+
 //
 import {
   Button,
@@ -51,15 +53,65 @@ import {
   CheckIcon,
   ViewGridIcon,
   ViewHorizontalIcon,
+  PlayIcon,
 } from "@radix-ui/react-icons";
 import Beaver from "./assets/beaver.jpeg";
-import Logo from "./assets/AppLogo2.svg";
+// import Logo from "./assets/AppLogo2.svg";
+import Logo2 from "./Logo";
 import * as Dialog from "@radix-ui/react-dialog";
-
+import Lottie from "lottie-react";
+import loaderAnimation from "./assets/BlocksIn-Intro.json";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  // Navigate,
+} from "react-router-dom";
+import Home from "./Home";
 //
 function App() {
+  const [animationPlayed, setAnimationPlayed] = useState(false);
   const [showToastState, setShowToastState] = useState(false);
   const [showSimpleToastState, setShowSimpleToastState] = useState(false);
+
+  //
+  const lottieRef = useRef(null);
+
+  useEffect(() => {
+    const played = localStorage.getItem("lottiePlayed");
+    if (!played) {
+      setAnimationPlayed(true);
+      setExpirationDate();
+    } else {
+      const expiration = new Date(localStorage.getItem("lottieExpiration"));
+      if (new Date() > expiration) {
+        localStorage.removeItem("lottiePlayed");
+        localStorage.removeItem("lottieExpiration");
+        setAnimationPlayed(true);
+      }
+    }
+  }, []);
+
+  const setExpirationDate = () => {
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 14); // 2 weeks from now
+    localStorage.setItem("lottieExpiration", expirationDate.toISOString());
+  };
+
+  const handleAnimationComplete = () => {
+    document.querySelector(".IntroLottie").classList.add("played");
+    localStorage.setItem("lottiePlayed", "true");
+    setExpirationDate();
+  };
+
+  const resetAnimation = () => {
+    localStorage.removeItem("lottiePlayed");
+    localStorage.removeItem("lottieExpiration");
+    setAnimationPlayed(false);
+    setTimeout(() => {
+      setAnimationPlayed(true);
+    }, 100); // Timeout to ensure re-render
+  };
 
   //
   //
@@ -340,751 +392,882 @@ function App() {
   //
   //
   //
+  const [dark, setDark] = useState(() => {
+    // Retrieve the dark mode setting from local storage or default to false
+    const savedDarkMode = localStorage.getItem("dark");
+    return savedDarkMode === "true";
+  });
+
+  useEffect(() => {
+    // Set the dark mode class based on the dark state
+    if (dark) {
+      document.documentElement.classList.add("darkmode");
+    } else {
+      document.documentElement.classList.remove("darkmode");
+    }
+    // Save the dark mode setting to local storage
+    localStorage.setItem("dark", dark.toString());
+  }, [dark]);
+  //
+  //
+  //
+  //
   return (
-    <Flex customClass="Body">
-      <Dialog.Root
-        className="DialogRoot"
-        open={showDialog}
-        onOpenChange={setShowDialog}
-      >
-        <Dialog.Portal>
-          <Dialog.Overlay className="DialogOverlay" />
-          <Dialog.Content className="DialogContent">
-            <Heading level={3} weight="bold">
-              Add GitHub Widget
-            </Heading>
+    <Router>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>BlocksIn System - Component library</title>
+        {/* <link rel="canonical" href="https://designsystemsapp.netlify.app/" /> */}
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <meta
+          name="description"
+          content="BlocksIn System - React component library."
+        />
+      </Helmet>
+      <Routes>
+        <Route path="/home" element={<Home/>} />
 
-            <Flex customClass="DialogDescription" direction={"column"}>
-              <Paragraph size="large">
-                Add GitHub intergation to your Control Panel by using endpoint
-                URL / REST API.
-              </Paragraph>
-            </Flex>
-
-            <Flex
-              direction="row"
-              align="end"
-              justify={"end"}
-              gap={200}
-              style={{
-                marginTop: "var(--size-400)",
-                paddingTop: "var(--size-150)",
-                borderTop: "1px solid var(--border-neutral-subtle)",
-              }}
-            >
-              <Dialog.Close asChild>
-                <Button size="medium" variant="solid">
-                  Add integration
-                </Button>
-              </Dialog.Close>
-            </Flex>
-            <Flex customClass="closeButton" gap={100}>
-              <Dialog.Close asChild>
-                <IconButton aria-label="Close" size="small" variant="ghost">
-                  <Cross2Icon />
-                </IconButton>
-              </Dialog.Close>
-            </Flex>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
-
-      <Toast
-        showToast={showToastCopy}
-        setShowToast={setShowToastCopy}
-        headline="Notification"
-        text={toastMessage} // Use dynamic toast message
-        time={3000}
-        simple
-      />
-      <Flex direction="column" fluid align="center">
-        <img src={Logo} className="Logo" alt="Design System" />
-
-        <Heading level={2} weight="bold">
-          BlocksIn System v.1.3.8
-        </Heading>
-        <Heading level={4}>React Component Library</Heading>
-        <Flex
-          direction="row"
-          gap={100}
-          align="center"
-          style={{
-            marginTop: "var(--size-400)",
-            width: "100%",
-            maxWidth: "440px",
-          }}
-        >
-          <Button fluid variant="outline" onClick={handleCopyToClipboard}>
-            {npmCommand} <CopyIcon />
-          </Button>
-          <Button fluid variant="ghost" onClick={handleOpenDocumentation}>
-            Documentation
-          </Button>
-        </Flex>
-      </Flex>
-
-      <div className="components-playground">
-        <div className="box">
-          <span className="title">Button</span>
-          <Button
-            // onClick={handleClick}
-            variant="solid"
-            size="large"
-            showBadge
-            badgeLabel="New"
-          >
-            Click Me
-          </Button>
-        </div>
-        <div className="box">
-          <span className="title">Button with Helper</span>
-          <Button
-            // onClick={handleClick}
-            variant="outline"
-            size="large"
-            showBadge
-            badgeLabel="New"
-            helper="Sync files to code"
-            iconLeft={CopyIcon}
-          >
-            Click Me
-          </Button>
-        </div>
-        <div className="box">
-          <span className="title">Button: isLoading and Disabled</span>
-          <Button
-            onClick={handleClickLoading}
-            variant="solid"
-            size="large"
-            isLoading={isLoading}
-            disabled={isLoading}
-          >
-            Trigger Loading
-          </Button>
-        </div>
-        <div className="box">
-          <span className="title">
-            Button: isLoading and Disabled and Fluid
-          </span>
-          <Button
-            onClick={handleClickLoading}
-            variant="solid"
-            size="large"
-            isLoading={isLoading}
-            disabled={isLoading}
-            fluid
-          >
-            Trigger Loading
-          </Button>
-        </div>
-        <div className="box">
-          <span className="title">Button: Danger</span>
-          <Button variant="danger" size="large">
-            Delete
-          </Button>
-        </div>
-        <div className="box">
-          <span className="title">IconButton</span>
-
-          <IconButton size="large">
-            <Pencil1Icon />
-          </IconButton>
-        </div>
-        <div className="box">
-          <span className="title">IconButton: isLoading and Disabled</span>
-
-          <IconButton size="large" isLoading disabled>
-            <Pencil1Icon />
-          </IconButton>
-        </div>
-        <div className="box">
-          <span className="title">Avatar</span>
-
-          <Avatar avatar={Beaver} altText="John Doe" role="Software Engineer" />
-        </div>
-        <div className="box">
-          <span className="title">Avatar: Group (.AvatarGroup class name)</span>
-          <AvatarGroup>
-            <Avatar
-              avatar={Beaver}
-              altText="John Doe"
-              role="Software Engineer"
-            />
-            <Avatar altText="John Doe" role="Software Engineer" />
-            <Avatar altText="John Doe" role="Software Engineer" />
-            <Avatar altText="John Doe" role="Software Engineer" />
-          </AvatarGroup>
-        </div>
-        <div className="box">
-          <span className="title">Badge</span>
-
-          <div
-            style={{ width: "44px", height: "44px", position: "relative" }}
-            className="dashed"
-          >
-            <Badge label="New" />
-          </div>
-        </div>
-        <div className="box">
-          <span className="title">BadgeLevel</span>
-
-          <BadgeLevel badge={3} />
-        </div>
-        <div className="box">
-          <span className="title">Checkbox</span>
-
-          <Checkbox customID="agreeTerms">I agree to the t&c</Checkbox>
-        </div>
-        <div className="box">
-          <span className="title">CodeHighlight</span>
-
-          <CodeHighlight text="npm i blocksin-system" />
-        </div>
-
-        <div className="box">
-          <span className="title">Select</span>
-          <Select>
-            <Select.Trigger aria-label="Role">
-              <Select.Value placeholder="Select a role" />
-            </Select.Trigger>
-            <Select.Content
-              side="bottom"
-              sideOffset={8}
-              align="start"
-              position="popper"
-            >
-              <Select.Item value="Design">Product Designer</Select.Item>
-              <Select.Item value="Developer">Developer</Select.Item>
-              <Select.Item value="PM">PM</Select.Item>
-              <Select.Item value="Brand">Brand Designer</Select.Item>
-            </Select.Content>
-          </Select>
-        </div>
-
-        <div className="box box2x" style={{ overflow: "visible" }}>
-          <span className="title">ComboBox</span>
-
-          <ComboBox
-            options={options}
-            value={selectedOwners}
-            onChange={handleChange}
-            placeholder="Select owners..."
-            isMulti={true}
-          />
-        </div>
-        <div className="box">
-          <span className="title">DropdownMenu</span>
-
-          <DropdownMenu>
-            <DropdownMenu.Trigger asChild>
-              <IconButton variant="outline">
-                <SliderIcon />
-              </IconButton>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content side="bottom" align="start">
-              <DropdownMenu.Item icon={CopyIcon}>Item 1</DropdownMenu.Item>
-              <DropdownMenu.Item icon={FigmaLogoIcon}>Item 2</DropdownMenu.Item>
-              <DropdownMenu.Sub>
-                <DropdownMenu.SubTrigger icon={Component2Icon}>
-                  Item3
-                </DropdownMenu.SubTrigger>
-                <DropdownMenu.SubContent>
-                  <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-                  <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-                  <DropdownMenu.Item hotkey="ctrl + S">
-                    Item 3
-                  </DropdownMenu.Item>
-                </DropdownMenu.SubContent>
-              </DropdownMenu.Sub>
-            </DropdownMenu.Content>
-          </DropdownMenu>
-        </div>
-
-        <div className="box">
-          <span className="title">DropdownMenu Checkbox</span>
-
-          <DropdownMenu>
-            <DropdownMenu.Trigger asChild>
-              <IconButton variant="outline">
-                <SliderIcon />
-              </IconButton>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content side="bottom" align="start">
-              <DropdownMenu.CheckboxItem
-                checked={isChecked1}
-                onCheckedChange={(checked) => setIsChecked1(checked)}
+        <Route
+          path="/"
+          element={
+            <Flex customClass="Body">
+              <Dialog.Root
+                className="DialogRoot"
+                open={showDialog}
+                onOpenChange={setShowDialog}
               >
-                Item 1
-              </DropdownMenu.CheckboxItem>
-              <DropdownMenu.CheckboxItem
-                checked={isChecked2}
-                onCheckedChange={(checked) => setIsChecked2(checked)}
-              >
-                Item 2
-              </DropdownMenu.CheckboxItem>
-              <DropdownMenu.CheckboxItem
-                checked={isChecked3}
-                onCheckedChange={(checked) => setIsChecked3(checked)}
-              >
-                Item 3
-              </DropdownMenu.CheckboxItem>
-            </DropdownMenu.Content>
-          </DropdownMenu>
-        </div>
+                <Dialog.Portal>
+                  <Dialog.Overlay className="DialogOverlay" />
+                  <Dialog.Content className="DialogContent">
+                    <Heading level={3} weight="bold">
+                      Add GitHub Widget
+                    </Heading>
 
-        <div className="box">
-          <span className="title">DropdownMenu RadioItem</span>
+                    <Flex customClass="DialogDescription" direction={"column"}>
+                      <Paragraph size="large">
+                        Add GitHub intergation to your Control Panel by using
+                        endpoint URL / REST API.
+                      </Paragraph>
+                    </Flex>
 
-          <DropdownMenu>
-            <DropdownMenu.Trigger asChild>
-              <IconButton variant="outline">
-                <SliderIcon />
-              </IconButton>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content side="bottom" sideOffset={8} align="start">
-              <DropdownMenu.RadioGroup value={item} onValueChange={setItem}>
-                <DropdownMenu.RadioItem value="Item1">
-                  Item 1
-                </DropdownMenu.RadioItem>
-                <DropdownMenu.RadioItem value="Item2">
-                  Item 2
-                </DropdownMenu.RadioItem>
-                <DropdownMenu.RadioItem value="Item3">
-                  Item 3
-                </DropdownMenu.RadioItem>
-              </DropdownMenu.RadioGroup>
-            </DropdownMenu.Content>
-          </DropdownMenu>
-        </div>
+                    <Flex
+                      direction="row"
+                      align="end"
+                      justify={"end"}
+                      gap={200}
+                      style={{
+                        marginTop: "var(--size-400)",
+                        paddingTop: "var(--size-150)",
+                        borderTop: "1px solid var(--border-neutral-subtle)",
+                      }}
+                    >
+                      <Dialog.Close asChild>
+                        <Button size="medium" variant="solid">
+                          Add integration
+                        </Button>
+                      </Dialog.Close>
+                    </Flex>
+                    <Flex customClass="closeButton" gap={100}>
+                      <Dialog.Close asChild>
+                        <IconButton
+                          aria-label="Close"
+                          size="small"
+                          variant="ghost"
+                        >
+                          <Cross2Icon />
+                        </IconButton>
+                      </Dialog.Close>
+                    </Flex>
+                  </Dialog.Content>
+                </Dialog.Portal>
+              </Dialog.Root>
 
-        <div className="box">
-          <span className="title">DropdownMenu x Dialog</span>
-          <Flex gap={200}>
-            <Button
-              onClick={() => setShowDialog(true)}
-              variant="solid"
-              size="medium"
-            >
-              Trigger Dialog
-            </Button>
-            <DropdownMenu>
-              <DropdownMenu.Trigger asChild>
-                <Button variant="outline" size="medium">
-                  Menu
-                </Button>
-              </DropdownMenu.Trigger>
-              <DropdownMenu.Content side="bottom" sideOffset={8} align="center">
-                <DropdownMenu.Item
-                  icon={FigmaLogoIcon}
-                  onClick={() => setShowDialog(true)}
+              <Toast
+                showToast={showToastCopy}
+                setShowToast={setShowToastCopy}
+                headline="Notification"
+                text={toastMessage} // Use dynamic toast message
+                time={3000}
+                simple
+              />
+              <Flex direction="column" fluid align="center">
+                {/* <img src={Logo} className="Logo" alt="Design System" /> */}
+                <Logo2 />
+                <Heading level={2} weight="bold">
+                  BlocksIn System v.1.3.9
+                </Heading>
+                <Heading level={4}>React Component Library</Heading>
+                <Flex
+                  direction="row"
+                  gap={100}
+                  align="center"
+                  style={{
+                    marginTop: "var(--size-400)",
+                    width: "100%",
+                    maxWidth: "440px",
+                  }}
                 >
-                  Show Dialog
-                </DropdownMenu.Item>
-              </DropdownMenu.Content>
-            </DropdownMenu>
-          </Flex>
-        </div>
-
-        <div className="box box2x tall">
-          <span className="title">Table</span>
-          <Table
-            columns={columns}
-            data={data}
-            pageSize={2}
-            maxPagination={2}
-            fluid
-          />
-        </div>
-
-        <div className="box box2x tall">
-          <span className="title">Table multiSelect, search, sorting</span>
-          <Table
-            columns={columns}
-            data={data}
-            pageSize={2}
-            maxPagination={2}
-            fluid
-            multiSelect
-            search
-            sorting
-          />
-        </div>
-
-        <div className="box box2x tall">
-          <span className="title">Table sorting</span>
-          <Table
-            columns={columns}
-            data={data}
-            pageSize={2}
-            maxPagination={2}
-            fluid
-            sorting
-          />
-        </div>
-
-        <div className="box box2x tall">
-          <span className="title">Table multiSelect</span>
-          <Table
-            columns={columns}
-            data={data}
-            pageSize={2}
-            maxPagination={2}
-            fluid
-            multiSelect
-            sorting
-          />
-        </div>
-
-        <div className="box box2x">
-          <span className="title">Tabs</span>
-          <Tabs defaultValue="tab1" fluid>
-            <Tabs.List ariaLabel="Manage your account">
-              <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
-              <Tabs.Trigger value="tab2">Sign In</Tabs.Trigger>
-            </Tabs.List>
-            <Tabs.Content value="tab1">
-              <Flex style={{ padding: "var(--size-200)" }}>
-                Content for Sign Up tab
+                  <Button
+                    fluid
+                    variant="outline"
+                    onClick={handleCopyToClipboard}
+                  >
+                    {npmCommand} <CopyIcon />
+                  </Button>
+                  <Button
+                    fluid
+                    variant="ghost"
+                    onClick={handleOpenDocumentation}
+                  >
+                    Documentation
+                  </Button>
+                </Flex>
               </Flex>
-            </Tabs.Content>
-            <Tabs.Content value="tab2">
-              <Flex style={{ padding: "var(--size-200)" }}>
-                Content for Sign In tab
+
+              <Flex
+                gap={200}
+                style={{
+                  position: "fixed",
+                  top: "16px",
+                  right: "16px",
+                  zIndex: "99",
+                }}
+              >
+                <Switch id="darkmode" onCheckedChange={setDark} checked={dark}>
+                  Dark is {dark ? "on" : "off"}
+                </Switch>
+                <Separator vertical />
+
+                <IconButton
+                  size="medium"
+                  variant="outline"
+                  onClick={resetAnimation}
+                >
+                  <PlayIcon />
+                </IconButton>
               </Flex>
-            </Tabs.Content>
-          </Tabs>
-        </div>
+              {animationPlayed && (
+                <div className="IntroLottie">
+                  <Lottie
+                    animationData={loaderAnimation}
+                    loop={false}
+                    autoplay={true}
+                    onComplete={handleAnimationComplete}
+                    lottieRef={lottieRef}
+                  />
+                </div>
+              )}
 
-        <div className="box">
-          <span className="title">ToggleGroup</span>
+              <div className="components-playground">
+                <div className="box">
+                  <span className="title">Button</span>
+                  <Button
+                    // onClick={handleClick}
+                    variant="solid"
+                    size="large"
+                    showBadge
+                    badgeLabel="New"
+                  >
+                    Click Me
+                  </Button>
+                </div>
+                <div className="box">
+                  <span className="title">Button with Helper</span>
+                  <Button
+                    // onClick={handleClick}
+                    variant="outline"
+                    size="large"
+                    showBadge
+                    badgeLabel="New"
+                    helper="Sync files to code"
+                    iconLeft={CopyIcon}
+                  >
+                    Click Me
+                  </Button>
+                </div>
+                <div className="box">
+                  <span className="title">Button: isLoading and Disabled</span>
+                  <Button
+                    onClick={handleClickLoading}
+                    variant="solid"
+                    size="large"
+                    isLoading={isLoading}
+                    disabled={isLoading}
+                  >
+                    Trigger Loading
+                  </Button>
+                </div>
+                <div className="box">
+                  <span className="title">
+                    Button: isLoading and Disabled and Fluid
+                  </span>
+                  <Button
+                    onClick={handleClickLoading}
+                    variant="solid"
+                    size="large"
+                    isLoading={isLoading}
+                    disabled={isLoading}
+                    fluid
+                  >
+                    Trigger Loading
+                  </Button>
+                </div>
+                <div className="box">
+                  <span className="title">Button: Danger</span>
+                  <Button variant="danger" size="large">
+                    Delete
+                  </Button>
+                </div>
+                <div className="box">
+                  <span className="title">IconButton</span>
 
-          <ToggleGroup
-            type="single"
-            value={toggleViewState}
-            onValueChange={setToggleViewState}
-            aria-label="Project view"
-          >
-            <ToggleGroup.Item value="Grid" aria-label="Grid view">
-              <ViewGridIcon />
-            </ToggleGroup.Item>
-            <ToggleGroup.Item value="List" aria-label="List view">
-              <ViewHorizontalIcon />
-            </ToggleGroup.Item>
-          </ToggleGroup>
-        </div>
+                  <IconButton size="large">
+                    <Pencil1Icon />
+                  </IconButton>
+                </div>
+                <div className="box">
+                  <span className="title">
+                    IconButton: isLoading and Disabled
+                  </span>
 
-        <div className="box">
-          <span className="title">Toggle</span>
+                  <IconButton size="large" isLoading disabled>
+                    <Pencil1Icon />
+                  </IconButton>
+                </div>
+                <div className="box">
+                  <span className="title">Avatar</span>
 
-          <Toggle onPressedChange={onToggleGrid} aria-label="Toggle grid lines">
-            <ViewGridIcon />
-          </Toggle>
-        </div>
+                  <Avatar
+                    avatar={Beaver}
+                    altText="John Doe"
+                    role="Software Engineer"
+                  />
+                </div>
+                <div className="box">
+                  <span className="title">
+                    Avatar: Group (.AvatarGroup class name)
+                  </span>
+                  <AvatarGroup>
+                    <Avatar
+                      avatar={Beaver}
+                      altText="John Doe"
+                      role="Software Engineer"
+                    />
+                    <Avatar altText="John Doe" role="Software Engineer" />
+                    <Avatar altText="John Doe" role="Software Engineer" />
+                    <Avatar altText="John Doe" role="Software Engineer" />
+                  </AvatarGroup>
+                </div>
+                <div className="box">
+                  <span className="title">Badge</span>
 
-        <div className="box">
-          <span className="title">Toast</span>
+                  <div
+                    style={{
+                      width: "44px",
+                      height: "44px",
+                      position: "relative",
+                    }}
+                    className="dashed"
+                  >
+                    <Badge label="New" />
+                  </div>
+                </div>
+                <div className="box">
+                  <span className="title">BadgeLevel</span>
 
-          <Button onClick={handleShowToast} variant="ghost" size="large">
-            Show Toast
-          </Button>
-          <Toast
-            showToast={showToastState}
-            setShowToast={setShowToastState}
-            headline="Success!"
-            text="Your action was successful."
-            time={3000}
-            showAgain={true}
-            // onDismissForever={handleDismissForever}
-          />
-        </div>
-        <div className="box">
-          <span className="title">Toast: Simple</span>
+                  <BadgeLevel badge={3} />
+                </div>
+                <div className="box">
+                  <span className="title">Checkbox</span>
 
-          <Button onClick={handleShowSimpleToast} variant="ghost" size="large">
-            Show Simple Toast
-          </Button>
-          <Toast
-            showToast={showSimpleToastState}
-            setShowToast={setShowSimpleToastState}
-            headline="Success!"
-            text="Your action was successful."
-            time={3000}
-            simple
-            // onDismissForever={handleDismissForever}
-          />
-        </div>
+                  <Checkbox customID="agreeTerms">I agree to the t&c</Checkbox>
+                </div>
+                <div className="box">
+                  <span className="title">CodeHighlight</span>
 
-        <div className="box box2x">
-          <span className="title">Tooltip</span>
-          <Tooltip delayDuration={200}>
-            <Tooltip.Trigger asChild>
-              <IconButton>
-                <ChatBubbleIcon />
-              </IconButton>
-            </Tooltip.Trigger>
-            <Tooltip.Content side="right">
-              <Paragraph size="medium">Test</Paragraph>
-            </Tooltip.Content>
-          </Tooltip>
-        </div>
+                  <CodeHighlight text="npm i blocksin-system" />
+                </div>
 
-        <div className="box">
-          <span className="title">Flex</span>
+                <div className="box">
+                  <span className="title">Select</span>
+                  <Select>
+                    <Select.Trigger aria-label="Role">
+                      <Select.Value placeholder="Select a role" />
+                    </Select.Trigger>
+                    <Select.Content
+                      side="bottom"
+                      sideOffset={8}
+                      align="start"
+                      position="popper"
+                    >
+                      <Select.Item value="Design">Product Designer</Select.Item>
+                      <Select.Item value="Developer">Developer</Select.Item>
+                      <Select.Item value="PM">PM</Select.Item>
+                      <Select.Item value="Brand">Brand Designer</Select.Item>
+                    </Select.Content>
+                  </Select>
+                </div>
 
-          <Flex
-            direction="column"
-            align="center"
-            justify="space-between"
-            gap={100}
-            style={{
-              backgroundColor: "var(--brand-2)",
-              padding: "var(--size-200)",
-            }}
-          >
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 1
+                <div className="box box2x" style={{ overflow: "visible" }}>
+                  <span className="title">ComboBox</span>
+
+                  <ComboBox
+                    options={options}
+                    value={selectedOwners}
+                    onChange={handleChange}
+                    placeholder="Select owners..."
+                    isMulti={true}
+                  />
+                </div>
+                <div className="box">
+                  <span className="title">DropdownMenu</span>
+
+                  <DropdownMenu>
+                    <DropdownMenu.Trigger asChild>
+                      <IconButton variant="outline">
+                        <SliderIcon />
+                      </IconButton>
+                    </DropdownMenu.Trigger>
+                    <DropdownMenu.Content side="bottom" align="start">
+                      <DropdownMenu.Item icon={CopyIcon}>
+                        Item 1
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item icon={FigmaLogoIcon}>
+                        Item 2
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Sub>
+                        <DropdownMenu.SubTrigger icon={Component2Icon}>
+                          Item3
+                        </DropdownMenu.SubTrigger>
+                        <DropdownMenu.SubContent>
+                          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+                          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+                          <DropdownMenu.Item hotkey="ctrl + S">
+                            Item 3
+                          </DropdownMenu.Item>
+                        </DropdownMenu.SubContent>
+                      </DropdownMenu.Sub>
+                    </DropdownMenu.Content>
+                  </DropdownMenu>
+                </div>
+
+                <div className="box">
+                  <span className="title">DropdownMenu Checkbox</span>
+
+                  <DropdownMenu>
+                    <DropdownMenu.Trigger asChild>
+                      <IconButton variant="outline">
+                        <SliderIcon />
+                      </IconButton>
+                    </DropdownMenu.Trigger>
+                    <DropdownMenu.Content side="bottom" align="start">
+                      <DropdownMenu.CheckboxItem
+                        checked={isChecked1}
+                        onCheckedChange={(checked) => setIsChecked1(checked)}
+                      >
+                        Item 1
+                      </DropdownMenu.CheckboxItem>
+                      <DropdownMenu.CheckboxItem
+                        checked={isChecked2}
+                        onCheckedChange={(checked) => setIsChecked2(checked)}
+                      >
+                        Item 2
+                      </DropdownMenu.CheckboxItem>
+                      <DropdownMenu.CheckboxItem
+                        checked={isChecked3}
+                        onCheckedChange={(checked) => setIsChecked3(checked)}
+                      >
+                        Item 3
+                      </DropdownMenu.CheckboxItem>
+                    </DropdownMenu.Content>
+                  </DropdownMenu>
+                </div>
+
+                <div className="box">
+                  <span className="title">DropdownMenu RadioItem</span>
+
+                  <DropdownMenu>
+                    <DropdownMenu.Trigger asChild>
+                      <IconButton variant="outline">
+                        <SliderIcon />
+                      </IconButton>
+                    </DropdownMenu.Trigger>
+                    <DropdownMenu.Content
+                      side="bottom"
+                      sideOffset={8}
+                      align="start"
+                    >
+                      <DropdownMenu.RadioGroup
+                        value={item}
+                        onValueChange={setItem}
+                      >
+                        <DropdownMenu.RadioItem value="Item1">
+                          Item 1
+                        </DropdownMenu.RadioItem>
+                        <DropdownMenu.RadioItem value="Item2">
+                          Item 2
+                        </DropdownMenu.RadioItem>
+                        <DropdownMenu.RadioItem value="Item3">
+                          Item 3
+                        </DropdownMenu.RadioItem>
+                      </DropdownMenu.RadioGroup>
+                    </DropdownMenu.Content>
+                  </DropdownMenu>
+                </div>
+
+                <div className="box">
+                  <span className="title">DropdownMenu x Dialog</span>
+                  <Flex gap={200}>
+                    <Button
+                      onClick={() => setShowDialog(true)}
+                      variant="solid"
+                      size="medium"
+                    >
+                      Trigger Dialog
+                    </Button>
+                    <DropdownMenu>
+                      <DropdownMenu.Trigger asChild>
+                        <Button variant="outline" size="medium">
+                          Menu
+                        </Button>
+                      </DropdownMenu.Trigger>
+                      <DropdownMenu.Content
+                        side="bottom"
+                        sideOffset={8}
+                        align="center"
+                      >
+                        <DropdownMenu.Item
+                          icon={FigmaLogoIcon}
+                          onClick={() => setShowDialog(true)}
+                        >
+                          Show Dialog
+                        </DropdownMenu.Item>
+                      </DropdownMenu.Content>
+                    </DropdownMenu>
+                  </Flex>
+                </div>
+
+                <div className="box box2x tall">
+                  <span className="title">Table</span>
+                  <Table
+                    columns={columns}
+                    data={data}
+                    pageSize={2}
+                    maxPagination={2}
+                    fluid
+                  />
+                </div>
+
+                <div className="box box2x tall">
+                  <span className="title">
+                    Table multiSelect, search, sorting
+                  </span>
+                  <Table
+                    columns={columns}
+                    data={data}
+                    pageSize={2}
+                    maxPagination={2}
+                    fluid
+                    multiSelect
+                    search
+                    sorting
+                  />
+                </div>
+
+                <div className="box box2x tall">
+                  <span className="title">Table sorting</span>
+                  <Table
+                    columns={columns}
+                    data={data}
+                    pageSize={2}
+                    maxPagination={2}
+                    fluid
+                    sorting
+                  />
+                </div>
+
+                <div className="box box2x tall">
+                  <span className="title">Table multiSelect</span>
+                  <Table
+                    columns={columns}
+                    data={data}
+                    pageSize={2}
+                    maxPagination={2}
+                    fluid
+                    multiSelect
+                    sorting
+                  />
+                </div>
+
+                <div className="box box2x">
+                  <span className="title">Tabs</span>
+                  <Tabs defaultValue="tab1" fluid>
+                    <Tabs.List ariaLabel="Manage your account">
+                      <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
+                      <Tabs.Trigger value="tab2">Sign In</Tabs.Trigger>
+                    </Tabs.List>
+                    <Tabs.Content value="tab1">
+                      <Flex style={{ padding: "var(--size-200)" }}>
+                        Content for Sign Up tab
+                      </Flex>
+                    </Tabs.Content>
+                    <Tabs.Content value="tab2">
+                      <Flex style={{ padding: "var(--size-200)" }}>
+                        Content for Sign In tab
+                      </Flex>
+                    </Tabs.Content>
+                  </Tabs>
+                </div>
+
+                <div className="box">
+                  <span className="title">ToggleGroup</span>
+
+                  <ToggleGroup
+                    type="single"
+                    value={toggleViewState}
+                    onValueChange={setToggleViewState}
+                    aria-label="Project view"
+                  >
+                    <ToggleGroup.Item value="Grid" aria-label="Grid view">
+                      <ViewGridIcon />
+                    </ToggleGroup.Item>
+                    <ToggleGroup.Item value="List" aria-label="List view">
+                      <ViewHorizontalIcon />
+                    </ToggleGroup.Item>
+                  </ToggleGroup>
+                </div>
+
+                <div className="box">
+                  <span className="title">Toggle</span>
+
+                  <Toggle
+                    onPressedChange={onToggleGrid}
+                    aria-label="Toggle grid lines"
+                  >
+                    <ViewGridIcon />
+                  </Toggle>
+                </div>
+
+                <div className="box">
+                  <span className="title">Toast</span>
+
+                  <Button
+                    onClick={handleShowToast}
+                    variant="ghost"
+                    size="large"
+                  >
+                    Show Toast
+                  </Button>
+                  <Toast
+                    showToast={showToastState}
+                    setShowToast={setShowToastState}
+                    headline="Success!"
+                    text="Your action was successful."
+                    time={3000}
+                    showAgain={true}
+                    // onDismissForever={handleDismissForever}
+                  />
+                </div>
+                <div className="box">
+                  <span className="title">Toast: Simple</span>
+
+                  <Button
+                    onClick={handleShowSimpleToast}
+                    variant="ghost"
+                    size="large"
+                  >
+                    Show Simple Toast
+                  </Button>
+                  <Toast
+                    showToast={showSimpleToastState}
+                    setShowToast={setShowSimpleToastState}
+                    headline="Success!"
+                    text="Your action was successful."
+                    time={3000}
+                    simple
+                    // onDismissForever={handleDismissForever}
+                  />
+                </div>
+
+                <div className="box box2x">
+                  <span className="title">Tooltip</span>
+                  <Tooltip delayDuration={200}>
+                    <Tooltip.Trigger asChild>
+                      <IconButton>
+                        <ChatBubbleIcon />
+                      </IconButton>
+                    </Tooltip.Trigger>
+                    <Tooltip.Content side="right">
+                      <Paragraph size="medium">Test</Paragraph>
+                    </Tooltip.Content>
+                  </Tooltip>
+                </div>
+
+                <div className="box">
+                  <span className="title">Flex</span>
+
+                  <Flex
+                    direction="column"
+                    align="center"
+                    justify="space-between"
+                    gap={100}
+                    style={{
+                      backgroundColor: "var(--brand-2)",
+                      padding: "var(--size-200)",
+                    }}
+                  >
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 1
+                    </Flex>
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 2
+                    </Flex>
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 3
+                    </Flex>
+                  </Flex>
+                </div>
+                <div className="box">
+                  <span className="title">
+                    Flex: direction(rowreverse), wrap(wrapreverse)
+                  </span>
+
+                  <Flex
+                    direction="rowreverse"
+                    wrap="wrapreverse"
+                    align="center"
+                    justify="space-between"
+                    gap={100}
+                    style={{
+                      backgroundColor: "var(--brand-2)",
+                      padding: "var(--size-200)",
+                    }}
+                  >
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 1
+                    </Flex>
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 2
+                    </Flex>
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 3
+                    </Flex>
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 4
+                    </Flex>
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 5
+                    </Flex>
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 6
+                    </Flex>
+                    <Flex
+                      direction="column"
+                      gap={100}
+                      style={{ backgroundColor: "var(--white)" }}
+                    >
+                      item 7
+                    </Flex>
+                  </Flex>
+                </div>
+                <div className="box box2x">
+                  <span className="title">Heading</span>
+
+                  <Heading level={2} weight="bold">
+                    Your Main Title Here
+                  </Heading>
+                </div>
+                <div className="box">
+                  <span className="title">Paragraph</span>
+
+                  <Paragraph size="large" weight="bold">
+                    This is a large, bold paragraph.
+                  </Paragraph>
+                </div>
+                <div className="box">
+                  <span className="title">Iframe</span>
+
+                  <Iframe url="https://example.com" title="Embedded Content" />
+                </div>
+                <div className="box">
+                  <span className="title">Input</span>
+
+                  <Input
+                    label="Email Address"
+                    placeholder="Enter your email"
+                    type="email"
+                    // value={email}
+                    // onChange={handleEmailChange}
+                  />
+                </div>
+                <div className="box">
+                  <span className="title">Input: type Search</span>
+
+                  <Input
+                    label="Search"
+                    placeholder="Enter search keyword"
+                    type="search"
+                    // value={email}
+                    // onChange={handleEmailChange}
+                  />
+                </div>
+                <div className="box box2x">
+                  <span className="title">Loader</span>
+
+                  <Loader />
+                </div>
+                <div className="box">
+                  <span className="title">Separator</span>
+
+                  <Separator />
+                </div>
+                <div className="box">
+                  <span className="title">Separator</span>
+
+                  <Separator vertical />
+                </div>
+                <div className="box box2x">
+                  <span className="title">ScrollArea</span>
+
+                  <ScrollArea
+                    style={{
+                      height: "220px",
+                      width: "220px",
+                      borderRadius: "4px",
+                      boxShadow: "var(--shadow-level-1)",
+                      border: "1px solid var(--border-neutral-subtle)",
+                    }}
+                  >
+                    <Flex
+                      style={{
+                        height: "900px",
+                        background: "var(--gray-100)",
+                        padding: "8px",
+                        boxSizing: "border-box",
+                      }}
+                      fluid
+                      justify="center"
+                    >
+                      Long rectangle
+                    </Flex>
+                  </ScrollArea>
+                </div>
+                <div className="box">
+                  <span className="title">Switch</span>
+                  <Switch id="switch">Switch</Switch>
+                </div>
+                <div className="box">
+                  <span className="title">Spinner</span>
+
+                  <Spinner />
+                </div>
+                <div className="box" style={{ gap: "8px" }}>
+                  <span className="title">Tag</span>
+
+                  <Tag text="Primary" variant="Primary" />
+                  <Tag text="Demo" variant="Demo" />
+                  <Tag text="Default" />
+                </div>
+                <div className="box">
+                  <span className="title">TextArea</span>
+
+                  <TextArea
+                    label="Message"
+                    placeholder="Type your message here"
+                    // value={message}
+                    // onChange={handleMessageChange}
+                  />
+                </div>
+
+                <div className="box box2x">
+                  <span className="title">TopBanner</span>
+                  {currentNotification && (
+                    <TopBanner
+                      username={username}
+                      notification={currentNotification}
+                      onDismiss={dismissNotification}
+                    />
+                  )}
+                </div>
+
+                <div className="box">
+                  <span className="title">UserListItem</span>
+
+                  <UserListItem
+                    name="John Doe"
+                    badge={3}
+                    avatar={Beaver}
+                    role="Developer"
+                  />
+                </div>
+
+                <div className="box">
+                  <span className="title">UserItem</span>
+
+                  <UserItem
+                    name="John Doe"
+                    avatar={Beaver}
+                    helper="Developer"
+                  />
+                </div>
+
+                <div className="box box2x">
+                  <span className="title">UserOnHoldItem</span>
+
+                  <UserOnHoldItem
+                    user={user}
+                    onApprove={handleApprove}
+                    onReject={handleReject}
+                    fluid
+                  />
+                </div>
+                <div className="box">
+                  <span className="title">Youtube</span>
+
+                  <Youtube videoId="dQw4w9WgXcQ" />
+                </div>
+              </div>
             </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 2
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 3
-            </Flex>
-          </Flex>
-        </div>
-        <div className="box">
-          <span className="title">
-            Flex: direction(rowreverse), wrap(wrapreverse)
-          </span>
-
-          <Flex
-            direction="rowreverse"
-            wrap="wrapreverse"
-            align="center"
-            justify="space-between"
-            gap={100}
-            style={{
-              backgroundColor: "var(--brand-2)",
-              padding: "var(--size-200)",
-            }}
-          >
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 1
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 2
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 3
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 4
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 5
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 6
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 7
-            </Flex>
-          </Flex>
-        </div>
-        <div className="box box2x">
-          <span className="title">Heading</span>
-
-          <Heading level={2} weight="bold">
-            Your Main Title Here
-          </Heading>
-        </div>
-        <div className="box">
-          <span className="title">Paragraph</span>
-
-          <Paragraph size="large" weight="bold">
-            This is a large, bold paragraph.
-          </Paragraph>
-        </div>
-        <div className="box">
-          <span className="title">Iframe</span>
-
-          <Iframe url="https://example.com" title="Embedded Content" />
-        </div>
-        <div className="box">
-          <span className="title">Input</span>
-
-          <Input
-            label="Email Address"
-            placeholder="Enter your email"
-            type="email"
-            // value={email}
-            // onChange={handleEmailChange}
-          />
-        </div>
-        <div className="box">
-          <span className="title">Input: type Search</span>
-
-          <Input
-            label="Search"
-            placeholder="Enter search keyword"
-            type="search"
-            // value={email}
-            // onChange={handleEmailChange}
-          />
-        </div>
-        <div className="box box2x">
-          <span className="title">Loader</span>
-
-          <Loader />
-        </div>
-        <div className="box">
-          <span className="title">Separator</span>
-
-          <Separator />
-        </div>
-        <div className="box">
-          <span className="title">Separator</span>
-
-          <Separator vertical />
-        </div>
-        <div className="box box2x">
-          <span className="title">ScrollArea</span>
-
-          <ScrollArea
-            style={{
-              height: "220px",
-              width: "220px",
-              borderRadius: "4px",
-              boxShadow: "var(--shadow-level-1)",
-              border: "1px solid var(--border-neutral-subtle)",
-            }}
-          >
-            <Flex
-              style={{
-                height: "900px",
-                background: "var(--gray-100)",
-                padding: "8px",
-                boxSizing: "border-box",
-              }}
-              fluid
-              justify="center"
-            >
-              Long rectangle
-            </Flex>
-          </ScrollArea>
-        </div>
-        <div className="box">
-          <span className="title">Switch</span>
-          <Switch id="switch">Switch</Switch>
-        </div>
-        <div className="box">
-          <span className="title">Spinner</span>
-
-          <Spinner />
-        </div>
-        <div className="box" style={{ gap: "8px" }}>
-          <span className="title">Tag</span>
-
-          <Tag text="Primary" variant="Primary" />
-          <Tag text="Demo" variant="Demo" />
-          <Tag text="Default" />
-        </div>
-        <div className="box">
-          <span className="title">TextArea</span>
-
-          <TextArea
-            label="Message"
-            placeholder="Type your message here"
-            // value={message}
-            // onChange={handleMessageChange}
-          />
-        </div>
-
-        <div className="box box2x">
-          <span className="title">TopBanner</span>
-          {currentNotification && (
-            <TopBanner
-              username={username}
-              notification={currentNotification}
-              onDismiss={dismissNotification}
-            />
-          )}
-        </div>
-
-        <div className="box">
-          <span className="title">UserListItem</span>
-
-          <UserListItem
-            name="John Doe"
-            badge={3}
-            avatar={Beaver}
-            role="Developer"
-          />
-        </div>
-
-        <div className="box">
-          <span className="title">UserItem</span>
-
-          <UserItem name="John Doe" avatar={Beaver} helper="Developer" />
-        </div>
-
-        <div className="box box2x">
-          <span className="title">UserOnHoldItem</span>
-
-          <UserOnHoldItem
-            user={user}
-            onApprove={handleApprove}
-            onReject={handleReject}
-            fluid
-          />
-        </div>
-        <div className="box">
-          <span className="title">Youtube</span>
-
-          <Youtube videoId="dQw4w9WgXcQ" />
-        </div>
-      </div>
-    </Flex>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 

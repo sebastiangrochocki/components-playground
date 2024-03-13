@@ -28,6 +28,39 @@ body {
   padding: var(--size-800) 0;
   align-items: center;
   flex-direction: column;
+  color: var(--foreground-neutral);
+}
+.darkmode {
+  .Body {
+    background: var(--black);
+    filter: none;
+    .box {
+      box-shadow: none;
+    }
+  }
+}
+.IntroLottie {
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100%;
+  min-width: 100%;
+  background-color: var(--black);
+  div {
+    svg {
+      min-width: 100%;
+      min-height: 100%;
+      display: block;
+    }
+  }
+  &.played {
+    transform: scale(0.16) translateY(-50%);
+    opacity: 0;
+    transition: 500ms ease 0s;
+  }
 }
 .Logo {
   align-self: center;

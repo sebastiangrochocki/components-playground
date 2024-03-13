@@ -1,0 +1,59 @@
+{
+    "notifications": [
+        {
+            "username": "Morty",
+            "message": "Morty edited the description of the Select component card 7min ago.",
+            "style": "neutral",
+            "id": "morty121212",
+            "read": false,
+            "createdAt": "2024-01-26T07:24:17.725Z",
+            "author": {
+                "avatar": "/images/avatars/avatar4.png"
+            }
+        },
+        {
+            "username": "Amy",
+            "message": "Amy deleted the Button component card 20min ago.",
+            "style": "danger",
+            "id": "amy121212",
+            "read": false,
+            "createdAt": "2024-01-26T08:00:00.000Z",
+            "author": {
+                "avatar": "/images/avatars/avatar2.png"
+            }
+        },
+        {
+            "username": "Amy",
+            "message": "Amy created a new component card inside the Core Component Library project card 1h ago.",
+            "style": "success",
+            "id": "amy121213",
+            "read": false,
+            "createdAt": "2024-01-26T08:30:00.000Z",
+            "author": {
+                "avatar": "/images/avatars/avatar2.png"
+            }
+        },
+        {
+            "username": "Steven",
+            "message": "Steven created a new component card inside the Core Component Library project card 1h ago.",
+            "style": "success",
+            "id": "steven121211",
+            "read": false,
+            "createdAt": "2024-01-26T09:00:00.000Z",
+            "author": {
+                "avatar": ""
+            }
+        },
+        {
+            "username": "Sarah",
+            "message": "Sarah created a new component card inside the Core Component Library project card 1h ago.",
+            "style": "success",
+            "id": "sarah121211",
+            "read": true,
+            "createdAt": "2024-01-26T09:30:00.000Z",
+            "author": {
+                "avatar": "/images/avatars/avatar3.png"
+            }
+        }
+    ]
+}
