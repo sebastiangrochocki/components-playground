@@ -39,6 +39,7 @@ import {
   ScrollArea,
   ToggleGroup,
   Toggle,
+  Calendar,
 } from "./src/index";
 import {
   Component2Icon,
@@ -412,6 +413,11 @@ function App() {
   //
   //
   //
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  //
+  //
+  //
+  //
   return (
     <Router>
       <Helmet>
@@ -661,7 +667,7 @@ function App() {
                     role="Software Engineer"
                   />
                 </div>
-                <div className="box">
+                <div className="box box2x">
                   <span className="title">
                     Avatar: Group (.AvatarGroup class name)
                   </span>
@@ -706,7 +712,7 @@ function App() {
                   <CodeHighlight text="npm i blocksin-system" />
                 </div>
 
-                <div className="box">
+                <div className="box box2x">
                   <span className="title">Select</span>
                   <Select>
                     <Select.Trigger aria-label="Role">
@@ -724,6 +730,25 @@ function App() {
                       <Select.Item value="Brand">Brand Designer</Select.Item>
                     </Select.Content>
                   </Select>
+                </div>
+
+                <div
+                  className="box box2x"
+                  style={{ overflow: "visible", zIndex: "4" }}
+                >
+                  <span className="title">Calendar</span>
+                  <Calendar
+                    selectedDate={selectedDate}
+                    onChange={(date) => setSelectedDate(date)}
+                    // You can pass other props to the DatePicker component here
+                  >
+                    <Input
+                      placeholder="Select a date"
+                      readOnly
+                      validation={false}
+                      label="Select date"
+                    />
+                  </Calendar>
                 </div>
 
                 <div className="box box2x" style={{ overflow: "visible" }}>
