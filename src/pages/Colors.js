@@ -19,19 +19,34 @@ const Colors = () => {
         </Paragraph>
         <ReactLive scope={{ Flex }}>
           {`
-<Flex wrap="wrap" gap={100} fluid>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--gray-100)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--gray-200)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--gray-300)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--brand-1)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--brand-1)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--brand-1)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--brand-1)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--brand-1)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--brand-1)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--brand-1)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--brand-1)"}}/>
-    <Flex style={{width: "56px", height: "56px", backgroundColor: "var(--brand-1)"}}/>
+<Flex wrap="wrap" gap={100} fluid align="center" justify="start">
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--brand-1)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--brand-2)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--black-100)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--black-200)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--black-300)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--black-400)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--gray-100)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--gray-200)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--gray-300)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--gray-400)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--yellow-100)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--yellow-200)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--yellow-500)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--yellow-600)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--yellow-700)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--red-100)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--red-200)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--red-500)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--red-600)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--red-700)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--green-100)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--green-200)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--green-500)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--green-600)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--green-700)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--blue-1)"}}/>
+  <Flex style={{width: "15%", height: "56px", backgroundColor: "var(--blue-2)"}}/>
 </Flex>
       `}
         </ReactLive>

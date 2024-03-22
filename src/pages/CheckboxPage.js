@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Section from "./Section";
+import CodeFormatter from "./CodeFormatter";
 
 import {
   Flex,
@@ -15,8 +16,15 @@ import {
   Checkbox,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+  TwitterLogoIcon,
+  GitHubLogoIcon,
+  FigmaLogoIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
 
 const CheckboxPage = () => {
@@ -43,6 +51,9 @@ const CheckboxPage = () => {
     Heading,
     BellIcon,
     Paragraph,
+    FigmaLogoIcon,
+    GitHubLogoIcon,
+    TwitterLogoIcon,
   };
 
   //
@@ -87,7 +98,13 @@ const CheckboxPage = () => {
       description: "Disables the checkbox when set to true. Default is false.",
     },
   ];
+  const codeString1 = `  
+  import { Checkbox } from "blocksin-system";
 
+  <Checkbox customID="agreeTerms" onChange={handleCheckboxChange}>
+    I agree to the terms and conditions
+  </Checkbox>
+    `;
   return (
     <>
       <Flex direction={"column"} id="IconButton" customClass={"WebPageBody"}>
@@ -102,24 +119,26 @@ const CheckboxPage = () => {
             functionality into your application, with support for custom styling
             and additional content.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
-            <Checkbox customID="notifications" onChange={handleCheckboxChange}>
-              Notifications {checkbox ? "on" : "off"}
-            </Checkbox>
+            <Flex gap={300}>
+              <Checkbox
+                customID="notifications"
+                onChange={handleCheckboxChange}
+              >
+                Notifications {checkbox ? "on" : "off"}
+              </Checkbox>
+              <Checkbox customID="unsubscribe" disabled checked>
+                Unsubscribe
+              </Checkbox>
+              <Checkbox customID="unsubscribe" checked>
+                Newsletter
+              </Checkbox>
+            </Flex>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="js" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -134,6 +153,7 @@ const CheckboxPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -168,12 +188,54 @@ const CheckboxPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving checkbox
+            Design patterns with checkboxes should be used when multiple
+            selections are allowed, such as selecting multiple items from a list
+            or enabling multiple options simultaneously. However, checkboxes
+            should not be used for binary choices or actions that can be
+            accomplished with a single toggle, as this can lead to confusion for
+            users and hinder accessibility. The UI experience should be
+            optimized for accessibility by ensuring that checkboxes are clearly
+            labeled and can be easily selected using keyboard navigation or
+            screen readers.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
-<Flex direction={"row"} align={"center"} gap={200}>
-
+<Flex direction={"column"} align={"start"}>
+  <Flex direction={"row"} align={"center"} gap={100}>
+    <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
+      <TwitterLogoIcon style={{width: "20px", height: "20px"}}/>
+    </Flex>
+    <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
+      <GitHubLogoIcon style={{width: "20px", height: "20px"}}/>
+    </Flex>
+    <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
+      <FigmaLogoIcon style={{width: "20px", height: "20px"}}/>
+    </Flex>
+  </Flex>
+  <Flex direction={"row"} align={"center"} gap={100}>
+    <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
+      <Checkbox customID="item1"/>
+    </Flex>
+    <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
+      <Checkbox customID="item2"/>
+    </Flex>
+    <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
+      <Checkbox customID="item3"/>
+    </Flex>
+    <Paragraph size="large">Notifications</Paragraph>
+  </Flex>
+  <Flex direction={"row"} align={"center"} gap={100}>
+    <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
+      <Checkbox customID="item1"/>
+    </Flex>
+    <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
+      <Checkbox customID="item2"/>
+    </Flex>
+    <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
+      <Checkbox customID="item3"/>
+    </Flex>
+    <Paragraph size="large">Something else</Paragraph>
+  </Flex>
 </Flex>
             `}
           </ReactLive>

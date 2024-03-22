@@ -3,12 +3,9 @@ import "./UserListItem.scss";
 import Paragraph from "./Paragraph";
 import Flex from "./Flex";
 import BadgeLevel from "./BadgeLevel";
-import IconButton from "./IconButton";
-import { Pencil1Icon } from "@radix-ui/react-icons";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Avatar from "./Avatar";
 
-const UserListItem = ({ name, badge, avatar, role }) => {
+const UserListItem = ({ name, badge, avatar, role, children }) => {
   return (
     <Flex
       direction={"row"}
@@ -21,28 +18,7 @@ const UserListItem = ({ name, badge, avatar, role }) => {
         <Paragraph size="medium">{name}</Paragraph>
       </Flex>
       <Flex gap={100} align={"center"}>
-        <DropdownMenu.Root>
-          <DropdownMenu.Trigger asChild>
-            <IconButton size="small" variant="ghost">
-              <Pencil1Icon />
-            </IconButton>
-          </DropdownMenu.Trigger>
-
-          <DropdownMenu.Portal>
-            <DropdownMenu.Content
-              className="DropdownMenuContent"
-              sideOffset={4}
-              align="start"
-            >
-              <DropdownMenu.Item disabled className="DropdownMenuItem">
-                Send private message
-              </DropdownMenu.Item>
-              <DropdownMenu.Item disabled className="DropdownMenuItem">
-                Create Slack channel
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu.Portal>
-        </DropdownMenu.Root>
+        {children}
         <Flex customClass={"BadgeLevelContainer"}>
           <BadgeLevel badge={badge} />
         </Flex>

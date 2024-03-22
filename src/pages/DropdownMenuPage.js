@@ -24,6 +24,7 @@ import {
   Component2Icon,
 } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const DropdownMenuPage = () => {
   // eslint-disable-next-line
@@ -31,7 +32,29 @@ const DropdownMenuPage = () => {
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
   const [item, setItem] = React.useState("Item1");
-
+  const codeString1 = `  
+  import { DropdownMenu, IconButton } from "blocksin-system";
+  import { SliderIcon } from "./path/to/your/components";
+  
+  const MyComponent = () => {
+    return (
+      <DropdownMenu>
+        <DropdownMenu.Trigger asChild>
+          <IconButton variant="outline">
+            <SliderIcon />
+          </IconButton>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content side="bottom" align="start">
+          <DropdownMenu.RadioGroup defaultValue="Item1">
+            <DropdownMenu.RadioItem value="Item1">Item 1</DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="Item2">Item 2</DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="Item3">Item 3</DropdownMenu.RadioItem>
+          </DropdownMenu.RadioGroup>
+        </DropdownMenu.Content>
+      </DropdownMenu>
+    );
+  };
+    `;
   const scope = {
     SliderIcon,
     FigmaLogoIcon,
@@ -170,19 +193,6 @@ const DropdownMenuPage = () => {
             Radix UI Dropdown Menu primitive and includes features such as
             submenus, radio groups, checkbox items, and custom icons.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <DropdownMenu>
               <DropdownMenu.Trigger asChild>
@@ -210,27 +220,23 @@ const DropdownMenuPage = () => {
               </DropdownMenu.Content>
             </DropdownMenu>
           </Flex>
-        </Section>
-
-        <Section>
           <Heading level={3} weight="bold">
-            Properties
+            Usage
           </Heading>
-
-          <Table
-            fluid
-            columns={columnsContent}
-            data={dataContent}
-            pageSize={16}
-            sorting={false}
-            fullBorder
-          />
+          <CodeFormatter language="js" codeString={codeString1} />
         </Section>
 
         <Section>
           <Heading level={3} weight="bold">
             Variants
           </Heading>
+          <Paragraph size="large">
+            Variants refer to different versions or styles of an avatar image,
+            allowing for customization based on context or user preference.
+            Avatars are commonly used in user interfaces to represent
+            individuals, providing visual identification in profiles, comments,
+            or messaging systems.
+          </Paragraph>
           <Flex customClass="ComponentPreview">
             <DropdownMenu>
               <DropdownMenu.Trigger asChild>
@@ -288,6 +294,22 @@ const DropdownMenuPage = () => {
               </DropdownMenu.Content>
             </DropdownMenu>
           </Flex>
+        </Section>
+
+        <Section>
+          <Heading level={3} weight="bold">
+            Properties
+          </Heading>
+
+          <Table
+            fluid
+            columns={columnsContent}
+            data={dataContent}
+            pageSize={22}
+            sorting={false}
+            fullBorder
+            large
+          />
         </Section>
 
         <Section>

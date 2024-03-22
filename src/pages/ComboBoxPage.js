@@ -14,12 +14,33 @@ import {
   ComboBox,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const ComboBoxPage = () => {
+  const options2 = [
+    { label: "John Doe", value: "1", avatar: "path/to/avatar1.jpg" },
+    { label: "Jane Doe", value: "2", avatar: "path/to/avatar2.jpg" },
+    { label: "Bob Smith", value: "3", avatar: "path/to/avatar3.jpg" },
+  ];
+
+  const [selectedOptions2, setSelectedOptions2] = useState([]);
+
+  const handleChange2 = (options2) => {
+    setSelectedOptions2(options2);
+  };
+
   const scope = {
+    handleChange2,
+    options2,
+    selectedOptions2,
+    setSelectedOptions2,
     Separator,
     ComboBox,
     Avatar,
@@ -97,6 +118,37 @@ const ComboBoxPage = () => {
     setSelectedOptions(options);
   };
 
+  const codeString1 = `  
+  import { ComboBox } from "blocksin-system";
+
+  const options = [
+    { label: "John Doe", value: "1", avatar: "path/to/avatar1.jpg" },
+    { label: "Jane Doe", value: "2", avatar: "path/to/avatar2.jpg" },
+    { label: "Bob Smith", value: "3", avatar: "path/to/avatar3.jpg" },
+  ];
+  
+  const App = () => {
+    const [selectedOptions, setSelectedOptions] = useState([]);
+  
+    const handleChange = (options) => {
+      setSelectedOptions(options);
+    };
+  
+    return (
+      <ComboBox
+        options={options}
+        value={selectedOptions}
+        onChange={handleChange}
+        placeholder="Select owners..."
+        isMulti={false}
+        fluid
+      />
+    );
+  };
+  
+  export default App;
+    `;
+
   return (
     <>
       <Flex direction={"column"} id="IconButton" customClass={"WebPageBody"}>
@@ -110,19 +162,6 @@ const ComboBoxPage = () => {
             custom rendering of options, including displaying avatars and other
             custom elements.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <ComboBox
               options={options}
@@ -133,6 +172,10 @@ const ComboBoxPage = () => {
               fluid
             />
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="js" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -147,7 +190,7 @@ const ComboBoxPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
-            cellAlign="start"
+            large
           />
         </Section>
 
@@ -169,13 +212,20 @@ const ComboBoxPage = () => {
           <ReactLive scope={scope}>
             {`
 <Flex direction="row" gap={100}>
-  <Avatar text="Stefan Bao" avatar={Beaver} />
+  <ComboBox
+  options={options2}
+  value={selectedOptions2}
+  onChange={handleChange2}
+  placeholder="Select owners..."
+  isMulti={false}
+  fluid
+  />
 </Flex>
       `}
           </ReactLive>
         </Section>
 
-        <Section>
+        {/* <Section>
           <Heading level={3} weight="bold">
             Design Patterns
           </Heading>
@@ -200,7 +250,7 @@ const ComboBoxPage = () => {
 </Flex>
             `}
           </ReactLive>
-        </Section>
+        </Section> */}
       </Flex>
     </>
   );

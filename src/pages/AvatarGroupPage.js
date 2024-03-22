@@ -12,10 +12,14 @@ import {
   AvatarGroup,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
-
+import CodeFormatter from "./CodeFormatter";
 const AvatarGroupPage = () => {
   const scope = {
     Separator,
@@ -33,6 +37,15 @@ const AvatarGroupPage = () => {
     AvatarGroup,
   };
 
+  const codeString1 = `
+  import { Avatar, AvatarGroup } from "blocksin-system";
+  
+  <AvatarGroup>
+  <Avatar avatar="/path/to/image1.jpg" altText="John Doe" />
+  <Avatar avatar="/path/to/image2.jpg" altText="Jane Doe" />
+  <Avatar avatar="/path/to/image3.jpg" altText="Alice Smith" />
+</AvatarGroup>
+    `;
   //
   return (
     <>
@@ -46,6 +59,7 @@ const AvatarGroupPage = () => {
             displaying a group of avatars. It uses the Flex component to align
             the avatars horizontally.
           </Paragraph>
+
           <Flex customClass="ComponentPreview">
             <AvatarGroup>
               <Avatar text="Stefan Bao" />
@@ -56,6 +70,10 @@ const AvatarGroupPage = () => {
               <Avatar text="Stefan Bao" avatar={Beaver} />
             </AvatarGroup>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="js" codeString={codeString1} />
         </Section>
 
         <Section>

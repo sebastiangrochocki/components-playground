@@ -59,7 +59,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 // import Section from "./Section";
 const Hero = () => {
   const [showToastState, setShowToastState] = useState(false);
-  const [showSimpleToastState, setShowSimpleToastState] = useState(false);
+  //   const [showSimpleToastState, setShowSimpleToastState] = useState(false);
 
   //
   //
@@ -68,9 +68,9 @@ const Hero = () => {
     setShowToastState(true);
   }
   //
-  function handleShowSimpleToast() {
-    setShowSimpleToastState(true);
-  }
+  //   function handleShowSimpleToast() {
+  //     setShowSimpleToastState(true);
+  //   }
   //
   //
   //
@@ -91,10 +91,11 @@ const Hero = () => {
   //
   //
   //
-  const [isLoading, setIsLoading] = useState(false);
-  function handleClickLoading() {
-    setIsLoading(true);
-  }
+
+  //   const [isLoading, setIsLoading] = useState(false);
+  //   function handleClickLoading() {
+  //     setIsLoading(true);
+  //   }
   //
   //
   //
@@ -156,14 +157,7 @@ const Hero = () => {
   };
   //
   //
-  //
-  const [isChecked1, setIsChecked1] = useState(true);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
-  //
-  //
   // const [role, setRole] = useState("");
-  const [item, setItem] = React.useState("Item1");
   const [showDialog, setShowDialog] = React.useState(false);
 
   //
@@ -368,74 +362,33 @@ const Hero = () => {
 
       <div className="components-playground">
         <div className="box">
-          <span className="title">Button</span>
+          <span className="title">{`<Button/>`}</span>
           <Button
             // onClick={handleClick}
             variant="solid"
             size="large"
             showBadge
             badgeLabel="New"
-          >
-            Click Me
-          </Button>
-        </div>
-        <div className="box">
-          <span className="title">Button with Helper</span>
-          <Button
-            // onClick={handleClick}
-            variant="outline"
-            size="large"
-            showBadge
-            badgeLabel="New"
-            helper="Sync files to code"
-            iconLeft={CopyIcon}
           >
             Click Me
           </Button>
         </div>
 
         <div className="box">
-          <span className="title">
-            Button: isLoading and Disabled and Fluid
-          </span>
-          <Button
-            onClick={handleClickLoading}
-            variant="solid"
-            size="large"
-            isLoading={isLoading}
-            disabled={isLoading}
-            fluid
-          >
-            Trigger Loading
-          </Button>
-        </div>
-        <div className="box">
-          <span className="title">Button: Danger</span>
-          <Button variant="danger" size="large">
-            Delete
-          </Button>
-        </div>
-        <div className="box">
-          <span className="title">IconButton</span>
+          <span className="title">{`<IconButton/>`}</span>
 
           <IconButton size="large">
             <Pencil1Icon />
           </IconButton>
         </div>
-        <div className="box">
-          <span className="title">IconButton: isLoading and Disabled</span>
 
-          <IconButton size="large" isLoading disabled>
-            <Pencil1Icon />
-          </IconButton>
-        </div>
         <div className="box">
-          <span className="title">Avatar</span>
+          <span className="title">{`<Avatar/>`}</span>
 
           <Avatar avatar={Beaver} altText="John Doe" role="Software Engineer" />
         </div>
         <div className="box">
-          <span className="title">AvatarGroup</span>
+          <span className="title">{`<AvatarGroup/>`}</span>
           <AvatarGroup>
             <Avatar
               avatar={Beaver}
@@ -448,7 +401,7 @@ const Hero = () => {
           </AvatarGroup>
         </div>
         <div className="box">
-          <span className="title">Badge</span>
+          <span className="title">{`<Badge/>`}</span>
 
           <div
             style={{
@@ -462,23 +415,23 @@ const Hero = () => {
           </div>
         </div>
         <div className="box">
-          <span className="title">BadgeLevel</span>
+          <span className="title">{`<BadgeLevel/>`}</span>
 
           <BadgeLevel badge={3} />
         </div>
         <div className="box">
-          <span className="title">Checkbox</span>
+          <span className="title">{`<Checkbox/>`}</span>
 
           <Checkbox customID="agreeTerms">I agree to the t&c</Checkbox>
         </div>
         <div className="box">
-          <span className="title">CodeHighlight</span>
+          <span className="title">{`<CodeHighlight/>`}</span>
 
           <CodeHighlight text="npm i blocksin-system" />
         </div>
 
         <div className="box box2x">
-          <span className="title">Select</span>
+          <span className="title">{`<Select/>`}</span>
           <Select>
             <Select.Trigger aria-label="Role">
               <Select.Value placeholder="Select a role" />
@@ -498,7 +451,7 @@ const Hero = () => {
         </div>
 
         <div className="box" style={{ overflow: "visible", zIndex: "4" }}>
-          <span className="title">Calendar</span>
+          <span className="title">{`<Calendar/>`}</span>
           <Calendar
             selectedDate={selectedDate}
             onChange={(date) => setSelectedDate(date)}
@@ -514,7 +467,7 @@ const Hero = () => {
         </div>
 
         <div className="box" style={{ overflow: "visible" }}>
-          <span className="title">ComboBox</span>
+          <span className="title">{`<ComboBox/>`}</span>
 
           <ComboBox
             options={options}
@@ -524,8 +477,8 @@ const Hero = () => {
             isMulti={true}
           />
         </div>
-        <div className="box">
-          <span className="title">DropdownMenu</span>
+        <div className="box box2x">
+          <span className="title">{`<DropdownMenu/>`}</span>
 
           <DropdownMenu>
             <DropdownMenu.Trigger asChild>
@@ -552,64 +505,7 @@ const Hero = () => {
           </DropdownMenu>
         </div>
 
-        <div className="box">
-          <span className="title">DropdownMenu Checkbox</span>
-
-          <DropdownMenu>
-            <DropdownMenu.Trigger asChild>
-              <IconButton variant="outline">
-                <SliderIcon />
-              </IconButton>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content side="bottom" align="start">
-              <DropdownMenu.CheckboxItem
-                checked={isChecked1}
-                onCheckedChange={(checked) => setIsChecked1(checked)}
-              >
-                Item 1
-              </DropdownMenu.CheckboxItem>
-              <DropdownMenu.CheckboxItem
-                checked={isChecked2}
-                onCheckedChange={(checked) => setIsChecked2(checked)}
-              >
-                Item 2
-              </DropdownMenu.CheckboxItem>
-              <DropdownMenu.CheckboxItem
-                checked={isChecked3}
-                onCheckedChange={(checked) => setIsChecked3(checked)}
-              >
-                Item 3
-              </DropdownMenu.CheckboxItem>
-            </DropdownMenu.Content>
-          </DropdownMenu>
-        </div>
-
-        <div className="box">
-          <span className="title">DropdownMenu RadioItem</span>
-
-          <DropdownMenu>
-            <DropdownMenu.Trigger asChild>
-              <IconButton variant="outline">
-                <SliderIcon />
-              </IconButton>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content side="bottom" sideOffset={8} align="start">
-              <DropdownMenu.RadioGroup value={item} onValueChange={setItem}>
-                <DropdownMenu.RadioItem value="Item1">
-                  Item 1
-                </DropdownMenu.RadioItem>
-                <DropdownMenu.RadioItem value="Item2">
-                  Item 2
-                </DropdownMenu.RadioItem>
-                <DropdownMenu.RadioItem value="Item3">
-                  Item 3
-                </DropdownMenu.RadioItem>
-              </DropdownMenu.RadioGroup>
-            </DropdownMenu.Content>
-          </DropdownMenu>
-        </div>
-
-        <div className="box">
+        {/* <div className="box">
           <span className="title">DropdownMenu x Dialog</span>
           <Flex gap={200}>
             <Button
@@ -635,10 +531,10 @@ const Hero = () => {
               </DropdownMenu.Content>
             </DropdownMenu>
           </Flex>
-        </div>
+        </div> */}
 
         <div className="box box2x tall">
-          <span className="title">Table</span>
+          <span className="title">{`<Table/>`}</span>
           <Table
             columns={columns}
             data={data}
@@ -650,7 +546,7 @@ const Hero = () => {
           />
         </div>
         <div className="box tall">
-          <span className="title">Toggle</span>
+          <span className="title">{`<Toggle/>`}</span>
 
           <Toggle onPressedChange={onToggleGrid} aria-label="Toggle grid lines">
             <ViewGridIcon />
@@ -658,7 +554,7 @@ const Hero = () => {
         </div>
 
         <div className="box">
-          <span className="title">ToggleGroup</span>
+          <span className="title">{`<ToggleGroup/>`}</span>
 
           <ToggleGroup
             type="single"
@@ -675,8 +571,8 @@ const Hero = () => {
           </ToggleGroup>
         </div>
 
-        <div className="box box2x">
-          <span className="title">Tabs</span>
+        <div className="box box2">
+          <span className="title">{`<Tabs/>`}</span>
           <Tabs defaultValue="tab1" fluid>
             <Tabs.List ariaLabel="Manage your account">
               <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
@@ -696,7 +592,7 @@ const Hero = () => {
         </div>
 
         <div className="box">
-          <span className="title">Toast</span>
+          <span className="title">{`<Toast/>`}</span>
 
           <Button onClick={handleShowToast} variant="ghost" size="large">
             Show Toast
@@ -711,25 +607,9 @@ const Hero = () => {
             // onDismissForever={handleDismissForever}
           />
         </div>
-        <div className="box">
-          <span className="title">Toast: Simple</span>
-
-          <Button onClick={handleShowSimpleToast} variant="ghost" size="large">
-            Show Simple Toast
-          </Button>
-          <Toast
-            showToast={showSimpleToastState}
-            setShowToast={setShowSimpleToastState}
-            headline="Success!"
-            text="Your action was successful."
-            time={3000}
-            simple
-            // onDismissForever={handleDismissForever}
-          />
-        </div>
 
         <div className="box">
-          <span className="title">Tooltip</span>
+          <span className="title">{`<Tooltip/>`}</span>
           <Tooltip delayDuration={200}>
             <Tooltip.Trigger asChild>
               <IconButton>
@@ -743,7 +623,7 @@ const Hero = () => {
         </div>
 
         <div className="box ">
-          <span className="title">Flex</span>
+          <span className="title">{`<Flex/>`}</span>
 
           <Flex
             direction="column"
@@ -778,94 +658,28 @@ const Hero = () => {
             </Flex>
           </Flex>
         </div>
-        <div className="box">
-          <span className="title">
-            Flex: direction(rowreverse), wrap(wrapreverse)
-          </span>
 
-          <Flex
-            direction="rowreverse"
-            wrap="wrapreverse"
-            align="center"
-            justify="space-between"
-            gap={100}
-            style={{
-              backgroundColor: "var(--brand-2)",
-              padding: "var(--size-200)",
-            }}
-          >
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 1
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 2
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 3
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 4
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 5
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 6
-            </Flex>
-            <Flex
-              direction="column"
-              gap={100}
-              style={{ backgroundColor: "var(--white)" }}
-            >
-              item 7
-            </Flex>
-          </Flex>
-        </div>
         <div className="box box2x">
-          <span className="title">Heading</span>
+          <span className="title">{`<Heading/>`}</span>
 
           <Heading level={2} weight="bold">
             Your Main Title Here
           </Heading>
         </div>
         <div className="box">
-          <span className="title">Paragraph</span>
+          <span className="title">{`<Paragraph/>`}</span>
 
           <Paragraph size="large" weight="bold">
             This is a large, bold paragraph.
           </Paragraph>
         </div>
         <div className="box">
-          <span className="title">Iframe</span>
+          <span className="title">{`<Iframe/>`}</span>
 
           <Iframe url="https://example.com" title="Embedded Content" />
         </div>
         <div className="box">
-          <span className="title">Input</span>
+          <span className="title">{`<Input/>`}</span>
 
           <Input
             label="Email Address"
@@ -877,18 +691,18 @@ const Hero = () => {
         </div>
 
         <div className="box">
-          <span className="title">Loader</span>
+          <span className="title">{`<Loader/>`}</span>
 
           <Loader />
         </div>
         <div className="box">
-          <span className="title">Separator</span>
+          <span className="title">{`<Separator/>`}</span>
 
           <Separator />
         </div>
 
         <div className="box ">
-          <span className="title">ScrollArea</span>
+          <span className="title">{`<ScrollArea/>`}</span>
 
           <ScrollArea
             style={{
@@ -914,11 +728,11 @@ const Hero = () => {
           </ScrollArea>
         </div>
         <div className="box">
-          <span className="title">Switch</span>
+          <span className="title">{`<Switch/>`}</span>
           <Switch id="switch">Switch</Switch>
         </div>
         <div className="box">
-          <span className="title">Spinner</span>
+          <span className="title">{`<Spinner/>`}</span>
 
           <Spinner />
         </div>
@@ -930,7 +744,7 @@ const Hero = () => {
           <Tag text="Default" />
         </div>
         <div className="box">
-          <span className="title">TextArea</span>
+          <span className="title">{`<TextArea/>`}</span>
 
           <TextArea
             label="Message"
@@ -941,7 +755,7 @@ const Hero = () => {
         </div>
 
         <div className="box box2x">
-          <span className="title">TopBanner</span>
+          <span className="title">{`<TopBanner/>`}</span>
           {currentNotification && (
             <TopBanner
               username={username}
@@ -951,8 +765,8 @@ const Hero = () => {
           )}
         </div>
 
-        <div className="box box2x">
-          <span className="title">UserListItem</span>
+        <div className="box">
+          <span className="title">{`<UserListItem/>`}</span>
 
           <UserListItem
             name="John Doe"
@@ -963,13 +777,13 @@ const Hero = () => {
         </div>
 
         <div className="box">
-          <span className="title">UserItem</span>
+          <span className="title">{`<UserItem/>`}</span>
 
           <UserItem name="John Doe" avatar={Beaver} helper="Developer" />
         </div>
 
         <div className="box box2x">
-          <span className="title">UserOnHoldItem</span>
+          <span className="title">{`<UserOnHoldItem/>`}</span>
 
           <UserOnHoldItem
             user={user}
@@ -978,9 +792,8 @@ const Hero = () => {
             fluid
           />
         </div>
-        <div className="box"></div>
         <div className="box">
-          <span className="title">Youtube</span>
+          <span className="title">{`<Youtube/>`}</span>
 
           <Youtube videoId="dQw4w9WgXcQ" />
         </div>

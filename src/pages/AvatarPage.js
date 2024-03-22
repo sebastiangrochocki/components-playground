@@ -1,5 +1,6 @@
 import React from "react";
 import Section from "./Section";
+import CodeFormatter from "./CodeFormatter";
 
 import {
   Flex,
@@ -43,11 +44,6 @@ const AvatarPage = () => {
     { Header: "Type", accessor: "Type" },
     { Header: "Optional", accessor: "Optional" },
     { Header: "Description", accessor: "Description" },
-    {
-      Header: "Deprecated",
-      accessor: "Deprecated",
-      Cell: (value) => <CodeHighlight text={value} />,
-    },
   ];
 
   const data = [
@@ -89,6 +85,16 @@ const AvatarPage = () => {
   ];
 
   //
+  const codeString1 = `
+import { Avatar } from "blocksin-system";
+
+<Avatar
+  avatar="/path/to/image.jpg"
+  altText="John Doe"
+  role="Software Engineer"
+  size="medium
+/>
+  `;
   return (
     <>
       <Flex direction={"column"} id="IconButton" customClass={"WebPageBody"}>
@@ -102,6 +108,11 @@ const AvatarPage = () => {
             hovered over. If no avatar image is provided, it randomly selects
             one from a set of demo avatars.
           </Paragraph>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+
+          <CodeFormatter language="js" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -139,6 +150,7 @@ const AvatarPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 

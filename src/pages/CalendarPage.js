@@ -18,6 +18,7 @@ import ReactLive from "./ReactLive";
 import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
 import { BellIcon } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const CalendarPage = () => {
   //
@@ -82,6 +83,25 @@ const CalendarPage = () => {
     selectedDate,
   };
   //
+  const codeString1 = `  
+  import React, { useState } from "react";
+  import { Calendar, Input } from "bloksin-system";
+  
+  function MyComponent() {
+    const [selectedDate, setSelectedDate] = useState(new Date());
+  
+    return (
+      <Calendar
+        selectedDate={selectedDate}
+        onChange={(date) => setSelectedDate(date)}
+      >
+        <Input placeholder="Select a date" readOnly />
+      </Calendar>
+    );
+  }
+  
+  export default MyComponent;
+    `;
   return (
     <>
       <Flex direction={"column"} id="IconButton" customClass={"WebPageBody"}>
@@ -95,27 +115,18 @@ const CalendarPage = () => {
             The component is built on top of react-datepicker and can be
             integrated with custom input components.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <Calendar
               selectedDate={selectedDate}
               onChange={(date) => setSelectedDate(date)}
             >
-              <Input placeholder="Select a date" readOnly />
+              <Input placeholder="Select a date" label="Date" readOnly />
             </Calendar>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="js" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -130,6 +141,7 @@ const CalendarPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -159,22 +171,6 @@ const CalendarPage = () => {
   </Calendar>
 </Flex>
       `}
-          </ReactLive>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Design Patterns
-          </Heading>
-          <Paragraph size="large">
-            One common design pattern involving Calendar..
-          </Paragraph>
-          <ReactLive scope={scope}>
-            {`
-<Flex direction={"row"} align={"center"} gap={200}>
-
-</Flex>
-            `}
           </ReactLive>
         </Section>
       </Flex>

@@ -78,7 +78,12 @@ canvas {
             z-index: -2;
         }
     }
-
+    .CodeFormatter {
+        * {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    }
     .ComponentPreview {
         padding: var(--size-400);
         border-radius: var(--size-100);
@@ -91,7 +96,8 @@ canvas {
         min-height: 248px;
 
         & + .ComponentPreview,
-        & + .ComponentPreviewCode {
+        & + .ComponentPreviewCode,
+        & + .CodeFormatter {
             margin-top: var(--size-400);
         }
         & + p,
@@ -137,7 +143,7 @@ canvas {
         background-color: var(--background-neutral-container);
         align-items: flex-start;
         justify-content: center;
-        overflow: hidden;
+        // overflow: hidden;
         gap: 0;
         box-sizing: border-box;
         flex-direction: row-reverse;
@@ -148,7 +154,8 @@ canvas {
         }
 
         & + .ComponentPreview,
-        & + .ComponentPreviewCode {
+        & + .ComponentPreviewCode,
+        & + .CodeFormatter {
             margin-top: var(--size-400);
         }
         & + p,
@@ -177,6 +184,7 @@ canvas {
             bottom: 0px;
             height: 48px;
             background: linear-gradient(360deg, #04000a 0%, rgba(4, 0, 10, 0.6) 50%, rgba(4, 0, 10, 0) 100%);
+            border-bottom-left-radius: var(--size-100);
         }
         h4 + p {
             margin: 0 !important;
@@ -196,8 +204,14 @@ canvas {
                 flex: 1;
                 box-sizing: border-box;
                 height: 100%;
-                overflow: scroll;
+                // overflow: scroll;
+                border-top-left-radius: var(--size-100);
+                border-bottom-left-radius: var(--size-100);
+
                 background-color: var(--black);
+                * {
+                    line-height: 1.6;
+                }
             }
         }
         &.verticalLayout {
@@ -205,12 +219,22 @@ canvas {
             max-height: 600px;
             min-height: 480px;
             > div {
+                &:nth-of-type(1) {
+                    min-height: 220px;
+                }
                 &:nth-of-type(2) {
                     min-height: 220px;
                 }
             }
             &.Expanded {
-                max-height: 100%;
+                > div {
+                    &:nth-of-type(2) {
+                        max-height: 100%;
+                        border-top-left-radius: 0;
+                        border-bottom-right-radius: var(--size-100);
+                    }
+                }
+                max-height: fit-content;
             }
         }
 
@@ -336,13 +360,23 @@ canvas {
                     & + h3 {
                         margin-top: var(--size-100);
                     }
+                    & + h4 {
+                        margin-top: var(--size-100);
+                    }
                     & + p {
                         margin-top: var(--size-200);
                     }
                     & + .CodeHighlight {
                         margin-top: var(--size-300);
                     }
-                    & + .TableComponent {
+                    & + .TableComponent,
+                    & + .CodeFormatter {
+                        margin-top: var(--size-300);
+                    }
+                    & + .ComponentPreview {
+                        margin-top: var(--size-300);
+                    }
+                    & + .ComponentPreviewCode {
                         margin-top: var(--size-300);
                     }
                 }
@@ -361,7 +395,10 @@ canvas {
                         margin-top: var(--size-600);
                     }
                     & + h3 {
-                        margin-top: var(--size-600);
+                        margin-top: var(--size-400);
+                    }
+                    & + h4 {
+                        margin-top: var(--size-400);
                     }
                     & + .CodeHighlight {
                         margin-top: var(--size-600);
@@ -374,6 +411,9 @@ canvas {
                     & + .TabsRoot {
                         margin-top: var(--size-600);
                     }
+                    & + .CodeFormatter {
+                        margin-top: var(--size-200);
+                    }
                 }
                 .TableComponent {
                     & + p,
@@ -383,7 +423,9 @@ canvas {
                     & + h4,
                     & + .container,
                     & + .CodeHighlight,
-                    & + .iframeComponent {
+                    & + .CodeFormatter,
+                    & + .iframeComponent,
+                    & + .ComponentPreview {
                         margin-top: var(--size-400);
                     }
                 }
@@ -398,7 +440,11 @@ canvas {
                     margin: var(--size-400) 0;
                     flex-wrap: wrap;
                 }
-
+                .CodeFormatter {
+                    & + p {
+                        margin-top: var(--size-400);
+                    }
+                }
                 .iframeComponent {
                     min-height: 540px;
                     border-radius: 8px;

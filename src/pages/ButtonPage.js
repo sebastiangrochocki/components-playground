@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Section from "./Section";
 
 import {
@@ -6,24 +6,25 @@ import {
   Paragraph,
   Heading,
   Iframe,
-  DropdownMenu,
   Separator,
   CodeHighlight,
   Button,
-  ScrollArea,
   IconButton,
   Tabs,
   Table,
 } from "../src/index";
-import NotificationItem from "./NotificationItem";
-import usernotifications from "./userNotifications.json";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon, TimerIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+  TimerIcon,
+} from "@radix-ui/react-icons";
+import CodeFormatter from "./CodeFormatter";
 
 const ButtonPage = () => {
   // IconButton with notifications
-  const [notifications, setNotifications] = useState([]);
   const scope = {
     Separator,
     Button,
@@ -35,16 +36,6 @@ const ButtonPage = () => {
     Heading,
     BellIcon,
     Paragraph,
-  };
-  useEffect(() => {
-    setNotifications(usernotifications.notifications);
-  }, []);
-
-  // Function to handle the dismissal of a notification
-  const handleDismissNotification = (notificationId) => {
-    setNotifications(
-      notifications.filter((notification) => notification.id !== notificationId)
-    );
   };
 
   const columns = [
@@ -127,6 +118,35 @@ const ButtonPage = () => {
   ];
 
   //
+  const codeString1 = `
+  import { Button } from "blocksin-system";
+  
+  <Button
+  onClick={handleClick}
+  variant="solid"
+  size="large"
+  showBadge
+  badgeLabel="New"
+>
+  Click Me
+</Button>
+    `;
+  const codeString2 = `
+    import { Button } from "blocksin-system";
+    import { YourIconComponent } from "your-icon-library";
+
+    <Button
+      onClick={handleClick}
+      variant="solid"
+      size="large"
+      showBadge
+      badgeLabel="New"
+      helper="This is a helper text"
+      iconLeft={YourIconComponent}
+    >
+      Click Me
+    </Button>
+      `;
   return (
     <>
       <Flex direction={"column"} id="IconButton" customClass={"WebPageBody"}>
@@ -140,6 +160,14 @@ const ButtonPage = () => {
             It's crafted to be flexible, allowing customization of size,
             appearance, and behavior through its properties.
           </Paragraph>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="js" codeString={codeString1} />
+          <Paragraph size="large">
+            Here's an example of how to use the helper in component:
+          </Paragraph>
+          <CodeFormatter language="js" codeString={codeString2} />
         </Section>
 
         <Section>
@@ -147,25 +175,21 @@ const ButtonPage = () => {
             Variants
           </Heading>
           <Paragraph size="large">
-            The Icon Button component showcases various versatile variants,
-            including ghost, outline, and solid, each capable of integrating an
-            additional badge component. This versatility makes it a cornerstone
-            for constructing 90% of standard product experiences. It's ideal for
+            The Button component showcases various versatile variants, including
+            ghost, outline, and solid, each capable of integrating an additional
+            badge component. This versatility makes it a cornerstone for
+            constructing 90% of standard product experiences. It's ideal for
             displaying dynamic data such as time for timer functionalities or
             indicating the count of unread notifications, ensuring enhanced
             visibility within interfaces.
           </Paragraph>
-        </Section>
-
-        <Section>
-          {" "}
           <Tabs defaultValue="tab1">
             <Tabs.List aria-label="Manage your account">
               <Tabs.Trigger value="tab1">For developers</Tabs.Trigger>
               <Tabs.Trigger value="tab2">For designers</Tabs.Trigger>
             </Tabs.List>
             <Tabs.Content value="tab1">
-              <Flex customClass="ComponentPreview">
+              <Flex customClass="ComponentPreview" wrap={"wrap"}>
                 <Button size="medium" variant="ghost">
                   Button
                 </Button>
@@ -207,52 +231,6 @@ const ButtonPage = () => {
 
         <Section>
           <Heading level={3} weight="bold">
-            Button with Notifications
-          </Heading>
-          <Paragraph size="large">
-            The single Icon Button finds its utility within compact UI modules
-            like dialogs and popups, simplifying user navigation through primary
-            actions such as close or save. Its most prevalent use case often
-            involves actions like edit or more actions, typically represented by
-            the three-dot icon. This commonly precedes a dropdown menu, offering
-            more accessible items for further actions, thus enriching user
-            interaction and experience.
-          </Paragraph>
-          <Flex customClass="ComponentPreview">
-            <DropdownMenu modal={false}>
-              <DropdownMenu.Trigger asChild>
-                <IconButton
-                  size="small"
-                  variant="ghost"
-                  showBadge
-                  badgeLabel={notifications.length.toString()}
-                >
-                  <BellIcon />
-                </IconButton>
-              </DropdownMenu.Trigger>
-
-              <DropdownMenu.Content
-                className="DropdownMenuContent userNotifications"
-                sideOffset={4}
-                align="end"
-              >
-                <ScrollArea>
-                  {notifications.map((notification) => (
-                    <NotificationItem
-                      key={notification.id}
-                      notification={notification}
-                      onDismiss={handleDismissNotification}
-                      isDismissedByCurrentUser={notification.read}
-                    />
-                  ))}
-                </ScrollArea>
-              </DropdownMenu.Content>
-            </DropdownMenu>
-          </Flex>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
             Properties
           </Heading>
 
@@ -260,9 +238,10 @@ const ButtonPage = () => {
             fluid
             columns={columns}
             data={data}
-            pageSize={10}
+            pageSize={14}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -284,14 +263,15 @@ const ButtonPage = () => {
           <ReactLive scope={scope}>
             {`
 <Flex direction="row" gap={100}>
-  <IconButton
-    size="small"
-    variant="ghost"
+  <Button
+    size="medium"
+    variant="outline"
     showBadge
     badgeLabel={"3"}
   >
     <BellIcon />
-  </IconButton>
+    Notifications
+  </Button>
 </Flex>
       `}
           </ReactLive>
@@ -302,15 +282,19 @@ const ButtonPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            Unleash your creativity and dive into the world of React with our
-            interactive React-live editor! Feel the freedom to modify content,
-            add or remove components, and experiment with different patterns to
-            see your ideas come to life in real-time. Once you've crafted the
-            perfect design, use handy 'Copy to Clipboard' button to seamlessly
-            capture your production-ready frontend code. Start playing now and
-            transform your visions into reality!
+            Design patterns with the Button component can be diverse. For
+            instance, a Button can be used to trigger actions like deleting
+            items in a dialog, saving settings, or submitting a form with a
+            loading state. Additionally, Buttons can serve as primary or
+            secondary actions in a dialog, initiate a confirmation prompt, or
+            even navigate between pages in a single-page application.
           </Paragraph>
-          <ReactLive scope={scope}>
+        </Section>
+        <Section>
+          <Heading level={3} weight="bold">
+            Saving
+          </Heading>
+          <ReactLive scope={scope} vertical>
             {`
 <Flex direction="column" gap={100} justify="between"
   style={{
@@ -355,6 +339,152 @@ const ButtonPage = () => {
 </Flex>
       `}
           </ReactLive>
+        </Section>
+        <Section>
+          <Heading level={3} weight="bold">
+            Deleting
+          </Heading>
+          <Flex customClass="ComponentPreview">
+            <Flex
+              direction="column"
+              gap={100}
+              justify="between"
+              style={{
+                padding:
+                  "var(--size-400) var(--size-100) var(--size-100) var(--size-300)",
+                border: "1px solid var(--border-neutral-subtle)",
+                borderRadius: "var(--size-100)",
+                minWidth: "300px",
+                minHeight: "160px",
+                position: "relative",
+              }}
+            >
+              <Flex
+                style={{
+                  position: "absolute",
+                  top: "var(--size-50)",
+                  right: "var(--size-50)",
+                }}
+              >
+                <IconButton size="small" variant="ghost">
+                  <Cross2Icon />
+                </IconButton>
+              </Flex>
+              <Flex direction="column" gap={100}>
+                <Heading level={4} weight="bold">
+                  Dialog
+                </Heading>
+                <Paragraph size="large">
+                  Start playing with the pattern.
+                </Paragraph>
+              </Flex>
+              <Separator />
+              <Flex direction="row" gap={100} justify="end">
+                <Button size="small" variant="ghost">
+                  Cancel
+                </Button>
+                <Button size="small" variant="danger">
+                  Delete
+                </Button>
+              </Flex>
+            </Flex>
+          </Flex>
+        </Section>
+
+        <Section>
+          <Heading level={3} weight="bold">
+            Loading
+          </Heading>
+          <Flex customClass="ComponentPreview">
+            <Flex
+              direction="column"
+              gap={100}
+              justify="between"
+              style={{
+                padding:
+                  "var(--size-400) var(--size-100) var(--size-100) var(--size-300)",
+                border: "1px solid var(--border-neutral-subtle)",
+                borderRadius: "var(--size-100)",
+                minWidth: "300px",
+                minHeight: "160px",
+                position: "relative",
+              }}
+            >
+              <Flex
+                style={{
+                  position: "absolute",
+                  top: "var(--size-50)",
+                  right: "var(--size-50)",
+                }}
+              >
+                <IconButton size="small" variant="ghost">
+                  <Cross2Icon />
+                </IconButton>
+              </Flex>
+              <Flex direction="column" gap={100}>
+                <Heading level={4} weight="bold">
+                  Dialog
+                </Heading>
+                <Paragraph size="large">
+                  Start playing with the pattern.
+                </Paragraph>
+              </Flex>
+              <Separator />
+              <Flex direction="row" gap={100} justify="end" fluid>
+                <Button size="small" variant="solid" disabled isLoading>
+                  Loading
+                </Button>
+              </Flex>
+            </Flex>
+          </Flex>
+        </Section>
+
+        <Section>
+          <Heading level={3} weight="bold">
+            Button with Helper text
+          </Heading>
+          <Flex customClass="ComponentPreview">
+            <Flex
+              direction="column"
+              gap={200}
+              style={{
+                padding:
+                  "var(--size-400) var(--size-300) var(--size-400) var(--size-300)",
+                border: "1px solid var(--border-neutral-subtle)",
+                borderRadius: "var(--size-100)",
+                minWidth: "300px",
+                position: "relative",
+              }}
+            >
+              <Flex direction="column" gap={100}>
+                <Heading level={4} weight="bold">
+                  Quick Ations
+                </Heading>
+              </Flex>
+              <Flex direction="row" gap={300}>
+                <Button
+                  // onClick={handleClick}
+                  variant="outline"
+                  size="large"
+                  helper="Start colloborating"
+                  iconLeft={CopyIcon}
+                >
+                  Create Board
+                </Button>
+                <Button
+                  // onClick={handleClick}
+                  variant="outline"
+                  size="large"
+                  showBadge
+                  badgeLabel="New"
+                  helper="Invite teammates"
+                  iconLeft={CopyIcon}
+                >
+                  New Project
+                </Button>
+              </Flex>
+            </Flex>
+          </Flex>
         </Section>
       </Flex>
     </>

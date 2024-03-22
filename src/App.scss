@@ -89,11 +89,26 @@ body {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: var(--size-100);
+  gap: var(--size-200);
   // padding: var(--size-800) var(--size-100);
   max-width: calc(1224px + var(--size-200));
   width: 100%;
   box-sizing: border-box;
+  &:before {
+    position: absolute;
+    left: 0%;
+    top: 10%;
+    width: 100%;
+    height: 90%;
+    filter: blur(248px);
+    background-color: var(--brand-1);
+    opacity: 0.6;
+    content: "";
+    display: block;
+    border-radius: 20%;
+    transform: rotate(-45deg);
+    z-index: -2;
+  }
   .box {
     display: flex;
     align-items: center;
@@ -104,15 +119,18 @@ body {
     flex: 1;
     flex-basis: calc(50% - var(--size-100));
     height: 380px;
-    box-shadow: var(--shadow-level-1);
+    // box-shadow: var(--shadow-level-1);
     // border: 1px solid var(--border-neutral-subtle);
     background-color: var(--background-neutral-container);
     box-sizing: border-box;
     position: relative;
     border-radius: var(--size-100);
-    padding: var(--size-100);
+    padding: var(--size-200);
     overflow: hidden;
     align-self: flex-start;
+    // border-bottom: 4px solid var(--brand-1);
+    border: 1px solid var(--gray-300);
+
     // &:last-child {
     //   margin-right: 308px;
     // }
@@ -125,11 +143,12 @@ body {
     //   height: 380px;
     // }
     .title {
-      font-size: 12px;
+      font-size: 14px;
       position: absolute;
-      left: 8px;
-      top: 8px;
-      color: var(--foreground-neutral);
+      left: 12px;
+      font-family: var(--font-body-bold);
+      top: 12px;
+      color: var(--foreground-neutral-subtle);
       z-index: 1;
     }
     @media screen and (max-width: 735px) {

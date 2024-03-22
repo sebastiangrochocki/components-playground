@@ -1,7 +1,18 @@
 import { Flex, Paragraph, Heading } from "../src/index";
 import Section from "./Section";
+import CodeFormatter from "./CodeFormatter";
 
 const Introduction = () => {
+  const codeString1 = `
+:root {
+  --font-body: "OpenSans";
+  --font-body-bold: "OpenSans-Bold";
+  --font-accent: "DarkerGrotesque";
+  --font-accent-bold: "DarkerGrotesque-Bold";
+  --font-accent-light: "DarkerGrotesque-Light";
+}
+`;
+
   return (
     <Flex direction={"column"} id="Button" customClass={"WebPageBody"}>
       <Section>
@@ -21,6 +32,7 @@ const Introduction = () => {
           these fonts to your application by declaring the following variables
           in your main app.css file:
         </Paragraph>
+        <CodeFormatter language="css" codeString={codeString1} />
       </Section>
 
       <Section>

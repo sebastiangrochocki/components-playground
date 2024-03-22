@@ -12,12 +12,14 @@ import {
   Avatar,
   Table,
   Badge,
+  UserListItem,
   BadgeLevel,
 } from "../src/index";
 import ReactLive from "./ReactLive";
 import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
 import { BellIcon } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const BadgeLevelPage = () => {
   const scope = {
@@ -34,10 +36,17 @@ const BadgeLevelPage = () => {
     Flex,
     Heading,
     BellIcon,
+    UserListItem,
     Paragraph,
   };
 
   //
+  const codeString1 = `
+  import { BadgeLevel } from "blocksin-system";
+  
+  <BadgeLevel badge={3} />
+    `;
+
   const columns = [
     {
       Header: "Property",
@@ -75,6 +84,10 @@ const BadgeLevelPage = () => {
           <Flex customClass="ComponentPreview">
             <BadgeLevel badge="8" />
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="js" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -89,6 +102,7 @@ const BadgeLevelPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -121,12 +135,15 @@ const BadgeLevelPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving BadgeLevel..
+            To use the BadgeLevel component in design patterns, simply include
+            it with numbers to visually highlight levels. This can be applied in
+            personal user settings to indicate the level of advancement in
+            learning new user interfaces or other gamification features.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
-<Flex>
-<BadgeLevel badge="8" />
+<Flex fluid style={{width: "80%"}} direction="column">
+  <UserListItem avatar={Beaver} name="John" role="Designer" level="3"/>
 </Flex>
             `}
           </ReactLive>

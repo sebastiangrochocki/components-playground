@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Section from "./Section";
+import CodeFormatter from "./CodeFormatter";
 
 import {
   Flex,
@@ -20,6 +21,11 @@ import { BellIcon } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
 
 const CodeHighlightPage = () => {
+  const codeString1 = `  
+  import { CodeHighlight } from "blocksin-system";
+
+  <CodeHighlight text={"npm install"} />
+    `;
   // eslint-disable-next-line
   const [checkbox, setCheckbox] = useState(false);
 
@@ -77,22 +83,13 @@ const CodeHighlightPage = () => {
             of code with basic styling. It is suitable for rendering code
             snippets or configurations in a clear and readable format.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
-            <CodeHighlight text={`const greeting = "Hello, world!";`} />
+            <CodeHighlight text={`npm install blocksin-system`} />
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="js" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -107,6 +104,7 @@ const CodeHighlightPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -134,7 +132,7 @@ const CodeHighlightPage = () => {
           </ReactLive>
         </Section>
 
-        <Section>
+        {/* <Section>
           <Heading level={3} weight="bold">
             Design Patterns
           </Heading>
@@ -148,7 +146,7 @@ const CodeHighlightPage = () => {
 </Flex>
             `}
           </ReactLive>
-        </Section>
+        </Section> */}
       </Flex>
     </>
   );

@@ -15,9 +15,15 @@ import {
   Checkbox,
   Toast,
 } from "../src/index";
+import CodeFormatter from "./CodeFormatter";
+
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
 
 const ToastPage = () => {
@@ -27,7 +33,19 @@ const ToastPage = () => {
 
   const [showSimpleToastState, setShowSimpleToastState] = useState(false);
   const [showSimpleToast2State, setShowSimpleToast2State] = useState(false);
+  const codeString1 = `  
+  import { Toast } from "blocksin-system";
 
+  <Toast
+    showToast={showToastState}
+    setShowToast={setShowToastState}
+    headline="Success!"
+    text="Your action was successful."
+    time={3000}
+    showAgain={true}
+    onDismissForever={handleDismissForever}
+  />
+    `;
   //
   //
   //
@@ -142,19 +160,6 @@ const ToastPage = () => {
             messages or alerts to users, with a smooth fade-out effect
             controlled by a timer.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <Button onClick={handleShowToast} variant="ghost" size="large">
               Show Toast
@@ -168,27 +173,25 @@ const ToastPage = () => {
               showAgain={true}
             />
           </Flex>
-        </Section>
-
-        <Section>
           <Heading level={3} weight="bold">
-            Properties
+            Usage
           </Heading>
-
-          <Table
-            fluid
-            columns={columns}
-            data={data}
-            pageSize={10}
-            sorting={false}
-            fullBorder
-          />
+          <CodeFormatter language="js" codeString={codeString1} />
         </Section>
 
         <Section>
           <Heading level={3} weight="bold">
             Variants
           </Heading>
+          <Paragraph size="large">
+            The Toast component should be used for displaying short-lived,
+            non-critical messages to users that do not require immediate action.
+            It's ideal for providing feedback on user actions, such as form
+            submissions or task completions, and for showing the status of
+            asynchronous operations like data loading. Toasts are particularly
+            useful in mobile and responsive designs where space is limited, as
+            they provide feedback without interrupting the user's workflow.
+          </Paragraph>
           <Flex customClass="ComponentPreview">
             <Button
               onClick={handleShowSimpleToast}
@@ -206,6 +209,22 @@ const ToastPage = () => {
               simple
             />
           </Flex>
+        </Section>
+
+        <Section>
+          <Heading level={3} weight="bold">
+            Properties
+          </Heading>
+
+          <Table
+            fluid
+            columns={columns}
+            data={data}
+            pageSize={10}
+            sorting={false}
+            fullBorder
+            large
+          />
         </Section>
 
         <Section>
@@ -239,22 +258,6 @@ const ToastPage = () => {
   />
 </Flex>
       `}
-          </ReactLive>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Design Patterns
-          </Heading>
-          <Paragraph size="large">
-            One common design pattern involving codehighlight
-          </Paragraph>
-          <ReactLive scope={scope}>
-            {`
-<Flex direction={"row"} align={"center"} gap={200}>
-
-</Flex>
-            `}
           </ReactLive>
         </Section>
       </Flex>
