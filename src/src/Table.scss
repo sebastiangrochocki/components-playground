@@ -13,6 +13,30 @@
         width: 100%;
         flex: 1;
     }
+    &.large {
+        th,
+        td {
+            padding: var(--size-200);
+            line-height: 1.6;
+        }
+    }
+    &.align {
+        &-center {
+            tr td {
+                vertical-align: middle;
+            }
+        }
+        &-start {
+            tr td {
+                vertical-align: top;
+            }
+        }
+        &-end {
+            tr td {
+                vertical-align: bottom;
+            }
+        }
+    }
     thead {
         font-family: var(--font-body-bold);
         font-size: 14px;
@@ -23,6 +47,7 @@
                 font-size: 12px;
                 line-height: 12px;
                 color: var(--foreground-neutral-placeholder);
+                vertical-align: middle;
                 &.hoverable {
                     &:hover {
                         transition: 250ms ease 0s;
@@ -34,8 +59,8 @@
                     color: currentColor;
                 }
                 &:last-child {
-                    white-space: nowrap;
-                    width: 32px;
+                    // white-space: nowrap;
+                    // width: 32px;
                 }
                 .sortable .sort-indicator {
                     visibility: hidden;
@@ -53,13 +78,18 @@
                 border-top: 1px solid var(--border-neutral-subtle);
                 padding: var(--size-100);
                 text-align: left;
+                line-height: 1.6;
+                width: auto;
                 button.icon-button,
                 button.button {
                     margin: auto;
                 }
+                > * {
+                    margin: 0;
+                }
                 &:last-child {
-                    white-space: nowrap;
-                    width: 32px;
+                    // white-space: nowrap;
+                    // width: 32px;
                 }
             }
         }

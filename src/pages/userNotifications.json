@@ -8,7 +8,7 @@
             "read": false,
             "createdAt": "2024-01-26T07:24:17.725Z",
             "author": {
-                "avatar": "/images/avatars/avatar4.png"
+                "avatar": ""
             }
         },
         {
@@ -19,7 +19,7 @@
             "read": false,
             "createdAt": "2024-01-26T08:00:00.000Z",
             "author": {
-                "avatar": "/images/avatars/avatar2.png"
+                "avatar": ""
             }
         },
         {
@@ -30,7 +30,7 @@
             "read": false,
             "createdAt": "2024-01-26T08:30:00.000Z",
             "author": {
-                "avatar": "/images/avatars/avatar2.png"
+                "avatar": ""
             }
         },
         {
@@ -52,7 +52,7 @@
             "read": true,
             "createdAt": "2024-01-26T09:30:00.000Z",
             "author": {
-                "avatar": "/images/avatars/avatar3.png"
+                "avatar": ""
             }
         }
     ]

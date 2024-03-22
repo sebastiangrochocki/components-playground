@@ -24,6 +24,8 @@ const Table = ({
   search,
   fullBorder,
   sorting,
+  cellAlign = "start",
+  large,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState("");
@@ -189,6 +191,10 @@ const Table = ({
   );
 
   const renderPagination = () => {
+    if (totalNumberOfPages === 1) {
+      return null; // Hide pagination if there's only one page
+    }
+
     let visiblePages = paginationItems;
 
     if (totalNumberOfPages > maxPagination) {
@@ -259,7 +265,13 @@ const Table = ({
       )}
       <table
         ref={tableRef}
-        className={`TableComponent ${fullBorder ? "fullBorder" : ""} ${
+        className={`TableComponent ${
+          cellAlign === "start"
+            ? "align-start"
+            : cellAlign === "end"
+            ? "align-end"
+            : "align-center"
+        } ${fullBorder ? "fullBorder" : ""} ${large ? "large" : ""} ${
           fluid ? "fluid" : ""
         } ${multiSelect ? "hoverable" : ""}`}
         tabIndex="0"

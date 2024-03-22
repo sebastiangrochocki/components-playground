@@ -13,7 +13,7 @@ const Input = ({
   className,
   disabled,
   onClick,
-  validation,
+  validation = false,
   name,
   fluid,
   // hideLabel = false,

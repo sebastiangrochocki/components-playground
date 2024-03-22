@@ -12,27 +12,38 @@ html {
 
 body {
   min-width: 100%;
+  background-color: var(--background-neutral-page-front);
 }
-
+.HeadingIcon {
+  position: absolute;
+  right: var(--size-200);
+  bottom: var(--size-150);
+  color: var(--foreground-neutral-subtle);
+  svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+}
 .Body {
-  background-color: var(--background-neutral-page-back);
+  // background-color: var(--background-neutral-page-back);
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  background: rgb(7, 254, 180);
-  background: -moz-linear-gradient(153deg, rgba(7, 254, 180, 1) 20%, rgba(242, 50, 200, 1) 100%);
-  background: -webkit-linear-gradient(153deg, rgba(7, 254, 180, 1) 20%, rgba(242, 50, 200, 1) 100%);
-  background: linear-gradient(153deg, rgba(7, 254, 180, 1) 20%, rgba(242, 50, 200, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#07feb4",endColorstr="#f232c8",GradientType=1);
-  padding: var(--size-800) 0;
+  // background: rgb(7, 254, 180);
+  // background: -moz-linear-gradient(153deg, rgba(7, 254, 180, 1) 20%, rgba(242, 50, 200, 1) 100%);
+  // background: -webkit-linear-gradient(153deg, rgba(7, 254, 180, 1) 20%, rgba(242, 50, 200, 1) 100%);
+  // background: linear-gradient(153deg, rgba(7, 254, 180, 1) 20%, rgba(242, 50, 200, 1) 100%);
+  // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#07feb4",endColorstr="#f232c8",GradientType=1);
+  // padding: var(--size-400) 0;
   align-items: center;
   flex-direction: column;
   color: var(--foreground-neutral);
 }
 .darkmode {
   .Body {
-    background: var(--black);
+    // background: var(--black);
     filter: none;
     .box {
       box-shadow: none;
@@ -76,10 +87,10 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: var(--size-100);
-  padding: var(--size-800) var(--size-100);
+  // padding: var(--size-800) var(--size-100);
   max-width: calc(1224px + var(--size-200));
   width: 100%;
   box-sizing: border-box;
@@ -89,8 +100,11 @@ body {
     justify-content: center;
     width: 100%;
     max-width: 300px;
-    height: 300px;
-    box-shadow: var(--shadow-level-2);
+    max-width: 50%;
+    flex: 1;
+    flex-basis: calc(50% - var(--size-100));
+    height: 380px;
+    box-shadow: var(--shadow-level-1);
     // border: 1px solid var(--border-neutral-subtle);
     background-color: var(--background-neutral-container);
     box-sizing: border-box;
@@ -99,16 +113,17 @@ body {
     padding: var(--size-100);
     overflow: hidden;
     align-self: flex-start;
-    &:last-child {
-      margin-right: 308px;
-    }
+    // &:last-child {
+    //   margin-right: 308px;
+    // }
     &.box2x {
-      max-width: 608px;
-      height: 300px;
+      max-width: 100%;
+      flex-basis: 100%;
+      // height: 300px;
     }
-    &.tall {
-      height: 450px;
-    }
+    // &.tall {
+    //   height: 380px;
+    // }
     .title {
       font-size: 12px;
       position: absolute;
@@ -137,5 +152,60 @@ body {
     flex-direction: column !important;
     padding: 0 var(--size-200);
     box-sizing: border-box;
+  }
+}
+grammarly-extension {
+  display: none;
+}
+
+.PageHeader {
+  max-width: 1216px;
+  padding: var(--size-800) var(--size-800);
+  box-sizing: border-box;
+  margin: 0 16px;
+  margin-bottom: var(--size-400);
+  background-color: var(--brand-2);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  > .flex {
+    background-color: var(--background-neutral-container);
+    padding: var(--size-400) var(--size-500);
+    border-radius: 8px;
+    box-shadow: var(--shadow-level-2);
+    overflow: hidden;
+    position: relative;
+  }
+  &:before {
+    position: absolute;
+    left: -100px;
+    bottom: -200px;
+    width: 300px;
+    height: 500px;
+    filter: blur(56px);
+    background-color: var(--brand-1);
+    opacity: 0.6;
+    content: "";
+    display: block;
+    border-radius: 20%;
+    transform: rotate(45deg);
+    z-index: 2;
+    pointer-events: none;
+  }
+  &:after {
+    position: absolute;
+    right: -100px;
+    top: -200px;
+    width: 300px;
+    height: 500px;
+    filter: blur(56px);
+    background-color: var(--brand-2);
+    opacity: 0.6;
+    content: "";
+    display: block;
+    border-radius: 20%;
+    transform: rotate(-45deg);
+    z-index: 2;
+    pointer-events: none;
   }
 }

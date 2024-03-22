@@ -11,7 +11,7 @@ const UserOnHoldItem = ({ fluid, user, onApprove, onReject, onRemove }) => {
   return (
     <Flex
       customClass={`UserOnHoldItem ${fluidClass}`}
-      gap={100}
+      gap={300}
       align="center"
       justify={"between"}
     >
