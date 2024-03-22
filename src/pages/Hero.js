@@ -261,6 +261,7 @@ const Hero = () => {
           </DropdownMenu.Content>
         </DropdownMenu>
       ),
+      maxWidth: "40px",
     },
   ];
 
@@ -641,9 +642,11 @@ const Hero = () => {
           <Table
             columns={columns}
             data={data}
-            pageSize={2}
+            pageSize={3}
             maxPagination={2}
             fluid
+            multiSelect
+            cellAlign="center"
           />
         </div>
         <div className="box tall">
