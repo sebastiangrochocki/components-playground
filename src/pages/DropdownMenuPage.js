@@ -16,12 +16,17 @@ import {
   DropdownMenu,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
 import {
   BellIcon,
   SliderIcon,
   FigmaLogoIcon,
   Component2Icon,
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  GearIcon,
+  TimerIcon,
+  DotsHorizontalIcon,
 } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
 import CodeFormatter from "./CodeFormatter";
@@ -33,27 +38,27 @@ const DropdownMenuPage = () => {
   const [isChecked3, setIsChecked3] = useState(false);
   const [item, setItem] = React.useState("Item1");
   const codeString1 = `  
-  import { DropdownMenu, IconButton } from "blocksin-system";
-  import { SliderIcon } from "./path/to/your/components";
-  
-  const MyComponent = () => {
-    return (
-      <DropdownMenu>
-        <DropdownMenu.Trigger asChild>
-          <IconButton variant="outline">
-            <SliderIcon />
-          </IconButton>
-        </DropdownMenu.Trigger>
-        <DropdownMenu.Content side="bottom" align="start">
-          <DropdownMenu.RadioGroup defaultValue="Item1">
-            <DropdownMenu.RadioItem value="Item1">Item 1</DropdownMenu.RadioItem>
-            <DropdownMenu.RadioItem value="Item2">Item 2</DropdownMenu.RadioItem>
-            <DropdownMenu.RadioItem value="Item3">Item 3</DropdownMenu.RadioItem>
-          </DropdownMenu.RadioGroup>
-        </DropdownMenu.Content>
-      </DropdownMenu>
-    );
-  };
+import { DropdownMenu, IconButton } from "blocksin-system";
+import { SliderIcon } from "./path/to/your/components";
+
+const MyComponent = () => {
+  return (
+    <DropdownMenu>
+      <DropdownMenu.Trigger asChild>
+        <IconButton variant="outline">
+          <SliderIcon />
+        </IconButton>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content side="bottom" align="start">
+        <DropdownMenu.RadioGroup defaultValue="Item1">
+          <DropdownMenu.RadioItem value="Item1">Item 1</DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="Item2">Item 2</DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="Item3">Item 3</DropdownMenu.RadioItem>
+        </DropdownMenu.RadioGroup>
+      </DropdownMenu.Content>
+    </DropdownMenu>
+  );
+};
     `;
   const scope = {
     SliderIcon,
@@ -75,6 +80,9 @@ const DropdownMenuPage = () => {
     BellIcon,
     Paragraph,
     CodeHighlight,
+    GearIcon,
+    TimerIcon,
+    DotsHorizontalIcon,
   };
   //
   const columnsContent = [
@@ -223,20 +231,14 @@ const DropdownMenuPage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
           <Heading level={3} weight="bold">
-            Variants
+            DropdownMenu CheckboxItem
           </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
+
           <Flex customClass="ComponentPreview">
             <DropdownMenu>
               <DropdownMenu.Trigger asChild>
@@ -270,7 +272,7 @@ const DropdownMenuPage = () => {
 
         <Section>
           <Heading level={3} weight="bold">
-            Variants
+            DropdownMenu RadioItem
           </Heading>
           <Flex customClass="ComponentPreview">
             <DropdownMenu>
@@ -298,7 +300,7 @@ const DropdownMenuPage = () => {
 
         <Section>
           <Heading level={3} weight="bold">
-            Properties
+            Properties for Content
           </Heading>
 
           <Table
@@ -366,12 +368,49 @@ const DropdownMenuPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving codehighlight
+            The dropdown menu design pattern should be used when there are a
+            large number of options to choose from, helping to conserve space
+            and maintain a clean interface. However, it should be avoided for
+            presenting critical or frequently accessed options, as it may
+            require additional clicks and hinder user efficiency.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
-<Flex direction={"row"} align={"center"} gap={200}>
+<Flex direction={"row"} align={"center"} gap={200} style={{background: "var(--background-neutral-container)", boxShadow: "var(--shadow-level-1)", borderRadius: "8px", padding: "var(--size-50)"}}>
+  <IconButton variant="ghost" showBadge badgeLabel="8">
+    <BellIcon/>
+  </IconButton> 
 
+  <IconButton variant="ghost" showBadge badgeLabel="9s">
+    <TimerIcon/>
+  </IconButton> 
+
+  <DropdownMenu>
+    <DropdownMenu.Trigger asChild>
+      <IconButton variant="ghost">
+        <DotsHorizontalIcon />
+      </IconButton>
+    </DropdownMenu.Trigger>
+
+    <DropdownMenu.Content side="bottom" align="start">
+      <DropdownMenu.Item icon={CopyIcon}>Quick actions</DropdownMenu.Item>
+      <DropdownMenu.Item icon={FigmaLogoIcon}>
+        Some settings
+      </DropdownMenu.Item>
+      <DropdownMenu.Sub>
+        <DropdownMenu.SubTrigger icon={Component2Icon}>
+          Some actions
+        </DropdownMenu.SubTrigger>
+        <DropdownMenu.SubContent>
+          <DropdownMenu.Item icon={CopyIcon} hotkey="ctrl + D">Duplicate</DropdownMenu.Item>
+          <DropdownMenu.Item icon={CopyIcon} hotkey="ctrl + R">Rename</DropdownMenu.Item>
+          <DropdownMenu.Item icon={CopyIcon} hotkey="ctrl + S">
+            Save as
+          </DropdownMenu.Item>
+        </DropdownMenu.SubContent>
+      </DropdownMenu.Sub>
+    </DropdownMenu.Content>
+  </DropdownMenu>
 </Flex>
             `}
           </ReactLive>

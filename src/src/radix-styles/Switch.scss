@@ -13,9 +13,19 @@ button {
     &:hover {
         background-color: var(--background-neutral-active);
     }
+    &[data-disabled] {
+        background-color: var(--background-neutral-disabled);
+        border-color: var(--border-neutral-subtle);
+        .SwitchThumb {
+            background-color: var(--foreground-neutral-disabled);
+        }
+        & + * {
+            color: var(--foreground-neutral-disabled);
+        }
+    }
 }
 .SwitchRoot:focus {
-box-shadow: var(--focus);
+    box-shadow: var(--focus);
     outline: none;
 }
 .SwitchRoot[data-state="checked"] {

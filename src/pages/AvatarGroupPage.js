@@ -38,9 +38,9 @@ const AvatarGroupPage = () => {
   };
 
   const codeString1 = `
-  import { Avatar, AvatarGroup } from "blocksin-system";
-  
-  <AvatarGroup>
+import { Avatar, AvatarGroup } from "blocksin-system";
+
+<AvatarGroup>
   <Avatar avatar="/path/to/image1.jpg" altText="John Doe" />
   <Avatar avatar="/path/to/image2.jpg" altText="Jane Doe" />
   <Avatar avatar="/path/to/image3.jpg" altText="Alice Smith" />
@@ -73,7 +73,7 @@ const AvatarGroupPage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>

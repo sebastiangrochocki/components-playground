@@ -12,14 +12,28 @@ import {
   Avatar,
   Table,
   Input,
+  Card,
 } from "../src/index";
 import ReactLive from "./ReactLive";
 import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
 import { BellIcon } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const InputPage = () => {
+  const codeString1 = `  
+import { Input } from "blocksin-system";
+
+<Input
+  label="Email Address"
+  placeholder="Enter your email"
+  type="email"
+  value={email}
+  onChange={handleEmailChange}
+/>
+        `;
   const scope = {
+    Card,
     Separator,
     Avatar,
     Beaver,
@@ -149,6 +163,17 @@ const InputPage = () => {
             input types, along with customizable labels, placeholders, error
             messages, and an optional search icon for search inputs.
           </Paragraph>
+          <Flex customClass="ComponentPreview">
+            <Input
+              label="Email Address"
+              placeholder="Enter your email"
+              type="email"
+            />
+          </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -156,18 +181,38 @@ const InputPage = () => {
             Variants
           </Heading>
           <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
+            The Input component supports various variants based on the type
+            prop. For example, it can render a standard text input, a search
+            input with a magnifying glass icon, or other types like number or
+            date inputs. These variants can be used to collect different types
+            of user input, such as names, search queries, or numeric values.
+            It's important to use the appropriate type for each use case to
+            ensure the best user experience. For example, using a "number" type
+            for numeric input can enable native validation and input controls,
+            while using a "search" type for search inputs can provide a more
+            intuitive interface for users searching for content. However, it's
+            also important not to overuse these variants and to consider
+            accessibility and user experience when choosing the input type.
           </Paragraph>
           <Flex customClass="ComponentPreview">
             <Input
-              label="Email Address"
-              placeholder="Enter your email"
-              type="email"
+              label="Search"
+              placeholder="Enter keyword"
+              type="search"
               // value={email}
+              // onChange={handleEmailChange}
+            />
+            <Input
+              label="Password"
+              placeholder="Enter password"
+              type="password"
+              // value={email}
+              // onChange={handleEmailChange}
+            />
+            <Input
+              label="Name"
+              placeholder="Enter your name"
+              type="text"
               // onChange={handleEmailChange}
             />
           </Flex>
@@ -182,9 +227,10 @@ const InputPage = () => {
             fluid
             columns={columns}
             data={data}
-            pageSize={10}
+            pageSize={16}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -221,20 +267,22 @@ const InputPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            The search input design pattern is ideal for enabling users to find
+            specific content within an application. It includes a search icon to
+            visually indicate its purpose and often features auto-suggestions
+            for quicker results.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
 <Flex direction="row" gap={100}>
-<Input
-label="Search"
-placeholder="Enter search keyword"
-type="search"
-/>
+  <Card direction="column" gap={100}>
+    <Input
+    label="Search"
+    placeholder="Enter search keyword"
+    type="search"
+    />
+    <Paragraph>Results:</Paragraph>
+  </Card>
 </Flex>
             `}
           </ReactLive>

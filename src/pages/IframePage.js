@@ -17,8 +17,14 @@ import ReactLive from "./ReactLive";
 import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
 import { BellIcon } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const IframePage = () => {
+  const codeString1 = `  
+import { Iframe } from "blocksin-system";
+
+<Iframe url="https://example.com" title="Embedded Content" />
+      `;
   const scope = {
     Separator,
     Avatar,
@@ -78,22 +84,13 @@ const IframePage = () => {
             embedding. Additionally, this component offers a fallback display
             for Figma integration when no URL is provided.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <Iframe url="https://example.com" title="Embedded Content" />
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -108,6 +105,7 @@ const IframePage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 

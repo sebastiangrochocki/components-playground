@@ -12,11 +12,21 @@ import {
   Loader,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const LoaderPage = () => {
+  const codeString1 = `  
+import { Loader } from "blocksin-system";
+
+<Loader />
+            `;
   const scope = {
     Separator,
     Avatar,
@@ -50,6 +60,10 @@ const LoaderPage = () => {
           <Flex customClass="ComponentPreview">
             <Loader />
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -79,32 +93,6 @@ const LoaderPage = () => {
   <Loader />
 </Flex>
       `}
-          </ReactLive>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Design Patterns
-          </Heading>
-          <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
-          </Paragraph>
-          <ReactLive scope={scope}>
-            {`
-<Flex direction="row" gap={100}
-  style={{
-    position: "relative",
-    width: "100%",
-    height: "100%",
-  }}
->
-  <Loader />
-</Flex>
-            `}
           </ReactLive>
         </Section>
       </Flex>

@@ -1,3 +1,9 @@
+.TableSearch {
+    padding: 0 var(--size-100);
+    &.large {
+        padding: 0 var(--size-200);
+    }
+}
 .TableComponent {
     border-collapse: collapse;
     font-family: var(--font-body);
@@ -13,11 +19,18 @@
         width: 100%;
         flex: 1;
     }
+    .TableFooter {
+        margin-top: var(--size-200);
+        padding: 0 var(--size-100);
+    }
     &.large {
         th,
         td {
             padding: var(--size-200);
             line-height: 1.6;
+        }
+        & + .TableFooter {
+            padding: 0 var(--size-200);
         }
     }
     &.align {

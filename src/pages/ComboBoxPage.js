@@ -119,34 +119,34 @@ const ComboBoxPage = () => {
   };
 
   const codeString1 = `  
-  import { ComboBox } from "blocksin-system";
+import { ComboBox } from "blocksin-system";
 
-  const options = [
-    { label: "John Doe", value: "1", avatar: "path/to/avatar1.jpg" },
-    { label: "Jane Doe", value: "2", avatar: "path/to/avatar2.jpg" },
-    { label: "Bob Smith", value: "3", avatar: "path/to/avatar3.jpg" },
-  ];
-  
-  const App = () => {
-    const [selectedOptions, setSelectedOptions] = useState([]);
-  
-    const handleChange = (options) => {
-      setSelectedOptions(options);
-    };
-  
-    return (
-      <ComboBox
-        options={options}
-        value={selectedOptions}
-        onChange={handleChange}
-        placeholder="Select owners..."
-        isMulti={false}
-        fluid
-      />
-    );
+const options = [
+  { label: "John Doe", value: "1", avatar: "path/to/avatar1.jpg" },
+  { label: "Jane Doe", value: "2", avatar: "path/to/avatar2.jpg" },
+  { label: "Bob Smith", value: "3", avatar: "path/to/avatar3.jpg" },
+];
+
+const App = () => {
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleChange = (options) => {
+    setSelectedOptions(options);
   };
-  
-  export default App;
+
+  return (
+    <ComboBox
+      options={options}
+      value={selectedOptions}
+      onChange={handleChange}
+      placeholder="Select owners..."
+      isMulti={false}
+      fluid
+    />
+  );
+};
+
+export default App;  
     `;
 
   return (
@@ -175,7 +175,7 @@ const ComboBoxPage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>

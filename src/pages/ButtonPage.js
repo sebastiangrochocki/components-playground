@@ -119,9 +119,9 @@ const ButtonPage = () => {
 
   //
   const codeString1 = `
-  import { Button } from "blocksin-system";
-  
-  <Button
+import { Button } from "blocksin-system";
+
+<Button
   onClick={handleClick}
   variant="solid"
   size="large"
@@ -129,23 +129,23 @@ const ButtonPage = () => {
   badgeLabel="New"
 >
   Click Me
-</Button>
+</Button>  
     `;
   const codeString2 = `
-    import { Button } from "blocksin-system";
-    import { YourIconComponent } from "your-icon-library";
+import { Button } from "blocksin-system";
+import { YourIconComponent } from "your-icon-library";
 
-    <Button
-      onClick={handleClick}
-      variant="solid"
-      size="large"
-      showBadge
-      badgeLabel="New"
-      helper="This is a helper text"
-      iconLeft={YourIconComponent}
-    >
-      Click Me
-    </Button>
+<Button
+  onClick={handleClick}
+  variant="solid"
+  size="large"
+  showBadge
+  badgeLabel="New"
+  helper="This is a helper text"
+  iconLeft={YourIconComponent}
+>
+  Click Me
+</Button>  
       `;
   return (
     <>
@@ -163,11 +163,11 @@ const ButtonPage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
           <Paragraph size="large">
             Here's an example of how to use the helper in component:
           </Paragraph>
-          <CodeFormatter language="js" codeString={codeString2} />
+          <CodeFormatter language="" codeString={codeString2} />
         </Section>
 
         <Section>

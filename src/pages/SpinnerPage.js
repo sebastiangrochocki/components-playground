@@ -12,11 +12,21 @@ import {
   Spinner,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const SpinnerPage = () => {
+  const codeString1 = `  
+import { Spinner } from "blocksin-system";
+
+<Spinner />
+                `;
   const scope = {
     Separator,
     Avatar,
@@ -51,6 +61,10 @@ const SpinnerPage = () => {
           <Flex customClass="ComponentPreview">
             <Spinner />
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -82,16 +96,14 @@ const SpinnerPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            A spinner component can be used inside a button to indicate a
+            loading state when the button is disabled, providing visual feedback
+            to users during asynchronous operations.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
-<Flex direction="row" gap={100}>
-  <Spinner />
+<Flex direction="row" gap={100} fluid>
+  <Button fluid isLoading>Button</Button>
 </Flex>
             `}
           </ReactLive>

@@ -112,7 +112,7 @@ import { Avatar } from "blocksin-system";
             Usage
           </Heading>
 
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>

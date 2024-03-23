@@ -737,7 +737,7 @@ const Hero = () => {
           <Spinner />
         </div>
         <div className="box" style={{ gap: "8px" }}>
-          <span className="title">Tag</span>
+          <span className="title">{`<Tag/>`}</span>
 
           <Tag text="Primary" variant="Primary" />
           <Tag text="Demo" variant="Demo" />

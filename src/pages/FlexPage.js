@@ -1,5 +1,6 @@
 import React from "react";
 import Section from "./Section";
+import CodeFormatter from "./CodeFormatter";
 
 import {
   Flex,
@@ -18,6 +19,15 @@ import { BellIcon } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
 
 const FlexPage = () => {
+  const codeString1 = `  
+import { Flex } from "blocksin-system";
+
+<Flex direction="column" align="center" justify="space-between" gap={100}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Flex>
+    `;
   const scope = {
     Separator,
     Avatar,
@@ -132,19 +142,6 @@ const FlexPage = () => {
             streamline the usage of CSS flexbox layout. It provides a simple and
             intuitive way to create flexible and responsive layouts with ease.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <Flex
               direction="column"
@@ -179,7 +176,24 @@ const FlexPage = () => {
               </Flex>
             </Flex>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
+
+        {/* <Section>
+          <Heading level={3} weight="bold">
+            Variants
+          </Heading>
+          <Paragraph size="large">
+            Variants refer to different versions or styles of an avatar image,
+            allowing for customization based on context or user preference.
+            Avatars are commonly used in user interfaces to represent
+            individuals, providing visual identification in profiles, comments,
+            or messaging systems.
+          </Paragraph>
+        </Section> */}
 
         <Section>
           <Heading level={3} weight="bold">
@@ -190,9 +204,10 @@ const FlexPage = () => {
             fluid
             columns={columns}
             data={data}
-            pageSize={10}
+            pageSize={17}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -278,26 +293,6 @@ const FlexPage = () => {
   </Flex>
 </Flex>
       `}
-          </ReactLive>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Design Patterns
-          </Heading>
-          <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
-          </Paragraph>
-          <ReactLive scope={scope}>
-            {`
-<Flex direction={"row"} align={"center"} gap={200}>
-
-</Flex>
-            `}
           </ReactLive>
         </Section>
       </Flex>

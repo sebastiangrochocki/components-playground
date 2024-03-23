@@ -22,9 +22,9 @@ import Beaver from "../assets/beaver.jpeg";
 
 const CodeHighlightPage = () => {
   const codeString1 = `  
-  import { CodeHighlight } from "blocksin-system";
+import { CodeHighlight } from "blocksin-system";
 
-  <CodeHighlight text={"npm install"} />
+<CodeHighlight text="npm install" />
     `;
   // eslint-disable-next-line
   const [checkbox, setCheckbox] = useState(false);
@@ -89,7 +89,7 @@ const CodeHighlightPage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>

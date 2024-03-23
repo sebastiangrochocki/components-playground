@@ -234,7 +234,7 @@ const Home = ({ setDark, dark, resetAnimation }) => {
                   marginBottom: "16px",
                 }}
               >
-                BlocksIn System v.1.4.0
+                BlocksIn System v.1.4.1
               </Heading>
               <Heading level={4}>React Component Library</Heading>
               <Flex

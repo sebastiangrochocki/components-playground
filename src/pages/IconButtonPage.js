@@ -23,11 +23,21 @@ import {
   Cross2Icon,
   SizeIcon,
   CopyIcon,
+  BellIcon,
+  TimerIcon,
 } from "@radix-ui/react-icons";
-import { BellIcon, TimerIcon } from "@radix-ui/react-icons";
+import CodeFormatter from "./CodeFormatter";
 
 const IconButtonPage = () => {
   // IconButton with notifications
+  const codeString1 = `  
+import { IconButton } from "blocksin-system";
+import { YourIconComponent } from "your-icon-library";
+
+<IconButton onClick={handleClick} size="large" variant="outline">
+  <YourIconComponent />
+</IconButton>
+          `;
   const [notifications, setNotifications] = useState([]);
   const scope = {
     Separator,
@@ -114,6 +124,15 @@ const IconButtonPage = () => {
             It's crafted to be flexible, allowing customization of size,
             appearance, and behavior through its properties.
           </Paragraph>
+          <Flex customClass="ComponentPreview">
+            <IconButton size="small" variant="solid">
+              <BellIcon />
+            </IconButton>
+          </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -129,10 +148,6 @@ const IconButtonPage = () => {
             indicating the count of unread notifications, ensuring enhanced
             visibility within interfaces.
           </Paragraph>
-        </Section>
-
-        <Section>
-          {" "}
           <Tabs defaultValue="tab1">
             <Tabs.List aria-label="Manage your account">
               <Tabs.Trigger value="tab1">For developers</Tabs.Trigger>
@@ -237,6 +252,7 @@ const IconButtonPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -276,13 +292,14 @@ const IconButtonPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            Unleash your creativity and dive into the world of React with our
-            interactive React-live editor! Feel the freedom to modify content,
-            add or remove components, and experiment with different patterns to
-            see your ideas come to life in real-time. Once you've crafted the
-            perfect design, use handy 'Copy to Clipboard' button to seamlessly
-            capture your production-ready frontend code. Start playing now and
-            transform your visions into reality!
+            Icon buttons are often used in toolbars for actions such as saving,
+            deleting, or printing. They can also be used as close buttons inside
+            dialog boxes. For example, in a text editor, an icon button with a
+            floppy disk icon could be used to save the document. In an email
+            application, an icon button with a trash can icon could be used to
+            delete an email. In both cases, wrapping the icon button in a
+            tooltip with text such as "Save" or "Delete" provides additional
+            context for users who rely on screen readers.
           </Paragraph>
           <ReactLive scope={scope}>
             {`

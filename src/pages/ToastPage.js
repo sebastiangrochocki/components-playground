@@ -34,17 +34,17 @@ const ToastPage = () => {
   const [showSimpleToastState, setShowSimpleToastState] = useState(false);
   const [showSimpleToast2State, setShowSimpleToast2State] = useState(false);
   const codeString1 = `  
-  import { Toast } from "blocksin-system";
+import { Toast } from "blocksin-system";
 
-  <Toast
-    showToast={showToastState}
-    setShowToast={setShowToastState}
-    headline="Success!"
-    text="Your action was successful."
-    time={3000}
-    showAgain={true}
-    onDismissForever={handleDismissForever}
-  />
+<Toast
+  showToast={showToastState}
+  setShowToast={setShowToastState}
+  headline="Success!"
+  text="Your action was successful."
+  time={3000}
+  showAgain={true}
+  onDismissForever={handleDismissForever}
+/>
     `;
   //
   //
@@ -176,7 +176,7 @@ const ToastPage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>

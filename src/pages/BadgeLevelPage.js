@@ -42,9 +42,9 @@ const BadgeLevelPage = () => {
 
   //
   const codeString1 = `
-  import { BadgeLevel } from "blocksin-system";
-  
-  <BadgeLevel badge={3} />
+import { BadgeLevel } from "blocksin-system";
+
+<BadgeLevel badge={3} />
     `;
 
   const columns = [
@@ -87,7 +87,7 @@ const BadgeLevelPage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>

@@ -11,14 +11,24 @@ import {
   IconButton,
   Avatar,
   Table,
+  Card,
 } from "../src/index";
 import ReactLive from "./ReactLive";
 import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
 import { BellIcon } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const HeadingPage = () => {
+  const codeString1 = `  
+import { Heading } from "blocksin-system";
+
+<Heading level={2} weight="bold">
+  Your Main Title Here
+</Heading>
+    `;
   const scope = {
+    Card,
     Separator,
     Avatar,
     Beaver,
@@ -87,6 +97,15 @@ const HeadingPage = () => {
             font weights, making it suitable for various textual hierarchies and
             styles across your application.
           </Paragraph>
+          <Flex customClass="ComponentPreview">
+            <Heading level={1} weight="bold">
+              Your Main Title Here
+            </Heading>
+          </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -94,16 +113,24 @@ const HeadingPage = () => {
             Variants
           </Heading>
           <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
+            Below variants of headings, from h1 to h4, are being worked on,
+            including both bold and regular styles.
           </Paragraph>
           <Flex customClass="ComponentPreview">
-            <Heading level={2} weight="bold">
-              Your Main Title Here
-            </Heading>
+            <Flex direction="column">
+              <Heading level={1} weight="bold">
+                Your Main Title Here
+              </Heading>
+              <Heading level={2} weight="bold">
+                Your Main Title Here
+              </Heading>
+              <Heading level={3} weight="bold">
+                Your Main Title Here
+              </Heading>
+              <Heading level={4} weight="bold">
+                Your Main Title Here
+              </Heading>
+            </Flex>
           </Flex>
         </Section>
 
@@ -119,6 +146,7 @@ const HeadingPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -153,18 +181,22 @@ const HeadingPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            Sure! Headings (h1 to h4) in product interfaces are commonly used to
+            provide a clear and hierarchical structure to content, with h1
+            typically used for page titles, h2 for section titles, h3 for
+            subsections, and h4 for smaller subsections or distinctions within a
+            subsection.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
 <Flex direction={"row"} align={"center"} gap={200}>
-  <Heading level={2} weight="bold">
-    Your Main Title Here
-  </Heading>
+  <Card direction="column" gap={100} style={{minWidth: "240px"}}>
+    <Heading level={4} weight="bold">
+      Widgets
+    </Heading>
+    <Separator/>
+    <Button variant="outline">Add Github</Button>
+  </Card>
 </Flex>
             `}
           </ReactLive>

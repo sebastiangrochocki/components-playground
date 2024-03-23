@@ -64,9 +64,9 @@ const BadgePage = () => {
   //
 
   const codeString1 = `
-  import { Badge } from "blocksin-system";
-  
-  <Badge label="New" />
+import { Badge } from "blocksin-system";
+
+<Badge label="New" />
     `;
   return (
     <>
@@ -96,7 +96,7 @@ const BadgePage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>

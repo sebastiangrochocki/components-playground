@@ -14,11 +14,33 @@ import {
   Switch,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const SwitchPage = () => {
+  const codeString1 = `  
+import { Switch } from "blocksin-system";
+
+function ExampleWithLabel() {
+  const [isToggled, setIsToggled] = React.useState(false);
+
+  return (
+    <Switch
+      id="exampleSwitch"
+      checked={isToggled}
+      onCheckedChange={setIsToggled}
+    >
+      Toggle me
+    </Switch>
+  );
+}  
+                  `;
   const [isToggled, setIsToggled] = React.useState(false);
   const [isToggled2, setIsToggled2] = React.useState(false);
   const [isToggled3, setIsToggled3] = React.useState(false);
@@ -106,6 +128,19 @@ const SwitchPage = () => {
             is suitable for toggling between two states such as
             enabling/disabling settings or features.
           </Paragraph>
+          <Flex customClass="ComponentPreview">
+            <Switch
+              id="exampleSwitch"
+              checked={isToggled}
+              onCheckedChange={setIsToggled}
+            >
+              Toggle me
+            </Switch>
+          </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -120,12 +155,9 @@ const SwitchPage = () => {
             or messaging systems.
           </Paragraph>
           <Flex customClass="ComponentPreview">
-            <Switch
-              id="exampleSwitch"
-              checked={isToggled}
-              onCheckedChange={setIsToggled}
-            >
-              Toggle me
+            <Switch id="defaultSwitch">Default</Switch>
+            <Switch id="disabledSwitch" disabled>
+              Disabled
             </Switch>
           </Flex>
         </Section>
@@ -142,6 +174,7 @@ const SwitchPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -180,11 +213,13 @@ const SwitchPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            The Switch component is ideal for toggling between two states, such
+            as enabling or disabling a feature. It should be used when a binary
+            choice needs to be presented to users, offering a clear and
+            intuitive way to change settings. However, it might not be suitable
+            for situations where more than two options are needed or when the
+            state change is complex and requires additional context or
+            explanation.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
@@ -194,7 +229,7 @@ const SwitchPage = () => {
     checked={isToggled3}
     onCheckedChange={setIsToggled3}
   >
-    Toggle me
+    Darkmode
   </Switch>
 </Flex>
             `}

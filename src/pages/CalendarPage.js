@@ -84,23 +84,23 @@ const CalendarPage = () => {
   };
   //
   const codeString1 = `  
-  import React, { useState } from "react";
-  import { Calendar, Input } from "bloksin-system";
-  
-  function MyComponent() {
-    const [selectedDate, setSelectedDate] = useState(new Date());
-  
-    return (
-      <Calendar
-        selectedDate={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
-      >
-        <Input placeholder="Select a date" readOnly />
-      </Calendar>
-    );
-  }
-  
-  export default MyComponent;
+import React, { useState } from "react";
+import { Calendar, Input } from "bloksin-system";
+
+function MyComponent() {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  return (
+    <Calendar
+      selectedDate={selectedDate}
+      onChange={(date) => setSelectedDate(date)}
+    >
+      <Input placeholder="Select a date" readOnly />
+    </Calendar>
+  );
+}
+
+export default MyComponent;
     `;
   return (
     <>
@@ -126,7 +126,7 @@ const CalendarPage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>

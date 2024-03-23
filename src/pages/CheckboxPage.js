@@ -99,11 +99,11 @@ const CheckboxPage = () => {
     },
   ];
   const codeString1 = `  
-  import { Checkbox } from "blocksin-system";
+import { Checkbox } from "blocksin-system";
 
-  <Checkbox customID="agreeTerms" onChange={handleCheckboxChange}>
-    I agree to the terms and conditions
-  </Checkbox>
+<Checkbox customID="agreeTerms" onChange={handleCheckboxChange}>
+  I agree to the terms and conditions
+</Checkbox>
     `;
   return (
     <>
@@ -138,7 +138,7 @@ const CheckboxPage = () => {
           <Heading level={3} weight="bold">
             Usage
           </Heading>
-          <CodeFormatter language="js" codeString={codeString1} />
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>

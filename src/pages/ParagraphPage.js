@@ -11,13 +11,26 @@ import {
   IconButton,
   Avatar,
   Table,
+  Card,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const ParagraphPage = () => {
+  const codeString1 = `  
+import { Paragraph } from "blocksin-system";
+
+<Paragraph size="large" weight="bold">
+  This is a large, bold paragraph.
+</Paragraph>
+              `;
   const scope = {
     Separator,
     Avatar,
@@ -31,6 +44,7 @@ const ParagraphPage = () => {
     Heading,
     BellIcon,
     Paragraph,
+    Card,
   };
 
   const columns = [
@@ -88,6 +102,15 @@ const ParagraphPage = () => {
             text, making it a versatile choice for displaying paragraphs or
             other textual elements in your application.
           </Paragraph>
+          <Flex customClass="ComponentPreview" direction="column">
+            <Paragraph size="large" weight="bold">
+              This is a large, bold paragraph.
+            </Paragraph>
+          </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -108,6 +131,18 @@ const ParagraphPage = () => {
             <Paragraph size="medium" weight="bold">
               This is a medium, bold paragraph.
             </Paragraph>
+            <Paragraph size="small" weight="bold">
+              This is a small, bold paragraph.
+            </Paragraph>
+            <Paragraph size="large">
+              This is a large, regular paragraph.
+            </Paragraph>
+            <Paragraph size="medium">
+              This is a medium, regular paragraph.
+            </Paragraph>
+            <Paragraph size="small">
+              This is a small, regular paragraph.
+            </Paragraph>
           </Flex>
         </Section>
 
@@ -123,6 +158,7 @@ const ParagraphPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -157,18 +193,23 @@ const ParagraphPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            Design patterns with paragraphs, like small or large, can be used to
+            create visually distinct text blocks for different types of content,
+            such as short descriptions or longer paragraphs, ensuring a clear
+            hierarchy and improved readability in product interfaces.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
 <Flex direction="row" gap={100}>
-  <Paragraph size="large" weight="bold">
-    This is a large, bold paragraph.
-  </Paragraph>
+  <Card direction="column" gap={200} align="center" style={{minWidth: "290px"}}>
+    <Flex gap={100} fluid>
+      <Button fluid variant="ghost">Learn more</Button>
+      <Button fluid>Get Started</Button>
+    </Flex>
+    <Paragraph size="small">
+      Cancel anytime!
+    </Paragraph>
+  </Card>
 </Flex>
             `}
           </ReactLive>

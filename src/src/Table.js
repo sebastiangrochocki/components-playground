@@ -246,9 +246,9 @@ const Table = ({
       {search && (
         <Flex
           fluid
+          customClass={`TableSearch ${large ? "large" : ""}`}
           style={{
             marginBottom: "var(--size-200)",
-            padding: "0 var(--size-100)",
             boxSizing: "border-box",
           }}
         >
@@ -368,11 +368,7 @@ const Table = ({
           })}
         </tbody>
       </table>
-      <Flex
-        justify="between"
-        align="center"
-        style={{ marginTop: "var(--size-200)", padding: "0 var(--size-100)" }}
-      >
+      <Flex justify="between" align="center" customClass="TableFooter">
         {multiSelect && (
           <Flex customClass="selected-rows-count">
             <Paragraph>{selectedRows.size} selected row(s).</Paragraph>

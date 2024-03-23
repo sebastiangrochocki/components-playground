@@ -17,8 +17,21 @@ import ReactLive from "./ReactLive";
 import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
 import { BellIcon } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const TabsPage = () => {
+  const codeString1 = `  
+import { Tabs } from "blocksin-system";
+
+<Tabs defaultValue="tab1" fluid>
+  <Tabs.List aria-label="Manage your account">
+    <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
+    <Tabs.Trigger value="tab2">Sign In</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="tab1">{/* Sign Up content */}</Tabs.Content>
+  <Tabs.Content value="tab2">{/* Sign In content */}</Tabs.Content>
+</Tabs>
+                    `;
   const scope = {
     Separator,
     Avatar,
@@ -84,6 +97,10 @@ const TabsPage = () => {
             easily switch between different views or content sections, providing
             an organized and intuitive user experience.
           </Paragraph>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -121,6 +138,7 @@ const TabsPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -147,8 +165,8 @@ const TabsPage = () => {
       <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
       <Tabs.Trigger value="tab2">Sign In</Tabs.Trigger>
     </Tabs.List>
-    <Tabs.Content value="tab1">{/* Sign Up content */}</Tabs.Content>
-    <Tabs.Content value="tab2">{/* Sign In content */}</Tabs.Content>
+    <Tabs.Content value="tab1">Sign Up content</Tabs.Content>
+    <Tabs.Content value="tab2">Sign In content</Tabs.Content>
   </Tabs>
 </Flex>
       `}
@@ -174,8 +192,8 @@ const TabsPage = () => {
       <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
       <Tabs.Trigger value="tab2">Sign In</Tabs.Trigger>
     </Tabs.List>
-    <Tabs.Content value="tab1">{/* Sign Up content */}</Tabs.Content>
-    <Tabs.Content value="tab2">{/* Sign In content */}</Tabs.Content>
+    <Tabs.Content value="tab1">Sign Up content</Tabs.Content>
+    <Tabs.Content value="tab2">Sign In content</Tabs.Content>
   </Tabs>
 </Flex>
             `}
