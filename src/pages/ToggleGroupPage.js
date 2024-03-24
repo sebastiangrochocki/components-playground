@@ -21,10 +21,27 @@ import {
   BellIcon,
   ViewGridIcon,
   ViewHorizontalIcon,
+  TextAlignCenterIcon,
+  TextAlignLeftIcon,
+  TextAlignRightIcon,
 } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const ToggleGroupPage = () => {
+  const codeString1 = `  
+import ToggleGroup from "./ToggleGroup";
+import { ViewGridIcon, ViewListIcon } from "@radix-ui/react-icons";
+
+<ToggleGroup type="single" aria-label="View options">
+  <ToggleGroup.Item value="grid" aria-label="Grid view">
+    <ViewGridIcon />
+  </ToggleGroup.Item>
+  <ToggleGroup.Item value="list" aria-label="List view">
+    <ViewListIcon />
+  </ToggleGroup.Item>
+</ToggleGroup>;  
+    `;
   const [value, setValue] = React.useState("grid");
   const [value2, setValue2] = React.useState("grid");
 
@@ -46,6 +63,9 @@ const ToggleGroupPage = () => {
     BellIcon,
     Paragraph,
     ToggleGroup,
+    TextAlignCenterIcon,
+    TextAlignLeftIcon,
+    TextAlignRightIcon,
   };
 
   const columns = [
@@ -87,19 +107,6 @@ const ToggleGroupPage = () => {
             buttons, allowing the user to select one or multiple options. It is
             built using Radix UI's ToggleGroup primitive.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <ToggleGroup
               value={value}
@@ -117,6 +124,10 @@ const ToggleGroupPage = () => {
               </ToggleGroup.Item>
             </ToggleGroup>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -128,9 +139,10 @@ const ToggleGroupPage = () => {
             fluid
             columns={columns}
             data={data}
-            pageSize={10}
+            pageSize={15}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -177,21 +189,25 @@ const ToggleGroupPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            Toggle group component can be used in UI design when you need to
+            allow users to select only one option from a group, such as text
+            alignment (left, right, center), to ensure mutually exclusive
+            selections.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
 <Flex direction="row" gap={100}>
-  <ToggleGroup type="single" aria-label="View options">
-    <ToggleGroup.Item value="grid" aria-label="Grid view">
-      <ViewGridIcon />
+  <ToggleGroup type="single" defaultValue="center" aria-label="Text alignment">
+    <ToggleGroup.Item value="left" aria-label="Align left">
+      <TextAlignLeftIcon />
     </ToggleGroup.Item>
-    <ToggleGroup.Item value="list" aria-label="List view">
-      <ViewHorizontalIcon />
+
+    <ToggleGroup.Item value="center" aria-label="Align center">
+      <TextAlignCenterIcon />
+    </ToggleGroup.Item>
+
+    <ToggleGroup.Item value="right" aria-label="Align right">
+      <TextAlignRightIcon />
     </ToggleGroup.Item>
   </ToggleGroup>
 </Flex>

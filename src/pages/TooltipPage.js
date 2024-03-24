@@ -22,8 +22,31 @@ import {
 } from "@radix-ui/react-icons";
 import { BellIcon } from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const TooltipPage = () => {
+  const codeString1 = `  
+import React from "react";
+import { Tooltip, IconButton, Paragraph } from "blocksin-system";
+import { ChatBubbleIcon } from "@radix-ui/react-icons";
+
+const Example = () => {
+  return (
+    <Tooltip delayDuration={200}>
+      <Tooltip.Trigger asChild>
+        <IconButton>
+          <ChatBubbleIcon />
+        </IconButton>
+      </Tooltip.Trigger>
+      <Tooltip.Content side="right">
+        <Paragraph size="medium">Test</Paragraph>
+      </Tooltip.Content>
+    </Tooltip>
+  );
+};
+
+export default Example;
+      `;
   const scope = {
     ChatBubbleIcon,
     Separator,
@@ -72,6 +95,20 @@ const TooltipPage = () => {
             can be easily integrated into any UI. Check radix-ui.com for more
             info.
           </Paragraph>
+          <Flex customClass="ComponentPreview">
+            <Tooltip delayDuration={200}>
+              <Tooltip.Trigger asChild>
+                <IconButton>
+                  <ChatBubbleIcon />
+                </IconButton>
+              </Tooltip.Trigger>
+              <Tooltip.Content side="top">Test</Tooltip.Content>
+            </Tooltip>
+          </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -79,11 +116,11 @@ const TooltipPage = () => {
             Variants
           </Heading>
           <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
+            The tooltip component offers variable design variants with
+            positioning options such as left, right, top, and bottom. By
+            default, the tooltip is positioned according to the variant, but if
+            there is limited space within the window, it dynamically repositions
+            itself to the nearest available space.
           </Paragraph>
           <Flex customClass="ComponentPreview">
             <Tooltip delayDuration={200}>
@@ -92,8 +129,41 @@ const TooltipPage = () => {
                   <ChatBubbleIcon />
                 </IconButton>
               </Tooltip.Trigger>
+              <Tooltip.Content side="top">
+                <Paragraph size="medium">Top</Paragraph>
+              </Tooltip.Content>
+            </Tooltip>
+
+            <Tooltip delayDuration={200}>
+              <Tooltip.Trigger asChild>
+                <IconButton>
+                  <ChatBubbleIcon />
+                </IconButton>
+              </Tooltip.Trigger>
+              <Tooltip.Content side="bottom">
+                <Paragraph size="medium">Bottom</Paragraph>
+              </Tooltip.Content>
+            </Tooltip>
+
+            <Tooltip delayDuration={200}>
+              <Tooltip.Trigger asChild>
+                <IconButton>
+                  <ChatBubbleIcon />
+                </IconButton>
+              </Tooltip.Trigger>
+              <Tooltip.Content side="left">
+                <Paragraph size="medium">Left</Paragraph>
+              </Tooltip.Content>
+            </Tooltip>
+
+            <Tooltip delayDuration={200}>
+              <Tooltip.Trigger asChild>
+                <IconButton>
+                  <ChatBubbleIcon />
+                </IconButton>
+              </Tooltip.Trigger>
               <Tooltip.Content side="right">
-                <Paragraph size="medium">Test</Paragraph>
+                <Paragraph size="medium">Right</Paragraph>
               </Tooltip.Content>
             </Tooltip>
           </Flex>
@@ -111,6 +181,7 @@ const TooltipPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -139,7 +210,7 @@ const TooltipPage = () => {
       </IconButton>
     </Tooltip.Trigger>
     <Tooltip.Content side="right">
-      <Paragraph size="medium">Test</Paragraph>
+      Test
     </Tooltip.Content>
   </Tooltip>
 </Flex>
@@ -152,23 +223,21 @@ const TooltipPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            Tooltips are useful in UI design when graphical elements or
+            truncated text don't fully convey interaction or information. They
+            can enhance understanding in cases like IconButton with complex
+            actions, buttons with long texts needing truncation, or truncated
+            headlines in product cards.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
-<Flex direction="row" gap={100}>
+<Flex direction="row" gap={100} fluid style={{maxWidth: "300px"}}>
   <Tooltip delayDuration={200}>
     <Tooltip.Trigger asChild>
-      <IconButton>
-        <ChatBubbleIcon />
-      </IconButton>
+      <Heading style={{textOverflow: "ellipsis", width: "100%", overflow: "hidden", textWrap: "nowrap"}} level={3} weight="bold">Some very long headline with truncation on</Heading>
     </Tooltip.Trigger>
-    <Tooltip.Content side="right">
-      <Paragraph size="medium">Test</Paragraph>
+    <Tooltip.Content side="top">
+      Some very long headline with truncation on
     </Tooltip.Content>
   </Tooltip>
 </Flex>

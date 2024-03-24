@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Section from "./Section";
 
 import {
@@ -12,14 +12,42 @@ import {
   Avatar,
   Table,
   Toggle,
+  Tooltip,
+  Card,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon, ViewGridIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+  ViewGridIcon,
+  GridIcon,
+  GroupIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const TogglePage = () => {
+  const codeString1 = `  
+import Toggle from "./Toggle";
+import { ViewGridIcon } from "@radix-ui/react-icons";
+
+<Toggle onPressedChange={(pressed) => console.log(pressed)}>
+  <ViewGridIcon />
+</Toggle>
+  `;
+  const [showGridLines, setShowGridLines] = useState(false);
+
+  const toggleGridLines = () => {
+    setShowGridLines(!showGridLines);
+  };
+
   const scope = {
+    Card,
+    showGridLines,
+    setShowGridLines,
+    toggleGridLines,
     ViewGridIcon,
     Separator,
     Avatar,
@@ -34,6 +62,9 @@ const TogglePage = () => {
     BellIcon,
     Paragraph,
     Toggle,
+    GridIcon,
+    GroupIcon,
+    Tooltip,
   };
 
   const columns = [
@@ -82,24 +113,15 @@ const TogglePage = () => {
             allowing the user to switch between an on and off state. It is built
             using Radix UI's Toggle primitive.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <Toggle aria-label="Toggle grid lines">
               <ViewGridIcon />
             </Toggle>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -114,6 +136,7 @@ const TogglePage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -148,19 +171,44 @@ const TogglePage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            Use a single toggle button for simple, immediate actions like
+            turning a feature on or off, or showing/hiding content. Avoid using
+            it for complex actions or settings that require confirmation or have
+            significant consequences. For example, turning on grid lines in
+            drag-and-drop editor.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
-<Flex direction="row" gap={100}>
-  <Toggle aria-label="Toggle grid lines">
-    <ViewGridIcon />
-  </Toggle>
-</Flex>
+<Card direction="column" gap={300} style={{minWidth: "300px"}}>
+  <Flex direction="column" fluid>
+    <Tooltip>
+      <Tooltip.Trigger asChild>
+        <label style={{width: "fit-content"}}>
+          <Toggle aria-label="Toggle grid lines" checked={showGridLines} onPressedChange={toggleGridLines}>
+            <GroupIcon />
+          </Toggle>
+        </label>
+      </Tooltip.Trigger>
+      <Tooltip.Content>
+        Grid lines
+      </Tooltip.Content>
+    </Tooltip>
+    <Separator/>
+  </Flex>
+
+  <Flex customClass={showGridLines ? "Preview gridlines" : "Preview"} fluid>
+    <Flex direction="column" fluid gap={200}>
+      <Flex>
+        <Heading level={3}>
+          New Feature!
+        </Heading>
+      </Flex>
+      <Flex>
+        <Button>Get Started</Button>
+      </Flex>
+    </Flex>
+  </Flex>
+</Card>
             `}
           </ReactLive>
         </Section>

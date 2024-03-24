@@ -125,9 +125,6 @@ canvas {
             display: none;
         }
     }
-    .TabsList {
-        border-bottom: 0;
-    }
     .TabsContent {
         background-color: transparent;
         margin-top: var(--size-200);
@@ -474,5 +471,18 @@ canvas {
                 }
             }
         }
+    }
+}
+
+// helpers
+.Preview {
+    box-sizing: border-box;
+    .flex {
+        border: 1px solid transparent;
+    }
+}
+.gridlines {
+    .flex {
+        border: 1px dashed var(--blue-2);
     }
 }

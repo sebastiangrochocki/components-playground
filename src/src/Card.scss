@@ -4,6 +4,8 @@
     box-shadow: var(--shadow-level-1);
     padding: var(--size-400) var(--size-300) var(--size-500);
     box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
     &.noPadding {
         padding: 0;
     }

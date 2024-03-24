@@ -12,6 +12,8 @@ import {
   Avatar,
   Table,
   Tabs,
+  Input,
+  Card,
 } from "../src/index";
 import ReactLive from "./ReactLive";
 import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
@@ -46,6 +48,8 @@ import { Tabs } from "blocksin-system";
     BellIcon,
     Paragraph,
     Tabs,
+    Input,
+    Card,
   };
 
   //
@@ -159,7 +163,7 @@ import { Tabs } from "blocksin-system";
 
           <ReactLive scope={scope}>
             {`
-<Flex direction="row" gap={100}>
+<Flex direction="row" gap={100} fluid>
   <Tabs defaultValue="tab1" fluid>
     <Tabs.List aria-label="Manage your account">
       <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
@@ -178,23 +182,51 @@ import { Tabs } from "blocksin-system";
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            The Tabs component is used to organize content into different
+            sections, allowing users to easily switch between them, making it
+            ideal for conserving space and providing navigational clarity in
+            interfaces with multiple categories or modes of information.
+          </Paragraph>
+          <Paragraph size="large">
+            For a sign-up/sign-in module, you can use Tabs to separate the two
+            processes into distinct sections within the same interface, making
+            it easy for users to understand and navigate between the two
+            actions. The "Sign Up" tab would contain the form fields for new
+            user registration, while the "Sign In" tab would provide the login
+            form for existing users. This design pattern keeps the interface
+            organized and intuitive for users interacting with the
+            authentication system.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
-<Flex direction="row" gap={100}>
-  <Tabs defaultValue="tab1" fluid>
-    <Tabs.List aria-label="Manage your account">
-      <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
-      <Tabs.Trigger value="tab2">Sign In</Tabs.Trigger>
-    </Tabs.List>
-    <Tabs.Content value="tab1">Sign Up content</Tabs.Content>
-    <Tabs.Content value="tab2">Sign In content</Tabs.Content>
-  </Tabs>
+<Flex direction="column" gap={100} fluid>
+  <Card direction="column" noPadding >
+    <Tabs defaultValue="tab1" fluid>
+      <Tabs.List aria-label="Manage your account">
+        <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
+        <Tabs.Trigger value="tab2">Sign In</Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="tab1">
+        <form>
+          <Flex direction="column" gap={100} style={{padding: "16px"}}>
+            <Input label="Username" type="text" placeholder="Enter username" fluid/>
+            <Input label="Password" type="password" placeholder="Enter password" fluid/>
+            <Button fluid>Sign Up</Button>
+          </Flex>
+        </form>
+      </Tabs.Content>
+
+      <Tabs.Content value="tab2">
+        <form>
+          <Flex direction="column" gap={100} style={{padding: "16px"}}>
+            <Input label="Username" type="text" placeholder="Enter username" fluid/>
+            <Input label="Password" type="password" placeholder="Enter password" fluid/>
+            <Button fluid>Sign In</Button>
+          </Flex>
+        </form>
+      </Tabs.Content>
+    </Tabs>
+  </Card>
 </Flex>
             `}
           </ReactLive>

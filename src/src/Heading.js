@@ -1,15 +1,17 @@
-import React from "react";
-import "./Heading.scss"; // Assuming you have a corresponding stylesheet
+import React, { forwardRef } from "react";
+import "./Heading.scss";
 
-const Heading = ({ level = 1, weight = "regular", style, children }) => {
-  const HeadingTag = `h${level}`;
-  const weightClass = `heading-${weight}`;
+const Heading = forwardRef(
+  ({ level = 1, weight = "regular", style, children, ...props }, ref) => {
+    const HeadingTag = `h${level}`;
+    const weightClass = `heading-${weight}`;
 
-  return (
-    <HeadingTag className={weightClass} style={style}>
-      {children}
-    </HeadingTag>
-  );
-};
+    return (
+      <HeadingTag ref={ref} className={weightClass} style={style} {...props}>
+        {children}
+      </HeadingTag>
+    );
+  }
+);
 
 export default Heading;

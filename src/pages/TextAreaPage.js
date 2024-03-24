@@ -14,11 +14,26 @@ import {
   TextArea,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const TextAreaPage = () => {
+  const codeString1 = `  
+import { TextArea } from "blocksin-system";
+
+<TextArea
+  label="Message"
+  placeholder="Type your message here"
+  value={message}
+  onChange={handleMessageChange}
+/>
+`;
   const scope = {
     Separator,
     Avatar,
@@ -103,19 +118,6 @@ const TextAreaPage = () => {
             text entries like comments, messages, or descriptions. It includes
             customizable properties for labels, placeholders, and more.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <TextArea
               label="Message"
@@ -124,6 +126,10 @@ const TextAreaPage = () => {
               // onChange={handleMessageChange}
             />
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -138,6 +144,7 @@ const TextAreaPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -170,7 +177,7 @@ const TextAreaPage = () => {
           </ReactLive>
         </Section>
 
-        <Section>
+        {/* <Section>
           <Heading level={3} weight="bold">
             Design Patterns
           </Heading>
@@ -193,7 +200,7 @@ const TextAreaPage = () => {
 </Flex>
             `}
           </ReactLive>
-        </Section>
+        </Section> */}
       </Flex>
     </>
   );

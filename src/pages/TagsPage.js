@@ -12,13 +12,24 @@ import {
   Avatar,
   Table,
   Tag,
+  Card,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const TagsPage = () => {
+  const codeString1 = `  
+import { Tag } from "blocksin-system";
+
+<Tag text="Technology" variant="Highlighted" />
+                      `;
   const scope = {
     Separator,
     Avatar,
@@ -33,6 +44,7 @@ const TagsPage = () => {
     BellIcon,
     Paragraph,
     Tag,
+    Card,
   };
 
   //
@@ -61,6 +73,12 @@ const TagsPage = () => {
       Description:
         "The visual style variant of the tag (Normal, Highlighted, etc.). Default is 'Normal'.",
     },
+    {
+      Property: "color",
+      Type: "String",
+      Optional: "(optional)",
+      Description: "Use to set custom background color.",
+    },
   ];
 
   //
@@ -78,6 +96,13 @@ const TagsPage = () => {
             used in various contexts such as labeling, categorizing, or marking
             items.
           </Paragraph>
+          <Flex customClass="ComponentPreview">
+            <Tag text="Primary" variant="Primary" />
+          </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -95,6 +120,7 @@ const TagsPage = () => {
             <Tag text="Primary" variant="Primary" />
             <Tag text="Demo" variant="Demo" />
             <Tag text="Default" />
+            <Tag text="Custom color" color="#D1ADFF" />
           </Flex>
         </Section>
 
@@ -110,6 +136,7 @@ const TagsPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -131,7 +158,7 @@ const TagsPage = () => {
           <ReactLive scope={scope}>
             {`
 <Flex direction="row" gap={100}>
-  <Tag text="Default" />
+  <Tag color="#D1ADFF" text="Default" />
 </Flex>
       `}
           </ReactLive>
@@ -142,16 +169,30 @@ const TagsPage = () => {
             Design Patterns
           </Heading>
           <Paragraph size="large">
-            One common design pattern involving avatars is to use them in user
-            profiles, where they represent the user's identity visually. Another
-            example is in messaging applications, where avatars can be used to
-            display the profile pictures of the sender or recipient next to the
-            message.
+            The Tag component can be used in a product design UI to provide
+            secondary information about a component or feature, such as
+            categorizing items (e.g., "New", "Sale", "Recommended") without
+            being as prominent as a Badge. For example, in an e-commerce
+            platform, you can use tags to indicate product attributes like
+            "Limited Stock" or "Free Shipping."
+          </Paragraph>
+          <Paragraph size="large">
+            The Tag component in a product design UI is best used to add a
+            secondary level of information, such as categorization or additional
+            context, to components or features, distinguishing it from the Pill
+            component, which is more prominently used to highlight specific
+            states or statuses.
           </Paragraph>
           <ReactLive scope={scope}>
             {`
 <Flex direction="row" gap={100}>
-  <Tag text="Default" />
+  <Card direction="column" noPadding style={{maxWidth: "220px"}}>
+    <img src={Beaver} alt="Beaver"/>
+    <Tag text="Animal" style={{position: "absolute", top: "8px", right: "8px"}}/>
+    <Flex direction="column" gap={200} style={{padding: "var(--size-200)"}}>
+      <Paragraph>Some lorem ipsum about beavers.</Paragraph>
+    </Flex>
+  </Card>
 </Flex>
             `}
           </ReactLive>
