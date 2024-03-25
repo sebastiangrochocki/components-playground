@@ -327,9 +327,9 @@ const Home = ({ setDark, dark, resetAnimation }) => {
               </Flex>
             </Flex>
           </Flex>
-          <Flex customClass="Slider" direction="column" gap={100}>
+          <Flex customClass="Slider" direction="column" gap={200}>
             <Heading level={3} weight="bold">
-              App build with BlocksIn System
+              Apps built with BlocksIn System
             </Heading>
             <Flex fluid>
               <Swiper
