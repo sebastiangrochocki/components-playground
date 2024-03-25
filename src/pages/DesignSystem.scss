@@ -577,6 +577,13 @@ canvas {
             margin-top: var(--size-400);
             .swiper {
                 overflow: visible;
+                .swiper-slide {
+                    > .flex {
+                        > .flex:last-child {
+                            display: none;
+                        }
+                    }
+                }
             }
         }
         .CodeFormatter {
@@ -616,7 +623,7 @@ canvas {
             }
             .sidebarMenu,
             .sidebarMenu.Touched {
-                padding: var(--size-100) var(--size-150);
+                padding: var(--size-150) var(--size-150);
                 max-width: 100%;
                 left: 16px;
                 right: 16px;

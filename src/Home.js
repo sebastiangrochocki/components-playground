@@ -328,7 +328,7 @@ const Home = ({ setDark, dark, resetAnimation }) => {
             </Flex>
           </Flex>
           <Flex customClass="Slider" direction="column" gap={200}>
-            <Heading level={3} weight="bold">
+            <Heading level={3} weight="bold" style={{ lineHeight: "1.2" }}>
               Apps built with BlocksIn System
             </Heading>
             <Flex fluid>
