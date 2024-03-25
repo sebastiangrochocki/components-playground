@@ -233,6 +233,9 @@ canvas {
                 }
                 max-height: fit-content;
             }
+            &:after {
+                width: 100%;
+            }
         }
 
         .prism-code {
@@ -612,6 +615,9 @@ canvas {
                     border-top-left-radius: 0;
                     border-bottom-right-radius: var(--size-100);
                 }
+            }
+            &:after {
+                width: 100%;
             }
             &.Expanded {
                 > div {
