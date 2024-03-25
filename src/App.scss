@@ -187,6 +187,9 @@ grammarly-extension {
   border-radius: 8px;
   position: relative;
   overflow: hidden;
+  button {
+    z-index: 8;
+  }
   > .flex {
     background-color: var(--background-neutral-container);
     padding: var(--size-400) var(--size-500);

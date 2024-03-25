@@ -306,19 +306,15 @@ const Home = ({ setDark, dark, resetAnimation }) => {
                   }}
                   customClass="CTAs"
                 >
-                  <Button
-                    fluid
-                    variant="outline"
-                    onClick={handleCopyToClipboard}
-                  >
+                  <Button fluid variant="solid" onClick={handleCopyToClipboard}>
                     {npmCommand} <CopyIcon />
                   </Button>
                   <Button
                     fluid
-                    variant="ghost"
+                    variant="outline"
                     onClick={handleOpenDocumentation}
                   >
-                    Documentation
+                    npmjs.com
                   </Button>
                 </Flex>
               </Flex>
