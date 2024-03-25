@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { Heading, Flex } from "../src/index";
+import { Flex, Paragraph } from "../src/index";
 
 import {
   Chart as ChartJS,
@@ -180,9 +180,9 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
     <Flex direction="column" gap={200}>
       <Flex gap={100} align="center" customClass="HeadingIcon">
         <DownloadIcon />
-        <Heading level={4} weight="bold">
+        <Paragraph size="large">
           Weekly downloads: {currentWeekDownloads}
-        </Heading>
+        </Paragraph>
       </Flex>
 
       <div
