@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Flex, Button, Switch, Separator, IconButton } from "../src/index";
+import { Flex, Button, Switch, IconButton } from "../src/index";
 import Logo from "../Logo";
 import { PlayIcon } from "@radix-ui/react-icons";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,11 @@ const Nav = ({ setDark, dark, resetAnimation }) => {
         <a href="/" style={{ color: "var(--white)" }}>
           <Logo />
         </a>
-        <Flex gap={100} style={{ marginLeft: "var(--size-400)" }}>
+        <Flex
+          gap={100}
+          style={{ marginLeft: "var(--size-400)" }}
+          customClass="ButtonsContainer"
+        >
           {/* <Button
             onClick={() => {
               navigate("");
@@ -63,11 +67,11 @@ const Nav = ({ setDark, dark, resetAnimation }) => {
             BlocksIn App
           </Button>
         </Flex>
-        <Flex style={{ marginLeft: "auto" }} gap={100}>
+        <Flex style={{ marginLeft: "auto" }} gap={300}>
           <Switch id="darkmode" onCheckedChange={setDark} checked={dark}>
             Dark is {dark ? "on" : "off"}
           </Switch>
-          <Separator vertical />
+          {/* <Separator vertical /> */}
 
           <IconButton size="medium" variant="outline" onClick={resetAnimation}>
             <PlayIcon />

@@ -80,8 +80,8 @@ canvas {
     }
     .CodeFormatter {
         * {
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 14px !important;
+            line-height: 1.6 !important;
         }
     }
     .ComponentPreview {
@@ -268,7 +268,11 @@ canvas {
             z-index: 3;
             color: var(--foreground-neutral);
             box-shadow: var(--shadow-level-1);
-
+            .search {
+                > div:not(.inputfield) {
+                    display: none;
+                }
+            }
             a {
                 color: var(--foreground-neutral);
             }
@@ -484,5 +488,161 @@ canvas {
 .gridlines {
     .flex {
         border: 1px dashed var(--blue-2);
+    }
+}
+.Slider {
+    max-width: calc(1216px);
+    margin: 0 var(--size-200);
+    width: calc(100% - var(--size-400));
+    overflow: hidden;
+    margin-bottom: var(--size-400);
+}
+.swiper {
+    width: 100%;
+}
+.swiper-wrapper {
+    width: 100%;
+    align-items: stretch;
+}
+.swiper-slide {
+    background-color: var(--background-neutral-container-inverted);
+    padding: 0;
+    border-radius: 8px;
+    height: auto;
+    box-sizing: border-box;
+    align-self: stretch;
+    align-items: flex-start;
+    color: var(--foreground-neutral-inverted);
+    overflow: hidden;
+    > .flex {
+        width: auto;
+        height: 100%;
+        > .flex {
+            box-sizing: border-box;
+            &:first-child {
+                padding: var(--size-300) var(--size-200);
+                box-sizing: border-box;
+            }
+            &:last-child {
+                background-color: var(--brand-1);
+                box-sizing: border-box;
+                padding: var(--size-200) 0;
+                height: 100%;
+                align-items: center;
+                img {
+                    width: 90%;
+                    margin-left: auto;
+                    height: max-content;
+                    display: block;
+                }
+            }
+        }
+    }
+    h3 {
+        line-height: 1;
+        margin-bottom: var(--size-100);
+    }
+    p {
+        line-height: 1.6;
+        margin-bottom: var(--size-200);
+    }
+}
+
+@media screen and (max-width: 835px) {
+    .PageHeader {
+        padding: var(--size-100) var(--size-100);
+        > .flex {
+            padding: var(--size-200) var(--size-100);
+        }
+        margin-top: var(--size-600);
+        margin-bottom: 0;
+    }
+    .ButtonsContainer {
+        display: none;
+    }
+    .Navbar {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        .Logo {
+            max-width: 96px;
+        }
+    }
+    .components-playground .box {
+        flex-basis: 100%;
+    }
+    .DesignSystem {
+        .Slider {
+            overflow: visible;
+            margin-bottom: 0;
+            margin-top: var(--size-400);
+            .swiper {
+                overflow: visible;
+            }
+        }
+        .CodeFormatter {
+            * {
+                font-size: 12px !important;
+            }
+        }
+        .ComponentPreviewCode {
+            flex-direction: column;
+            max-height: 600px;
+            min-height: 480px;
+            > div {
+                &:nth-of-type(1) {
+                    min-height: 220px;
+                }
+                &:nth-of-type(2) {
+                    min-height: 220px;
+                    border-top-left-radius: 0;
+                    border-bottom-right-radius: var(--size-100);
+                }
+            }
+            &.Expanded {
+                > div {
+                    &:nth-of-type(2) {
+                        max-height: 100%;
+                    }
+                }
+                max-height: fit-content;
+            }
+        }
+        .DesignSystemBodyContainer {
+            flex-direction: column;
+            .DesignSystemBody,
+            .DesignSystemBody.Touched {
+                padding-left: 0;
+                margin-top: var(--size-600);
+            }
+            .sidebarMenu,
+            .sidebarMenu.Touched {
+                padding: var(--size-100) var(--size-150);
+                max-width: 100%;
+                left: 16px;
+                right: 16px;
+                width: auto;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                position: fixed;
+                top: 64px;
+                label.Logo {
+                    display: none;
+                }
+                h4 {
+                    display: none;
+                }
+                > .flex:not(.search) {
+                    display: none;
+                }
+                .inputfield {
+                    margin-bottom: 0;
+                }
+                .search {
+                    > div:not(.inputfield) {
+                        display: block;
+                    }
+                }
+            }
+        }
     }
 }

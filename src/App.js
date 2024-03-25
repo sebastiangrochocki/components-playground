@@ -39,6 +39,8 @@ import YoutubePage from "./pages/YoutubePage";
 import ScrollAreaPage from "./pages/ScrollAreaPage";
 import SelectPage from "./pages/SelectPage";
 import SeparatorPage from "./pages/SeparatorPage";
+import PillPage from "./pages/PillPage";
+import CardPage from "./pages/CardPage";
 // import Hero from "./pages/Hero";
 //
 import Lottie from "lottie-react";
@@ -197,6 +199,8 @@ function App() {
           <Route path="scrollarea" element={<ScrollAreaPage />} />
           <Route path="select" element={<SelectPage />} />
           <Route path="separator" element={<SeparatorPage />} />
+          <Route path="pill" element={<PillPage />} />
+          <Route path="card" element={<CardPage />} />
 
           {/* Add more nested routes here */}
         </Route>

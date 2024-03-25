@@ -11,6 +11,9 @@ import {
   IconButton,
   Avatar,
   Table,
+  Pill,
+  Card,
+  UserListItem,
 } from "../src/index";
 import ReactLive from "./ReactLive";
 import {
@@ -22,14 +25,18 @@ import {
 import Beaver from "../assets/beaver.jpeg";
 import CodeFormatter from "./CodeFormatter";
 
-const SeparatorPage = () => {
+const CardPage = () => {
   const codeString1 = `  
-import { Separator } from "blocksin-system";
+import { Card } from "blocksin-system";
 
-// Renders a horizontal separator
-<Separator />
+<Card noPadding variant="outline">
+  {/* Card Content */}
+</Card>
           `;
   const scope = {
+    UserListItem,
+    Pill,
+    Card,
     Separator,
     Avatar,
     Beaver,
@@ -51,10 +58,27 @@ import { Separator } from "blocksin-system";
       Cell: (value) => <CodeHighlight text={value} />,
     },
     { Header: "Type", accessor: "Type" },
-    { Header: "Default", accessor: "Default" },
+    { Header: "Description", accessor: "Description" },
   ];
 
-  const data = [{ Property: "vertical", Type: "Boolean", Default: "false" }];
+  const data = [
+    {
+      Property: "children",
+      Type: "Node",
+      Description: "The content to be displayed inside the card.",
+    },
+    {
+      Property: "noPadding",
+      Type: "Boolean",
+      Description: "If true, removes padding from the card content.",
+    },
+    {
+      Property: "variant",
+      Type: "String",
+      Description:
+        "The variant of the card. Possible values are 'outline' and 'ghost'.",
+    },
+  ];
 
   //
   return (
@@ -62,15 +86,15 @@ import { Separator } from "blocksin-system";
       <Flex direction={"column"} id="IconButton" customClass={"WebPageBody"}>
         <Section>
           <Heading level={2} weight="bold">
-            Separator Component
+            Card Component
           </Heading>
           <Paragraph size="large">
-            Separator is a simple React component designed to visually divide
-            content within layouts. It renders as a horizontal line, helping to
-            organize and separate different sections or elements on a page.
+            Card is a React component that provides a flexible container for
+            content. It supports different variants, such as outline and ghost,
+            and allows for customization through props like noPadding.
           </Paragraph>
           <Flex customClass="ComponentPreview">
-            <Separator />
+            <Card style={{ minWidth: "300px", minHeight: "200px" }}></Card>
           </Flex>
           <Heading level={3} weight="bold">
             Usage
@@ -83,14 +107,29 @@ import { Separator } from "blocksin-system";
             Variants
           </Heading>
           <Paragraph size="large">
-            The Separator component offers two variants: horizontal, which is
-            ideal for dividing sections or content within a UI, and vertical,
-            suitable for separating groups of actionable elements in horizontal
-            toolbars or similar layouts.
+            The Card component comes in three variants: default, outline (with
+            border only), and ghost (without border and shadow). The default
+            card is suitable for displaying primary content and top-level
+            sections, while the outline and ghost cards can be used inside
+            top-level cards to add an additional level of hierarchy to the
+            content in the product interface.
           </Paragraph>
           <Flex customClass="ComponentPreview">
-            <Separator />
-            <Separator vertical />
+            <Card style={{ minWidth: "200px", minHeight: "100px" }}>
+              <Paragraph>Default Card</Paragraph>
+            </Card>
+            <Card
+              variant="outline"
+              style={{ minWidth: "200px", minHeight: "100px" }}
+            >
+              <Paragraph>Outline Card</Paragraph>
+            </Card>
+            <Card
+              variant="ghost"
+              style={{ minWidth: "200px", minHeight: "100px" }}
+            >
+              <Paragraph>Ghost Card</Paragraph>
+            </Card>
           </Flex>
         </Section>
 
@@ -125,10 +164,45 @@ import { Separator } from "blocksin-system";
             collaborative and efficient development process.
           </Paragraph>
 
-          <ReactLive scope={scope}>
+          <ReactLive scope={scope} vertical>
             {`
-<Flex direction="row" gap={100} style={{width: "60%"}}>
-  <Separator />
+<Flex direction="row" gap={100} fluid style={{width: "90%"}}>
+  <Card direction="column" gap={200} fluid>
+    <Heading level={4} weight="bold">
+      Dashboard
+    </Heading>
+    <Flex wrap="wrap" gap={100} fluid>
+      <Card
+        variant="outline"
+        style={{ maxWidth: "300px", minHeight: "100px", flex: "1" }}
+        direction="column"
+        gap={100}
+      >
+        <Paragraph size="large" weight="bold">Card Number 1</Paragraph>
+        <Paragraph>Experience real-time component interaction with React!</Paragraph>
+      </Card>
+
+      <Card
+        variant="outline"
+        style={{ maxWidth: "300px", minHeight: "100px", flex: "1" }}
+        direction="column"
+        gap={100}
+      >
+        <Paragraph size="large" weight="bold">Card Number 2</Paragraph>
+        <Paragraph>Experience real-time component interaction with React!</Paragraph>
+      </Card>
+
+      <Card
+        variant="outline"
+        style={{ maxWidth: "300px", minHeight: "100px", flex: "1"  }}
+        direction="column"
+        gap={100}
+      >
+        <Paragraph size="large" weight="bold">Card Number 3</Paragraph>
+        <Paragraph>Experience real-time component interaction with React!</Paragraph>
+      </Card>
+    </Flex>
+  </Card>
 </Flex>
       `}
           </ReactLive>
@@ -158,4 +232,4 @@ import { Separator } from "blocksin-system";
   );
 };
 
-export default SeparatorPage;
+export default CardPage;

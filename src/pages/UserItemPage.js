@@ -14,11 +14,26 @@ import {
   UserItem,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const UserItemPage = () => {
+  const codeString1 = `  
+import UserItem from "./UserItem";
+
+<UserItem
+  name="John Doe"
+  avatar="/path/to/avatar.jpg"
+  helper="Software Engineer"
+  role="Team Lead"
+/>
+    `;
   const scope = {
     UserItem,
     Separator,
@@ -84,19 +99,6 @@ const UserItemPage = () => {
             status). It is designed to be used in various contexts, such as
             inside tables or dropdown menu items.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <Flex direction="column" gap={100}>
               <UserItem
@@ -107,6 +109,10 @@ const UserItemPage = () => {
               />
             </Flex>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -121,6 +127,7 @@ const UserItemPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 

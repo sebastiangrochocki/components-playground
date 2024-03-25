@@ -12,6 +12,7 @@ const UserListItem = ({ name, badge, avatar, role, children }) => {
       customClass={"UserListItem"}
       justify={"between"}
       align={"center"}
+      gap={300}
     >
       <Flex style={{ gap: "var(--size-150)" }} align={"center"}>
         <Avatar size="medium" avatar={avatar} altText={name} role={role} />

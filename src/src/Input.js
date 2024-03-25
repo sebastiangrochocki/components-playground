@@ -13,6 +13,8 @@ const Input = ({
   className,
   disabled,
   onClick,
+  onFocus,
+  onBlur,
   validation = false,
   name,
   fluid,
@@ -35,6 +37,8 @@ const Input = ({
         onChange={onChange}
         onClick={onClick}
         name={name}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
       {type !== "number" && <label>{label}</label>}
       {errormsg !== false && <p>{errormsg}</p>}

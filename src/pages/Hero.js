@@ -1,6 +1,9 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState } from "react";
+// useEffect, useMemo
 
 import {
+  Card,
+  Pill,
   Button,
   AvatarGroup,
   IconButton,
@@ -104,57 +107,56 @@ const Hero = () => {
   //
   //
   //
-  const notifications = useMemo(
-    () => [
-      {
-        title: "Figma Icons is live!",
-        text: "Now you can generate React Icon Library synced with your Figma source.",
-        id: "080220241",
-        style: "info",
-      },
-      {
-        title: "We will discontinue BlocksIn App!",
-        text: "Please backup your data before closing accounts. You have 30 days left.",
-        id: "0802202412",
-        style: "danger",
-      },
-      {
-        title: "Community is live!",
-        text: "Now you can browse through templates.",
-        id: "121212120",
-        style: "info",
-      },
-      {
-        title: "New Navigation",
-        text: "New release comes with the brand new LeftSide Panel navigation.",
-        id: "1212121211",
-        style: "info",
-      },
-    ],
-    []
-  );
-
+  //   const notifications = useMemo(
+  //     () => [
+  //       {
+  //         title: "Figma Icons is live!",
+  //         text: "Now you can generate React Icon Library synced with your Figma source.",
+  //         id: "080220241",
+  //         style: "info",
+  //       },
+  //       {
+  //         title: "We will discontinue BlocksIn App!",
+  //         text: "Please backup your data before closing accounts. You have 30 days left.",
+  //         id: "0802202412",
+  //         style: "danger",
+  //       },
+  //       {
+  //         title: "Community is live!",
+  //         text: "Now you can browse through templates.",
+  //         id: "121212120",
+  //         style: "info",
+  //       },
+  //       {
+  //         title: "New Navigation",
+  //         text: "New release comes with the brand new LeftSide Panel navigation.",
+  //         id: "1212121211",
+  //         style: "info",
+  //       },
+  //     ],
+  //     []
+  //   );
   //
-  const [currentNotification, setCurrentNotification] = useState(null);
+  //   const [currentNotification, setCurrentNotification] = useState(null);
   const username = "dav";
 
-  useEffect(() => {
-    // Example logic to select the first notification that hasn't been dismissed
-    const undismissedNotification = notifications.find((notification) => {
-      const notificationKey = `NotificationShown_${notification.id}_${username}`;
-      return !localStorage.getItem(notificationKey);
-    });
+  //   useEffect(() => {
+  //     // Example logic to select the first notification that hasn't been dismissed
+  //     const undismissedNotification = notifications.find((notification) => {
+  //       const notificationKey = `NotificationShown_${notification.id}_${username}`;
+  //       return !localStorage.getItem(notificationKey);
+  //     });
 
-    setCurrentNotification(undismissedNotification);
-  }, [username, notifications]);
+  //     setCurrentNotification(undismissedNotification);
+  //   }, [username, notifications]);
 
-  const dismissNotification = () => {
-    if (currentNotification) {
-      const notificationKey = `NotificationShown_${currentNotification.id}_${username}`;
-      localStorage.setItem(notificationKey, "dismissed");
-      setCurrentNotification(null); // Remove the notification from the UI
-    }
-  };
+  //   const dismissNotification = () => {
+  //     if (currentNotification) {
+  //       const notificationKey = `NotificationShown_${currentNotification.id}_${username}`;
+  //       localStorage.setItem(notificationKey, "dismissed");
+  //       setCurrentNotification(null); // Remove the notification from the UI
+  //     }
+  //   };
   //
   //
   // const [role, setRole] = useState("");
@@ -420,6 +422,13 @@ const Hero = () => {
           <BadgeLevel badge={3} />
         </div>
         <div className="box">
+          <span className="title">{`<Card/>`}</span>
+
+          <Card>
+            <Paragraph>I am a deafult Card component.</Paragraph>
+          </Card>
+        </div>
+        <div className="box">
           <span className="title">{`<Checkbox/>`}</span>
 
           <Checkbox customID="agreeTerms">I agree to the t&c</Checkbox>
@@ -430,7 +439,7 @@ const Hero = () => {
           <CodeHighlight text="npm i blocksin-system" />
         </div>
 
-        <div className="box box2x">
+        <div className="box">
           <span className="title">{`<Select/>`}</span>
           <Select>
             <Select.Trigger aria-label="Role">
@@ -574,7 +583,7 @@ const Hero = () => {
         <div className="box box2">
           <span className="title">{`<Tabs/>`}</span>
           <Tabs defaultValue="tab1" fluid>
-            <Tabs.List ariaLabel="Manage your account">
+            <Tabs.List aria-label="Manage your account">
               <Tabs.Trigger value="tab1">Sign Up</Tabs.Trigger>
               <Tabs.Trigger value="tab2">Sign In</Tabs.Trigger>
             </Tabs.List>
@@ -674,6 +683,11 @@ const Hero = () => {
           </Paragraph>
         </div>
         <div className="box">
+          <span className="title">{`<Pill/>`}</span>
+
+          <Pill status="warning">pending</Pill>
+        </div>
+        <div className="box">
           <span className="title">{`<Iframe/>`}</span>
 
           <Iframe url="https://example.com" title="Embedded Content" />
@@ -710,13 +724,11 @@ const Hero = () => {
               width: "220px",
               borderRadius: "4px",
               boxShadow: "var(--shadow-level-1)",
-              border: "1px solid var(--border-neutral-subtle)",
             }}
           >
             <Flex
               style={{
                 height: "900px",
-                background: "var(--gray-100)",
                 padding: "8px",
                 boxSizing: "border-box",
               }}
@@ -743,7 +755,7 @@ const Hero = () => {
           <Tag text="Demo" variant="Demo" />
           <Tag text="Default" />
         </div>
-        <div className="box">
+        <div className="box box2x">
           <span className="title">{`<TextArea/>`}</span>
 
           <TextArea
@@ -756,13 +768,22 @@ const Hero = () => {
 
         <div className="box box2x">
           <span className="title">{`<TopBanner/>`}</span>
-          {currentNotification && (
-            <TopBanner
-              username={username}
-              notification={currentNotification}
-              onDismiss={dismissNotification}
-            />
-          )}
+          {/* {currentNotification && (
+            // <TopBanner
+            //   username={username}
+            //   notification={currentNotification}
+            //   onDismiss={dismissNotification}
+            // />
+          )} */}
+          <TopBanner
+            username={username}
+            notification={{
+              title: "Figma Icons is live!",
+              text: "Now you can generate React Icon Library synced with your Figma source.",
+              id: "080220241",
+              style: "info",
+            }}
+          />
         </div>
 
         <div className="box">

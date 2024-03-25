@@ -14,14 +14,56 @@ import {
   UserItem,
   Youtube,
   ScrollArea,
+  Card,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const ScrollAreaPage = () => {
+  const codeString1 = `  
+import ScrollArea from "./ScrollArea";
+import { Flex } from "./Flex";
+
+<ScrollArea style={{ height: "200px", width: "150px" }}>
+  <Flex
+    style={{
+      height: "900px",
+      width: "200px",
+      background: "var(--gray-200)",
+    }}
+  >
+    Long rectangle
+  </Flex>
+</ScrollArea>
+        `;
+
+  const ButtonLoop = () => {
+    const buttons = [];
+
+    for (let i = 1; i <= 16; i++) {
+      buttons.push(
+        <Button fluid variant="outline" key={i}>
+          Button {i}
+        </Button>
+      );
+    }
+
+    return (
+      <Flex direction="column" fluid gap={200}>
+        {buttons}
+      </Flex>
+    );
+  };
+
   const scope = {
+    ButtonLoop,
     ScrollArea,
     Youtube,
     UserItem,
@@ -36,6 +78,7 @@ const ScrollAreaPage = () => {
     Flex,
     Heading,
     BellIcon,
+    Card,
     Paragraph,
   };
 
@@ -82,19 +125,6 @@ const ScrollAreaPage = () => {
             scrollable area with optional custom scrollbars. It is built using
             Radix UI's ScrollArea primitive.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <ScrollArea style={{ height: "200px", width: "150px" }}>
               <Flex
@@ -108,6 +138,10 @@ const ScrollAreaPage = () => {
               </Flex>
             </ScrollArea>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -122,6 +156,7 @@ const ScrollAreaPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 
@@ -143,17 +178,17 @@ const ScrollAreaPage = () => {
           <ReactLive scope={scope}>
             {`
 <Flex direction="column" gap={100} style={{width: "60%"}}>
-  <ScrollArea style={{ height: "200px", width: "150px" }}>
-    <Flex
-      style={{
-        height: "900px",
-        width: "200px",
-        background: "var(--gray-100)",
-      }}
-    >
-      Long rectangle
-    </Flex>
-  </ScrollArea>
+  <Card>
+    <ScrollArea style={{ height: "200px", width: "100%" }}>
+      <Flex
+        style={{
+          width: "100%",
+        }}
+      >
+        <ButtonLoop/>
+      </Flex>
+    </ScrollArea>
+  </Card>
 </Flex>
       `}
           </ReactLive>

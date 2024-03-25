@@ -14,11 +14,47 @@ import {
   UserOnHoldItem,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const UserOnHoldItemPage = () => {
+  const codeString1 = `  
+import { UserOnHoldItem } from "blocksin-system";
+
+const user = {
+  firstName: "Jane Doe",
+  email: "jane.doe@example.com",
+  avatar: "/path/to/avatar.jpg",
+  role: "User",
+  isApproved: false,
+};
+
+function handleApprove(user) {
+  console.log("Approving user:", user);
+}
+
+function handleReject(user) {
+  console.log("Rejecting user:", user);
+}
+
+function handleRemove(user) {
+  console.log("Removing user:", user);
+}
+
+<UserOnHoldItem
+  fluid={true}
+  user={user}
+  onApprove={handleApprove}
+  onReject={handleReject}
+  onRemove={handleRemove}
+/>;
+`;
   const user = {
     firstName: "Jane Doe",
     email: "jane.doe@example.com",
@@ -47,8 +83,17 @@ const UserOnHoldItemPage = () => {
     isApproved: false,
   };
 
+  const user3 = {
+    firstName: "Rick Doe",
+    email: "rick.doe@example.com",
+    avatar: Beaver,
+    role: "User",
+    isApproved: true,
+  };
+
   const scope = {
     user2,
+    user3,
     Separator,
     Avatar,
     Beaver,
@@ -127,19 +172,6 @@ const UserOnHoldItemPage = () => {
             information alongside actions to approve, reject, or remove a user,
             providing a convenient way to handle user management tasks.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <UserOnHoldItem
               fluid={true}
@@ -148,6 +180,41 @@ const UserOnHoldItemPage = () => {
               onReject={handleReject}
               onRemove={handleRemove}
             />
+          </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
+        </Section>
+
+        <Section>
+          <Heading level={3} weight="bold">
+            Variants
+          </Heading>
+          <Paragraph size="large">
+            The UserOnHoldItem component has two variants: when isApproved is
+            false, it displays two buttons, "Approve" and "Reject," for managing
+            user status in a team group. When isApproved is true, it shows a
+            single button, "Remove User," for removing the user from the group
+            once approved.
+          </Paragraph>
+          <Flex customClass="ComponentPreview">
+            <Flex direction="column" gap={100} fluid>
+              <UserOnHoldItem
+                fluid={true}
+                user={user}
+                onApprove={handleApprove}
+                onReject={handleReject}
+                onRemove={handleRemove}
+              />
+              <UserOnHoldItem
+                fluid={true}
+                user={user3}
+                onApprove={handleApprove}
+                onReject={handleReject}
+                onRemove={handleRemove}
+              />
+            </Flex>
           </Flex>
         </Section>
 
@@ -163,6 +230,7 @@ const UserOnHoldItemPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 

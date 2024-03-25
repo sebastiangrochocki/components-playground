@@ -14,11 +14,27 @@ import {
   UserListItem,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+  StarFilledIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const UserListItemPage = () => {
+  const codeString1 = `  
+import { UserListItem } from "blocksin-system";
+
+<UserListItem
+  name="John Doe"
+  badge={3}
+  avatar="/path/to/avatar.jpg"
+  role="Developer"
+/>
+  `;
   const scope = {
     UserListItem,
     Separator,
@@ -71,6 +87,12 @@ const UserListItemPage = () => {
       Required: "optional",
       Description: "The role or title of the user.",
     },
+    {
+      Property: "children",
+      Type: "Node",
+      Required: "optional",
+      Description: "Use to inject additional components.",
+    },
   ];
 
   //
@@ -89,6 +111,20 @@ const UserListItemPage = () => {
             networks, team management tools, or any platform that displays user
             information.
           </Paragraph>
+          <Flex customClass="ComponentPreview">
+            <Flex direction="column" gap={100}>
+              <UserListItem
+                name="John Doe"
+                badge={3}
+                avatar={Beaver}
+                role="Developer"
+              />
+            </Flex>
+          </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -96,11 +132,12 @@ const UserListItemPage = () => {
             Variants
           </Heading>
           <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
+            The UserListItem component has two states: the default state
+            displays the user's avatar, information, and a badge, serving as a
+            specific feature component that can be used for similar purposes
+            within the system. The second state allows nesting additional
+            components, such as an icon button with a star icon, for actions
+            like starring users.
           </Paragraph>
           <Flex customClass="ComponentPreview">
             <Flex direction="column" gap={100}>
@@ -110,6 +147,16 @@ const UserListItemPage = () => {
                 avatar={Beaver}
                 role="Developer"
               />
+              <UserListItem
+                name="John Doe"
+                badge={3}
+                avatar={Beaver}
+                role="Developer"
+              >
+                <IconButton variant="outline">
+                  <StarFilledIcon />
+                </IconButton>
+              </UserListItem>
             </Flex>
           </Flex>
         </Section>
@@ -126,6 +173,7 @@ const UserListItemPage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 

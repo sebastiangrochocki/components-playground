@@ -15,11 +15,21 @@ import {
   Youtube,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
+import {
+  Cross2Icon,
+  SizeIcon,
+  CopyIcon,
+  BellIcon,
+} from "@radix-ui/react-icons";
 import Beaver from "../assets/beaver.jpeg";
+import CodeFormatter from "./CodeFormatter";
 
 const YoutubePage = () => {
+  const codeString1 = `  
+import { Youtube } from "blocksin-system";
+
+<Youtube videoId="dQw4w9WgXcQ" />
+      `;
   const scope = {
     Youtube,
     UserItem,
@@ -69,24 +79,15 @@ const YoutubePage = () => {
             videos in your application. It allows for seamless integration of
             YouTube content by simply providing the video ID.
           </Paragraph>
-        </Section>
-
-        <Section>
-          <Heading level={3} weight="bold">
-            Variants
-          </Heading>
-          <Paragraph size="large">
-            Variants refer to different versions or styles of an avatar image,
-            allowing for customization based on context or user preference.
-            Avatars are commonly used in user interfaces to represent
-            individuals, providing visual identification in profiles, comments,
-            or messaging systems.
-          </Paragraph>
           <Flex customClass="ComponentPreview">
             <Flex direction="column" gap={100} style={{ width: "60%" }}>
               <Youtube videoId="dQw4w9WgXcQ" />
             </Flex>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString1} />
         </Section>
 
         <Section>
@@ -101,6 +102,7 @@ const YoutubePage = () => {
             pageSize={10}
             sorting={false}
             fullBorder
+            large
           />
         </Section>
 

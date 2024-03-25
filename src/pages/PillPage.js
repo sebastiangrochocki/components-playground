@@ -11,6 +11,9 @@ import {
   IconButton,
   Avatar,
   Table,
+  Pill,
+  Card,
+  UserListItem,
 } from "../src/index";
 import ReactLive from "./ReactLive";
 import {
@@ -22,14 +25,16 @@ import {
 import Beaver from "../assets/beaver.jpeg";
 import CodeFormatter from "./CodeFormatter";
 
-const SeparatorPage = () => {
+const PillPage = () => {
   const codeString1 = `  
-import { Separator } from "blocksin-system";
+import { Pill } from "blocksin-system";
 
-// Renders a horizontal separator
-<Separator />
+<Pill status="success">Active</Pill>
           `;
   const scope = {
+    UserListItem,
+    Pill,
+    Card,
     Separator,
     Avatar,
     Beaver,
@@ -51,10 +56,22 @@ import { Separator } from "blocksin-system";
       Cell: (value) => <CodeHighlight text={value} />,
     },
     { Header: "Type", accessor: "Type" },
-    { Header: "Default", accessor: "Default" },
+    { Header: "Description", accessor: "Description" },
   ];
 
-  const data = [{ Property: "vertical", Type: "Boolean", Default: "false" }];
+  const data = [
+    {
+      Property: "children",
+      Type: "Node",
+      Description: "The content to be displayed inside the pill.",
+    },
+    {
+      Property: "status",
+      Type: "String",
+      Description:
+        "The status of the pill, which determines its color and styling. Possible values are 'error', 'warning', 'success', or 'disabled'.",
+    },
+  ];
 
   //
   return (
@@ -62,15 +79,15 @@ import { Separator } from "blocksin-system";
       <Flex direction={"column"} id="IconButton" customClass={"WebPageBody"}>
         <Section>
           <Heading level={2} weight="bold">
-            Separator Component
+            Pill Component
           </Heading>
           <Paragraph size="large">
-            Separator is a simple React component designed to visually divide
-            content within layouts. It renders as a horizontal line, helping to
-            organize and separate different sections or elements on a page.
+            Pill is a React component that represents a pill-shaped element,
+            commonly used to display status or category information. It accepts
+            a status prop to determine its visual appearance.
           </Paragraph>
           <Flex customClass="ComponentPreview">
-            <Separator />
+            <Pill status="success">done</Pill>
           </Flex>
           <Heading level={3} weight="bold">
             Usage
@@ -83,14 +100,16 @@ import { Separator } from "blocksin-system";
             Variants
           </Heading>
           <Paragraph size="large">
-            The Separator component offers two variants: horizontal, which is
-            ideal for dividing sections or content within a UI, and vertical,
-            suitable for separating groups of actionable elements in horizontal
-            toolbars or similar layouts.
+            The Pill component provides various variants based on status, such
+            as 'error', 'warning', 'success', or 'disabled', which determine its
+            color and styling. It is commonly used within other components, like
+            tables, to highlight additional information such as status.
           </Paragraph>
           <Flex customClass="ComponentPreview">
-            <Separator />
-            <Separator vertical />
+            <Pill status="success">done</Pill>
+            <Pill status="error">blocked</Pill>
+            <Pill status="warning">pending</Pill>
+            <Pill status="disabled">undefined</Pill>
           </Flex>
         </Section>
 
@@ -127,8 +146,26 @@ import { Separator } from "blocksin-system";
 
           <ReactLive scope={scope}>
             {`
-<Flex direction="row" gap={100} style={{width: "60%"}}>
-  <Separator />
+<Flex direction="row" gap={100} fluid style={{width: "80%"}}>
+  <Card direction="column" gap={100} fluid>
+    <Flex justify="between">
+      <Heading level={4} weight="bold">Username</Heading>
+      <Flex style={{minWidth: "156px"}}>
+        <Heading level={4} weight="bold">Status</Heading>
+      </Flex>
+    </Flex>
+    <Separator/>
+    <UserListItem badge="3" name="Seb" avatar={Beaver}>
+      <Flex style={{minWidth: "100px"}}>
+        <Pill status="warning">pending</Pill>
+      </Flex>
+    </UserListItem>
+    <UserListItem badge="9" name="Rick" avatar={Beaver}>
+      <Flex style={{minWidth: "100px"}}>
+        <Pill status="success">approved</Pill>
+      </Flex>
+    </UserListItem>
+  </Card>
 </Flex>
       `}
           </ReactLive>
@@ -158,4 +195,4 @@ import { Separator } from "blocksin-system";
   );
 };
 
-export default SeparatorPage;
+export default PillPage;
