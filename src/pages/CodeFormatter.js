@@ -11,7 +11,7 @@ const customStyle = {
   ...dark,
   'code[class*="language-"]': {
     ...dark['code[class*="language-"]'],
-    fontSize: "16px",
+    fontSize: "14px",
     background: "var(--black)",
   },
   'pre[class*="language-"]': {
@@ -19,7 +19,7 @@ const customStyle = {
     background: "var(--black)",
     border: "none",
     borderRadius: "var(--size-100)",
-    padding: "var(--size-300)",
+    padding: "var(--size-100) var(--size-300)",
   },
   tag: {
     color: "var(--yellow-200)",

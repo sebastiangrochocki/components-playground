@@ -79,6 +79,12 @@ canvas {
         }
     }
     .CodeFormatter {
+        > pre {
+            margin: 0 !important;
+        }
+        pre:has(.language-css) {
+            padding: var(--size-300) !important;
+        }
         * {
             font-size: 14px !important;
             line-height: 1.6 !important;
@@ -235,6 +241,7 @@ canvas {
             }
             &:after {
                 width: 100%;
+                border-bottom-right-radius: var(--size-100);
             }
         }
 
@@ -553,7 +560,7 @@ canvas {
 
 @media screen and (max-width: 835px) {
     .PageHeader {
-        padding: var(--size-100) var(--size-100);
+        padding: var(--size-200) var(--size-200);
         > .flex {
             padding: var(--size-200) var(--size-100);
         }
@@ -574,6 +581,16 @@ canvas {
         flex-basis: 100%;
     }
     .DesignSystem {
+        .Section {
+            padding: var(--size-200) var(--size-200);
+            > h1,
+            > h2,
+            > h3,
+            > h4,
+            > h5 {
+                line-height: 1;
+            }
+        }
         overflow: hidden;
         .Slider {
             overflow: hidden;
@@ -618,6 +635,7 @@ canvas {
             }
             &:after {
                 width: 100%;
+                border-bottom-right-radius: var(--size-100);
             }
             &.Expanded {
                 > div {
