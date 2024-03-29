@@ -25,6 +25,9 @@ import {
   CopyIcon,
   BellIcon,
   TimerIcon,
+  PlayIcon,
+  PauseIcon,
+  StopIcon,
 } from "@radix-ui/react-icons";
 import CodeFormatter from "./CodeFormatter";
 
@@ -127,6 +130,51 @@ import { YourIconComponent } from "your-icon-library";
     },
   ];
   //
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    let intervalId;
+
+    if (isActive) {
+      intervalId = setInterval(() => {
+        if (seconds === 0) {
+          if (minutes === 0) {
+            clearInterval(intervalId);
+            setIsActive(false);
+            return;
+          }
+          setMinutes((prev) => prev - 1);
+          setSeconds(59);
+        } else {
+          setSeconds((prev) => prev - 1);
+        }
+      }, 1000);
+    }
+
+    return () => clearInterval(intervalId);
+  }, [isActive, minutes, seconds]);
+
+  const handleAddMinute = () => {
+    setMinutes((prev) => prev + 1);
+  };
+
+  const handleStart = () => {
+    setIsActive(true);
+  };
+
+  const handlePause = () => {
+    setIsActive(false);
+  };
+
+  const handleReset = () => {
+    setMinutes(0);
+    setSeconds(0);
+    setIsActive(false);
+  };
+  //
+  //
   return (
     <>
       <Flex direction={"column"} id="IconButton" customClass={"WebPageBody"}>
@@ -208,6 +256,82 @@ import { YourIconComponent } from "your-icon-library";
               <Iframe url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FYZW2UgEtRkveoF6bTbmWPw%2FBlocksInGrids-App%3Ftype%3Ddesign%26node-id%3D745%253A947%26mode%3Ddesign%26t%3DwC7qfQ1IqvY8x6g8-1" />
             </Tabs.Content>
           </Tabs>
+        </Section>
+
+        <Section>
+          <Heading level={3} weight="bold">
+            IconButton with Timer function
+          </Heading>
+          <Paragraph size="large">
+            I will write a bit more about this pattern, soon..
+          </Paragraph>
+          <Flex customClass="ComponentPreview">
+            <DropdownMenu modal={false}>
+              <DropdownMenu.Trigger asChild>
+                <IconButton
+                  size="small"
+                  variant="ghost"
+                  showBadge
+                  badgeLabel={`${minutes}:${
+                    seconds < 10 ? `0${seconds}` : seconds
+                  }`}
+                >
+                  <BellIcon />
+                </IconButton>
+              </DropdownMenu.Trigger>
+
+              <DropdownMenu.Content sideOffset={4} align="end">
+                <Flex>
+                  <Flex direction="column" gap={200}>
+                    <Flex
+                      customClass="TimerInputs"
+                      align="center"
+                      justify="center"
+                      gap={100}
+                    >
+                      <input
+                        type="number"
+                        value={minutes}
+                        onChange={(e) => setMinutes(parseInt(e.target.value))}
+                        placeholder="Minutes"
+                        min="0"
+                      />
+                      <Heading level={2}>:</Heading>
+                      <input
+                        type="number"
+                        value={seconds}
+                        onChange={(e) => setSeconds(parseInt(e.target.value))}
+                        placeholder="Seconds"
+                        max="59"
+                        min="0"
+                      />
+                    </Flex>
+                    <Separator />
+                    <Flex justify="between" gap={200}>
+                      <Button variant="outline" onClick={handleAddMinute}>
+                        +1 Min
+                      </Button>
+                      <Flex gap={100}>
+                        <IconButton onClick={handleStart} disabled={isActive}>
+                          <PlayIcon />
+                        </IconButton>
+                        <IconButton
+                          variant="outline"
+                          onClick={handlePause}
+                          disabled={!isActive}
+                        >
+                          <PauseIcon />
+                        </IconButton>
+                        <IconButton variant="outline" onClick={handleReset}>
+                          <StopIcon />
+                        </IconButton>
+                      </Flex>
+                    </Flex>
+                  </Flex>
+                </Flex>
+              </DropdownMenu.Content>
+            </DropdownMenu>
+          </Flex>
         </Section>
 
         <Section>

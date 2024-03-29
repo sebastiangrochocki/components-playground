@@ -241,3 +241,29 @@ grammarly-extension {
     pointer-events: none;
   }
 }
+
+.TimerInputs {
+  background-color: var(--background-neutral);
+  padding: var(--size-200);
+  border-radius: 8px;
+  input {
+    flex: 1;
+    width: auto;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    color: var(--foreground-neutral);
+    font-size: 40px;
+    min-width: 0;
+    max-width: 56px;
+    line-height: 47px;
+    height: 47px;
+    text-align: right;
+    -moz-appearance: textfield;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
