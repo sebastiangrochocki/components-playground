@@ -30,6 +30,22 @@ import CodeFormatter from "./CodeFormatter";
 
 const IconButtonPage = () => {
   // IconButton with notifications
+  const [timer, setTimer] = useState(45);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer((prevTimer) => {
+        if (prevTimer === 0) {
+          return 45;
+        } else {
+          return prevTimer - 1;
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const codeString1 = `  
 import { IconButton } from "blocksin-system";
 import { YourIconComponent } from "your-icon-library";
@@ -182,7 +198,7 @@ import { YourIconComponent } from "your-icon-library";
                   size="small"
                   variant="ghost"
                   showBadge
-                  badgeLabel="16s"
+                  badgeLabel={`${timer}sec`}
                 >
                   <TimerIcon />
                 </IconButton>
