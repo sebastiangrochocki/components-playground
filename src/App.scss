@@ -242,24 +242,43 @@ grammarly-extension {
   }
 }
 
+@font-face {
+  font-family: "pix PixelFJVerdana12pt";
+  src: url("fonts/pixel/pixPixelFJVerdana12pt.eot");
+  src:
+    url("fonts/pixel/pixPixelFJVerdana12pt.eot?#iefix") format("embedded-opentype"),
+    url("fonts/pixel/pixPixelFJVerdana12pt.woff2") format("woff2"),
+    url("fonts/pixel/pixPixelFJVerdana12pt.woff") format("woff"),
+    url("fonts/pixel/pixPixelFJVerdana12pt.ttf") format("truetype"),
+    url("fonts/pixel/pixPixelFJVerdana12pt.svg#pixPixelFJVerdana12pt") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .TimerInputs {
   background-color: var(--background-neutral);
-  padding: var(--size-200);
-  border-radius: 8px;
+  padding: var(--size-100);
+  border-radius: var(--size-50);
+  color: var(--foreground-neutral);
+  gap: var(--size-50);
   input {
-    flex: 1;
-    width: auto;
+    width: 54px;
     display: flex;
     padding: 0;
     margin: 0;
     color: var(--foreground-neutral);
-    font-size: 40px;
+    font-size: 24px;
     min-width: 0;
-    max-width: 56px;
-    line-height: 47px;
-    height: 47px;
-    text-align: right;
+    line-height: 24px;
+    height: 36px;
+    text-align: center;
     -moz-appearance: textfield;
+    font-family: "pix PixelFJVerdana12pt";
+  }
+  h2 {
+    font-family: "pix PixelFJVerdana12pt";
+    font-size: 24px;
   }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {

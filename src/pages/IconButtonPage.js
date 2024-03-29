@@ -57,6 +57,123 @@ import { YourIconComponent } from "your-icon-library";
   <YourIconComponent />
 </IconButton>
           `;
+
+  const codeString2 = `  
+const [minutes, setMinutes] = useState(0);
+const [seconds, setSeconds] = useState(0);
+const [isActive, setIsActive] = useState(false);
+
+useEffect(() => {
+  let intervalId;
+
+  if (isActive) {
+    intervalId = setInterval(() => {
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(intervalId);
+          setIsActive(false);
+          return;
+        }
+        setMinutes((prev) => prev - 1);
+        setSeconds(59);
+      } else {
+        setSeconds((prev) => prev - 1);
+      }
+    }, 1000);
+  }
+
+  return () => clearInterval(intervalId);
+}, [isActive, minutes, seconds]);
+
+// Helper function to format the timer display
+const formatTime = (time) =>
+  time < 10 ? \`0\${time}\` : \`\${time}\`.toString().padStart(2, "0");
+
+const handleAddMinute = () => {
+  setMinutes((prev) => prev + 1);
+};
+
+const handleStart = () => {
+  setIsActive(true);
+};
+
+const handlePause = () => {
+  setIsActive(false);
+};
+
+const handleReset = () => {
+  setMinutes(0);
+  setSeconds(0);
+  setIsActive(false);
+};
+
+<DropdownMenu.Content sideOffset={4} align="end">
+  <Flex direction="column" gap={100}>
+    <Flex
+      customClass="TimerInputs"
+      align="center"
+      justify="center"
+    >
+      <input
+        type="number"
+        value={formatTime(minutes)}
+        onChange={(e) => setMinutes(parseInt(e.target.value))}
+        placeholder="Minutes"
+        min="0"
+        max="59"
+      />
+      <Heading level={2}>:</Heading>
+      <input
+        type="number"
+        value={formatTime(seconds)}
+        onChange={(e) => setSeconds(parseInt(e.target.value))}
+        placeholder="Seconds"
+        max="59"
+        min="0"
+      />
+    </Flex>
+    <Separator />
+    <Flex justify="between" gap={200}>
+      <Button
+        variant="outline"
+        size="small"
+        onClick={handleAddMinute}
+      >
+        +1 min
+      </Button>
+      <Flex gap={100}>
+        {!isActive && (
+          <IconButton
+            size="small"
+            onClick={handleStart}
+            disabled={isActive}
+          >
+            <PlayIcon />
+          </IconButton>
+        )}
+        {isActive && (
+          <IconButton
+            variant="outline"
+            onClick={handlePause}
+            disabled={!isActive}
+            size="small"
+          >
+            <PauseIcon />
+          </IconButton>
+        )}
+        <IconButton
+          variant="outline"
+          size="small"
+          onClick={handleReset}
+        >
+          <StopIcon />
+        </IconButton>
+      </Flex>
+    </Flex>
+  </Flex>
+</DropdownMenu.Content>
+`;
+
   const [notifications, setNotifications] = useState([]);
   const scope = {
     Separator,
@@ -155,6 +272,10 @@ import { YourIconComponent } from "your-icon-library";
 
     return () => clearInterval(intervalId);
   }, [isActive, minutes, seconds]);
+
+  // Helper function to format the timer display
+  const formatTime = (time) =>
+    time < 10 ? `0${time}` : `${time}`.padStart(2, "0");
 
   const handleAddMinute = () => {
     setMinutes((prev) => prev + 1);
@@ -272,66 +393,83 @@ import { YourIconComponent } from "your-icon-library";
                   size="small"
                   variant="ghost"
                   showBadge
-                  badgeLabel={`${minutes}:${
-                    seconds < 10 ? `0${seconds}` : seconds
-                  }`}
+                  badgeLabel={`${formatTime(minutes)}:${formatTime(seconds)}`}
                 >
                   <BellIcon />
                 </IconButton>
               </DropdownMenu.Trigger>
 
               <DropdownMenu.Content sideOffset={4} align="end">
-                <Flex>
-                  <Flex direction="column" gap={200}>
-                    <Flex
-                      customClass="TimerInputs"
-                      align="center"
-                      justify="center"
-                      gap={100}
+                <Flex direction="column" gap={100}>
+                  <Flex
+                    customClass="TimerInputs"
+                    align="center"
+                    justify="center"
+                  >
+                    <input
+                      type="number"
+                      value={formatTime(minutes)}
+                      onChange={(e) => setMinutes(parseInt(e.target.value))}
+                      placeholder="Minutes"
+                      min="0"
+                      max="59"
+                    />
+                    <Heading level={2}>:</Heading>
+                    <input
+                      type="number"
+                      value={formatTime(seconds)}
+                      onChange={(e) => setSeconds(parseInt(e.target.value))}
+                      placeholder="Seconds"
+                      max="59"
+                      min="0"
+                    />
+                  </Flex>
+                  <Separator />
+                  <Flex justify="between" gap={200}>
+                    <Button
+                      variant="outline"
+                      size="small"
+                      onClick={handleAddMinute}
                     >
-                      <input
-                        type="number"
-                        value={minutes}
-                        onChange={(e) => setMinutes(parseInt(e.target.value))}
-                        placeholder="Minutes"
-                        min="0"
-                      />
-                      <Heading level={2}>:</Heading>
-                      <input
-                        type="number"
-                        value={seconds}
-                        onChange={(e) => setSeconds(parseInt(e.target.value))}
-                        placeholder="Seconds"
-                        max="59"
-                        min="0"
-                      />
-                    </Flex>
-                    <Separator />
-                    <Flex justify="between" gap={200}>
-                      <Button variant="outline" onClick={handleAddMinute}>
-                        +1 Min
-                      </Button>
-                      <Flex gap={100}>
-                        <IconButton onClick={handleStart} disabled={isActive}>
+                      +1 min
+                    </Button>
+                    <Flex gap={100}>
+                      {!isActive && (
+                        <IconButton
+                          size="small"
+                          onClick={handleStart}
+                          disabled={isActive}
+                        >
                           <PlayIcon />
                         </IconButton>
+                      )}
+                      {isActive && (
                         <IconButton
                           variant="outline"
                           onClick={handlePause}
                           disabled={!isActive}
+                          size="small"
                         >
                           <PauseIcon />
                         </IconButton>
-                        <IconButton variant="outline" onClick={handleReset}>
-                          <StopIcon />
-                        </IconButton>
-                      </Flex>
+                      )}
+                      <IconButton
+                        variant="outline"
+                        size="small"
+                        onClick={handleReset}
+                      >
+                        <StopIcon />
+                      </IconButton>
                     </Flex>
                   </Flex>
                 </Flex>
               </DropdownMenu.Content>
             </DropdownMenu>
           </Flex>
+          <Heading level={3} weight="bold">
+            Usage
+          </Heading>
+          <CodeFormatter language="" codeString={codeString2} />
         </Section>
 
         <Section>
