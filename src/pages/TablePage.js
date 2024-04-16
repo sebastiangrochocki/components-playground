@@ -55,8 +55,21 @@ const data = [
   search={true}
   fullBorder={true}
   sorting={true}
-/>  
-                    `;
+/> 
+`;
+  // eslint-disable-next-line
+  const codeString2 = `  
+const columns = [
+  { Header: "Name", accessor: "name" },
+  { Header: "Age", accessor: "age" },
+  { Header: "Country", accessor: "country" },
+];
+
+const data = [
+  { name: "John Doe", age: 30, country: "USA" },
+  { name: "Jane Doe", age: 25, country: "Canada" },
+];
+`;
   const columnsDemo = [
     { Header: "Name", accessor: "name" },
     { Header: "Age", accessor: "age" },

@@ -5,6 +5,7 @@ import {
   html as beautifyHtml,
   css as beautifyCss,
   js as beautifyJavascript,
+  html as beautifyJson,
 } from "js-beautify";
 
 const customStyle = {
@@ -20,9 +21,11 @@ const customStyle = {
     border: "none",
     borderRadius: "var(--size-100)",
     padding: "var(--size-100) var(--size-300)",
+    boxShadow: "none",
+    textShadow: "none",
   },
   tag: {
-    color: "var(--yellow-200)",
+    color: "var(--brand-2)",
   },
   "attr-name": {
     color: "var(--brand-1)",
@@ -37,7 +40,7 @@ const customStyle = {
     color: "var(--brand-2)",
   },
   selector: {
-    color: "var(--yellow-200)",
+    color: "var(--brand-2)",
   },
   keyword: {
     color: "var(--brand-1)",
@@ -61,10 +64,16 @@ const customStyle = {
     color: "var(--brand-2)",
   },
   string: {
-    color: "var(--yellow-200)",
+    color: "var(--brand-2)",
   },
   punctuation: {
     color: "white",
+  },
+  comment: {
+    color: "var(--gray-400)",
+  },
+  operator: {
+    color: "var(--gray-200)",
   },
 };
 
@@ -84,6 +93,18 @@ const CodeFormatter = ({ codeString, language }) => {
     formattedCode = beautifyJavascript(codeString, {
       indent_size: 2,
       space_in_empty_paren: true,
+    });
+  } else if (language === "json") {
+    formattedCode = beautifyJson(codeString, {
+      indent_size: 2,
+    });
+  } else if (language === "jsx") {
+    formattedCode = beautifyJavascript(codeString, {
+      indent_size: 2,
+      space_in_empty_paren: true,
+      e4x: true,
+      // end_with_newline: true,
+      // preserve_newlines: true,
     });
   } else {
     formattedCode = codeString; // No formatting for other languages

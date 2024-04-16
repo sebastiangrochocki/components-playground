@@ -107,71 +107,79 @@ const handleReset = () => {
   setIsActive(false);
 };
 
-<DropdownMenu.Content sideOffset={4} align="end">
-  <Flex direction="column" gap={100}>
-    <Flex
-      customClass="TimerInputs"
-      align="center"
-      justify="center"
-    >
-      <input
-        type="number"
-        value={formatTime(minutes)}
-        onChange={(e) => setMinutes(parseInt(e.target.value))}
-        placeholder="Minutes"
-        min="0"
-        max="59"
-      />
-      <Heading level={2}>:</Heading>
-      <input
-        type="number"
-        value={formatTime(seconds)}
-        onChange={(e) => setSeconds(parseInt(e.target.value))}
-        placeholder="Seconds"
-        max="59"
-        min="0"
-      />
-    </Flex>
-    <Separator />
-    <Flex justify="between" gap={200}>
-      <Button
-        variant="outline"
-        size="small"
-        onClick={handleAddMinute}
-      >
-        +1 min
-      </Button>
-      <Flex gap={100}>
-        {!isActive && (
-          <IconButton
-            size="small"
-            onClick={handleStart}
-            disabled={isActive}
-          >
-            <PlayIcon />
-          </IconButton>
-        )}
-        {isActive && (
-          <IconButton
-            variant="outline"
-            onClick={handlePause}
-            disabled={!isActive}
-            size="small"
-          >
-            <PauseIcon />
-          </IconButton>
-        )}
-        <IconButton
-          variant="outline"
-          size="small"
-          onClick={handleReset}
+return (
+  <DropdownMenu>
+    <DropdownMenu.Trigger asChild>
+      <IconButton/>
+    </DropdownMenu.Trigger>
+    
+    <DropdownMenu.Content sideOffset={4} align="end">
+      <Flex direction="column" gap={100}>
+        <Flex
+          customClass="TimerInputs"
+          align="center"
+          justify="center"
         >
-          <StopIcon />
-        </IconButton>
+          <input
+            type="number"
+            value={formatTime(minutes)}
+            onChange={(e) => setMinutes(parseInt(e.target.value))}
+            placeholder="Minutes"
+            min="0"
+            max="59"
+          />
+          <Heading level={2}>:</Heading>
+          <input
+            type="number"
+            value={formatTime(seconds)}
+            onChange={(e) => setSeconds(parseInt(e.target.value))}
+            placeholder="Seconds"
+            max="59"
+            min="0"
+          />
+        </Flex>
+        <Separator />
+        <Flex justify="between" gap={200}>
+          <Button
+            variant="outline"
+            size="small"
+            onClick={handleAddMinute}
+          >
+            +1 min
+          </Button>
+          <Flex gap={100}>
+            {!isActive && (
+              <IconButton
+                size="small"
+                onClick={handleStart}
+                disabled={isActive}
+              >
+                <PlayIcon />
+              </IconButton>
+            )}
+            {isActive && (
+              <IconButton
+                variant="outline"
+                onClick={handlePause}
+                disabled={!isActive}
+                size="small"
+              >
+                <PauseIcon />
+              </IconButton>
+            )}
+            <IconButton
+              variant="outline"
+              size="small"
+              onClick={handleReset}
+            >
+              <StopIcon />
+            </IconButton>
+          </Flex>
+        </Flex>
       </Flex>
-    </Flex>
-  </Flex>
-</DropdownMenu.Content>
+    </DropdownMenu.Content>
+  </DropdownMenu>
+);
 `;
 
   const [notifications, setNotifications] = useState([]);

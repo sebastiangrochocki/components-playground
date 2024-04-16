@@ -4,6 +4,7 @@
     box-sizing: border-box;
     padding: var(--size-50) var(--size-50) var(--size-100) var(--size-100);
     gap: var(--size-50);
+    color: var(--foreground-neutral);
     &.read {
         background-color: var(--background-neutral);
         &:hover {
