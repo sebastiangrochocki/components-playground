@@ -13,20 +13,24 @@ DropdownMenu.Trigger = React.forwardRef(({ children, ...props }, ref) => {
   );
 });
 
-DropdownMenu.Content = React.forwardRef(({ children, ...props }, ref) => {
-  return (
-    <DropdownMenuPrimitive.Portal>
-      <DropdownMenuPrimitive.Content
-        ref={ref}
-        sideOffset={8}
-        className="DropdownMenuContent"
-        {...props}
-      >
-        {children}
-      </DropdownMenuPrimitive.Content>
-    </DropdownMenuPrimitive.Portal>
-  );
-});
+DropdownMenu.Content = React.forwardRef(
+  ({ children, noPadding, ...props }, ref) => {
+    const classNames = `DropdownMenuContent${noPadding ? " noPadding" : ""}`;
+
+    return (
+      <DropdownMenuPrimitive.Portal>
+        <DropdownMenuPrimitive.Content
+          ref={ref}
+          sideOffset={8}
+          className={classNames}
+          {...props}
+        >
+          {children}
+        </DropdownMenuPrimitive.Content>
+      </DropdownMenuPrimitive.Portal>
+    );
+  }
+);
 
 DropdownMenu.Item = React.forwardRef(
   ({ children, hotkey, icon: Icon, ...props }, ref) => {
@@ -37,7 +41,7 @@ DropdownMenu.Item = React.forwardRef(
         {...props}
       >
         <div className="LeftSlot">{Icon && <Icon />}</div>
-        {children}
+        <div className="LabelSlot">{children}</div>
         {hotkey && (
           <div className="RightSlot">
             <div className="Hotkey">
@@ -59,7 +63,7 @@ DropdownMenu.CheckboxItem = React.forwardRef(
         {...props}
       >
         <div className="LeftSlot">{Icon && <Icon />}</div>
-        {children}
+        <div className="LabelSlot">{children}</div>
         <div className="RightSlot">
           <CheckIcon />
           {hotkey && (
@@ -90,7 +94,7 @@ DropdownMenu.RadioItem = React.forwardRef(
         {...props}
       >
         <div className="LeftSlot">{Icon && <Icon />}</div>
-        {children}
+        <div className="LabelSlot">{children}</div>
         <div className="RightSlot">
           <div className="RadioButton">
             <span></span>
@@ -127,7 +131,7 @@ DropdownMenu.SubTrigger = React.forwardRef(
       >
         <DropdownMenuPrimitive.Item>
           <div className="LeftSlot">{Icon && <Icon />}</div>
-          {children}
+          <div className="LabelSlot">{children}</div>
           <div className="RightSlot">
             <ChevronRightIcon />
           </div>
@@ -137,19 +141,23 @@ DropdownMenu.SubTrigger = React.forwardRef(
   }
 );
 
-DropdownMenu.SubContent = React.forwardRef(({ children, ...props }, ref) => {
-  return (
-    <DropdownMenuPrimitive.Portal>
-      <DropdownMenuPrimitive.SubContent
-        ref={ref}
-        sideOffset={12}
-        className="DropdownMenuSubContent"
-        {...props}
-      >
-        {children}
-      </DropdownMenuPrimitive.SubContent>
-    </DropdownMenuPrimitive.Portal>
-  );
-});
+DropdownMenu.SubContent = React.forwardRef(
+  ({ children, noPadding, ...props }, ref) => {
+    const classNames = `DropdownMenuSubContent${noPadding ? " noPadding" : ""}`;
+
+    return (
+      <DropdownMenuPrimitive.Portal>
+        <DropdownMenuPrimitive.SubContent
+          ref={ref}
+          sideOffset={12}
+          className={classNames}
+          {...props}
+        >
+          {children}
+        </DropdownMenuPrimitive.SubContent>
+      </DropdownMenuPrimitive.Portal>
+    );
+  }
+);
 
 export default DropdownMenu;

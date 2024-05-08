@@ -6,7 +6,7 @@ button {
 .DropdownMenuContent,
 .DropdownMenuSubContent {
     z-index: 9;
-    min-width: 220px;
+    min-width: 124px;
     background-color: var(--background-neutral-container);
     border-radius: 4px;
     padding: var(--size-100);
@@ -15,6 +15,9 @@ button {
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
     // border: 1px solid var(--border-neutral-subtle);
+    &.noPadding {
+        padding: 0;
+    }
     &:focus-visible {
         box-shadow: var(--shadow-level-2);
         // border: 1px solid var(--border-neutral-subtle);
@@ -62,11 +65,15 @@ button {
     &:hover {
         box-shadow: none;
     }
+    .LabelSlot {
+        margin-right: auto;
+    }
     .RightSlot {
         display: flex;
         align-items: center;
         justify-content: center;
         min-width: 20px;
+        margin-left: var(--size-200);
         padding-right: 4px;
         color: var(--foreground-neutral);
         .RadioButton {

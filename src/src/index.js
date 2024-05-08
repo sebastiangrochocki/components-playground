@@ -32,6 +32,7 @@ export { default as TextArea } from "./TextArea";
 export { default as TopBanner } from "./TopBanner";
 export { default as ToggleGroup } from "./ToggleGroup";
 export { default as Toggle } from "./Toggle";
+export { default as Toolbar } from "./Toolbar";
 export { default as Loader } from "./Loader";
 export { default as Spinner } from "./Spinner";
 export { default as ScrollArea } from "./ScrollArea";

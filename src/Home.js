@@ -50,6 +50,7 @@ import {
   SewingPinIcon,
   VideoIcon,
   DividerHorizontalIcon,
+  HobbyKnifeIcon,
 } from "@radix-ui/react-icons";
 import {
   // BrowserRouter as Router,
@@ -118,6 +119,8 @@ const Home = ({ setDark, dark, resetAnimation }) => {
     { path: "toggle", title: "Toggle", icon: <BadgeIcon /> },
     { path: "toggle-group", title: "ToggleGroup", icon: <BadgeIcon /> },
     { path: "tooltip", title: "Tooltip", icon: <ChatBubbleIcon /> },
+    { path: "toolbar", title: "Toolbar", icon: <HobbyKnifeIcon /> },
+
     {
       path: "top-banner",
       title: "TopBanner",

@@ -41,6 +41,7 @@ import SelectPage from "./pages/SelectPage";
 import SeparatorPage from "./pages/SeparatorPage";
 import PillPage from "./pages/PillPage";
 import CardPage from "./pages/CardPage";
+import ToolbarPage from "./pages/ToolbarPage";
 // import Hero from "./pages/Hero";
 //
 import Lottie from "lottie-react";
@@ -190,6 +191,7 @@ function App() {
           <Route path="textarea" element={<TextAreaPage />} />
           <Route path="toggle" element={<TogglePage />} />
           <Route path="toggle-group" element={<ToggleGroupPage />} />
+          <Route path="toolbar" element={<ToolbarPage />} />
           <Route path="tooltip" element={<TooltipPage />} />
           <Route path="top-banner" element={<TopBannerPage />} />
           <Route path="user-on-hold-item" element={<UserOnHoldItemPage />} />

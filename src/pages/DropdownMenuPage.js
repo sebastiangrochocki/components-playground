@@ -102,6 +102,11 @@ const MyComponent = () => {
       defaultValue: "false",
     },
     {
+      property: "noPadding",
+      type: "boolean",
+      defaultValue: "false",
+    },
+    {
       property: "loop",
       type: "boolean",
       defaultValue: "false",
