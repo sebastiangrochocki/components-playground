@@ -11,7 +11,7 @@ button {
     // border: 1px solid var(--border-neutral-subtle);
     box-sizing: border-box;
     height: 44px;
-    gap: var(--size-50);
+    gap: var(--size-100);
 }
 
 .ToggleGroupItem {
@@ -20,11 +20,11 @@ button {
     height: 44px;
     width: 44px;
     display: flex;
-    font-size: 16x;
+    font-size: 16px;
     line-height: 1;
     align-items: center;
     justify-content: center;
-    margin-left: 1px;
+    // margin-left: 1px;
     border-radius: var(--size-50);
     svg {
         width: 20px;
