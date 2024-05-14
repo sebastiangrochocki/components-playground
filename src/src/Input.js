@@ -18,7 +18,7 @@ const Input = ({
   validation = false,
   name,
   fluid,
-  // hideLabel = false,
+  ...props
 }) => {
   const isSearchInput = type === "search";
   return (
@@ -39,6 +39,7 @@ const Input = ({
         name={name}
         onFocus={onFocus}
         onBlur={onBlur}
+        {...props}
       />
       {type !== "number" && <label>{label}</label>}
       {errormsg !== false && <p>{errormsg}</p>}
