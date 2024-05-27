@@ -1,30 +1,47 @@
-import React from "react";
-import "./Iframe.scss"; // You can create a corresponding SCSS file for styling
+import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
+import "./Iframe.scss";
 import Paragraph from "./Paragraph";
 import Flex from "./Flex";
 import figmaLogo from "./assets/figmaLogo.svg";
 
-const IframeComponent = ({ url, title = "Iframe Title" }) => {
-  if (!url) {
+const IframeComponent = forwardRef(
+  ({ url, title = "Iframe Title", style, ...props }, ref) => {
+    if (!url) {
+      return (
+        <Flex direction={"column"} customClass={"FigmaIntegrationMessage"}>
+          <Paragraph size="large" weight="bold">
+            Figma integration
+          </Paragraph>
+          <img src={figmaLogo} className="UpdatesLogo" alt="Figma Logo" />
+        </Flex>
+      );
+    }
+
     return (
-      <Flex direction={"column"} customClass={"FigmaIntegrationMessage"}>
-        <Paragraph size="large" weight="bold">
-          Figma integration
-        </Paragraph>
-        <img src={figmaLogo} className="UpdatesLogo" alt="Figma Logo" />
-      </Flex>
+      <iframe
+        ref={ref}
+        src={url}
+        title={title}
+        className="iframeComponent"
+        frameBorder="0"
+        allowFullScreen
+        style={style}
+        {...props}
+      ></iframe>
     );
   }
+);
 
-  return (
-    <iframe
-      src={url}
-      title={title}
-      className="iframeComponent" // You can define styles in IframeComponent.scss
-      frameBorder="0"
-      allowFullScreen
-    ></iframe>
-  );
+IframeComponent.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  style: PropTypes.object,
+};
+
+IframeComponent.defaultProps = {
+  title: "Iframe Title",
+  style: {},
 };
 
 export default IframeComponent;

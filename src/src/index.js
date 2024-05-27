@@ -18,6 +18,7 @@ export { default as Pill } from "./Pill";
 export { default as Paragraph } from "./Paragraph";
 export { default as Separator } from "./Separator";
 export { default as Select } from "./Select";
+export { default as Stepper } from "./Stepper";
 export { default as Tag } from "./Tag";
 export { default as UserListItem } from "./UserListItem";
 export { default as UserItem } from "./UserItem";

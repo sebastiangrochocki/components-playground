@@ -51,6 +51,7 @@ import {
   VideoIcon,
   DividerHorizontalIcon,
   HobbyKnifeIcon,
+  CommitIcon,
 } from "@radix-ui/react-icons";
 import {
   // BrowserRouter as Router,
@@ -137,6 +138,7 @@ const Home = ({ setDark, dark, resetAnimation }) => {
     { path: "scrollarea", title: "ScrollArea", icon: <SewingPinIcon /> },
     { path: "select", title: "Select", icon: <CheckboxIcon /> },
     { path: "separator", title: "Separator", icon: <DividerHorizontalIcon /> },
+    { path: "stepper", title: "Stepper", icon: <CommitIcon /> },
   ];
 
   const [searchQuery, setSearchQuery] = useState(""); // Declare search query state

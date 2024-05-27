@@ -382,7 +382,10 @@ return (
               </Flex>
             </Tabs.Content>
             <Tabs.Content value="tab2">
-              <Iframe url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FYZW2UgEtRkveoF6bTbmWPw%2FBlocksInGrids-App%3Ftype%3Ddesign%26node-id%3D745%253A947%26mode%3Ddesign%26t%3DwC7qfQ1IqvY8x6g8-1" />
+              <Iframe
+                style={{ minHeight: "400px" }}
+                url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FYZW2UgEtRkveoF6bTbmWPw%2FBlocksInGrids-App%3Ftype%3Ddesign%26node-id%3D745%253A947%26mode%3Ddesign%26t%3DwC7qfQ1IqvY8x6g8-1"
+              />
             </Tabs.Content>
           </Tabs>
         </Section>

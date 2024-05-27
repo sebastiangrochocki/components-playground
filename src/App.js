@@ -42,6 +42,7 @@ import SeparatorPage from "./pages/SeparatorPage";
 import PillPage from "./pages/PillPage";
 import CardPage from "./pages/CardPage";
 import ToolbarPage from "./pages/ToolbarPage";
+import StepperPage from "./pages/StepperPage";
 // import Hero from "./pages/Hero";
 //
 import Lottie from "lottie-react";
@@ -203,7 +204,7 @@ function App() {
           <Route path="separator" element={<SeparatorPage />} />
           <Route path="pill" element={<PillPage />} />
           <Route path="card" element={<CardPage />} />
-
+          <Route path="stepper" element={<StepperPage />} />
           {/* Add more nested routes here */}
         </Route>
 
