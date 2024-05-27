@@ -37,6 +37,7 @@ export { default as Toolbar } from "./Toolbar";
 export { default as Loader } from "./Loader";
 export { default as Spinner } from "./Spinner";
 export { default as ScrollArea } from "./ScrollArea";
+export { default as Slider } from "./Slider";
 export { default as UserOnHoldItem } from "./UserOnHoldItem";
 export { default as Styles } from "./Variables.scss";
 export { default as SharedStyles } from "./shared-styles.scss";

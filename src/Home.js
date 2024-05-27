@@ -52,6 +52,7 @@ import {
   DividerHorizontalIcon,
   HobbyKnifeIcon,
   CommitIcon,
+  SliderIcon,
 } from "@radix-ui/react-icons";
 import {
   // BrowserRouter as Router,
@@ -138,6 +139,7 @@ const Home = ({ setDark, dark, resetAnimation }) => {
     { path: "scrollarea", title: "ScrollArea", icon: <SewingPinIcon /> },
     { path: "select", title: "Select", icon: <CheckboxIcon /> },
     { path: "separator", title: "Separator", icon: <DividerHorizontalIcon /> },
+    { path: "slider", title: "Slider", icon: <SliderIcon /> },
     { path: "stepper", title: "Stepper", icon: <CommitIcon /> },
   ];
 
