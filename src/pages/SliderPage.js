@@ -107,6 +107,12 @@ import { Slider } from "blocksin-system";
       description: "If true, the slider will be disabled.",
       default: "false",
     },
+    {
+      property: "fluid",
+      type: "boolean (optional)",
+      description: "If true, the slider will fill the container.",
+      default: "false",
+    },
   ];
 
   //
@@ -127,7 +133,7 @@ import { Slider } from "blocksin-system";
             elements, ensuring flexibility and control.
           </Paragraph>
           <Flex customClass="ComponentPreview">
-            <Slider defaultValue={[50]} max={100} step={1} />
+            <Slider fluid defaultValue={[50]} max={100} step={1} />
           </Flex>
           <Heading level={3} weight="bold">
             Usage
@@ -168,9 +174,9 @@ import { Slider } from "blocksin-system";
 
           <ReactLive scope={scope}>
             {`
-<Flex direction="row" gap={100}>
-  <form>
-    <Slider defaultValue={[50]} max={100} step={1} />
+<Flex direction="row" fluid gap={100}>
+  <form style={{width: "100%"}}>
+    <Slider fluid defaultValue={[50]} max={100} step={1} />
   </form>
 </Flex>
       `}

@@ -4,8 +4,11 @@
     align-items: center;
     user-select: none;
     touch-action: none;
-    width: 200px;
-    height: 20px;
+    min-width: 124px;
+    height: 24px;
+    &.fluid {
+        width: 100%;
+    }
     &[aria-disabled="true"] {
         .SliderTrack {
             background-color: var(--background-neutral-disabled);
