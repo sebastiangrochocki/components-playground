@@ -224,8 +224,8 @@ return (
     {
       prop: "size (string)",
       description:
-        'Determines the size of the button. Default values include "small", "medium", and "large".',
-      value: '"small", "medium", "large"',
+        'Determines the size of the button. Default values include "mini", "small", "medium", and "large".',
+      value: '"mini", "small", "medium", "large"',
     },
     {
       prop: "variant (string)",

@@ -86,6 +86,13 @@ import { ViewGridIcon } from "@radix-ui/react-icons";
       Description: "The content of the toggle button.",
     },
     {
+      Property: "size",
+      Type: "String",
+      Optional: "(optional)",
+      Description:
+        "Sets the size of the button (mini, small, medium). Default is medium.",
+    },
+    {
       Property: "onPressedChange",
       Type: "(pressed: boolean) => void",
       Optional: "(required)",

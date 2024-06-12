@@ -3,11 +3,12 @@ import React from "react";
 import "./radix-styles/SingleToggle.scss";
 
 const Toggle = React.forwardRef(
-  ({ children, onPressedChange, ...props }, ref) => (
+  ({ children, onPressedChange, size = "medium", ...props }, ref) => (
     <TogglePrimitive.Root
       {...props}
       ref={ref}
-      className="Toggle"
+      size={size}
+      className={`Toggle Toggle-${size}`}
       onPressedChange={onPressedChange}
     >
       {children}

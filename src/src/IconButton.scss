@@ -1,5 +1,14 @@
 .icon-button {
     position: relative;
+    &-mini {
+        height: 32px;
+        width: 32px;
+        min-width: 32px;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
     &-small {
         height: 40px;
         width: 40px;

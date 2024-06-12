@@ -80,6 +80,11 @@ import { ViewGridIcon, ViewListIcon } from "@radix-ui/react-icons";
 
   const data = [
     { Prop: "asChild", Type: "boolean", Default: "false" },
+    {
+      Prop: "size",
+      Type: "string",
+      Default: "medium",
+    },
     { Prop: "type*", Type: "enum", Default: "No default value" },
     { Prop: "value", Type: "string", Default: "No default value" },
     { Prop: "defaultValue", Type: "string", Default: "No default value" },
