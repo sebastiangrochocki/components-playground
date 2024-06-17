@@ -7,9 +7,10 @@ const Introduction = () => {
 :root {
   --font-body: "OpenSans";
   --font-body-bold: "OpenSans-Bold";
-  --font-accent: "DarkerGrotesque";
-  --font-accent-bold: "DarkerGrotesque-Bold";
-  --font-accent-light: "DarkerGrotesque-Light";
+  --font-accent: "OpenSans";
+  --font-accent-light: "OpenSans-Light";
+  --font-accent-medium: "OpenSans-Medium";
+  --font-accent-bold: "OpenSans-Bold";
 }
 `;
 
@@ -28,9 +29,9 @@ const Introduction = () => {
         </Paragraph>
         <Paragraph size="large">
           To ensure optimal appearance and functionality, BlocksIn System uses
-          'Open Sans' for body text and 'Darker Grotesque' for accent fonts. Add
-          these fonts to your application by declaring the following variables
-          in your main app.css file:
+          'Open Sans' for body text and accent fonts. Add these fonts to your
+          application by declaring the following variables in your main app.css
+          file:
         </Paragraph>
         <CodeFormatter language="css" codeString={codeString1} />
       </Section>

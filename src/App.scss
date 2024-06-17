@@ -244,13 +244,10 @@ grammarly-extension {
 
 @font-face {
   font-family: "pix PixelFJVerdana12pt";
-  src: url("fonts/pixel/pixPixelFJVerdana12pt.eot");
   src:
-    url("fonts/pixel/pixPixelFJVerdana12pt.eot?#iefix") format("embedded-opentype"),
     url("fonts/pixel/pixPixelFJVerdana12pt.woff2") format("woff2"),
     url("fonts/pixel/pixPixelFJVerdana12pt.woff") format("woff"),
-    url("fonts/pixel/pixPixelFJVerdana12pt.ttf") format("truetype"),
-    url("fonts/pixel/pixPixelFJVerdana12pt.svg#pixPixelFJVerdana12pt") format("svg");
+    url("fonts/pixel/pixPixelFJVerdana12pt.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

@@ -1,8 +1,5 @@
 .button {
-    // font-family: "MuseoModerno";
-    // font-weight: 600;
-    // font-family: "Space Grotesk";
-    font-family: var(--font-accent-bold);
+    font-family: var(--font-accent-semibold);
     // font-weight: bold;
     text-decoration: none;
     position: relative;
@@ -22,11 +19,11 @@
     }
     &-small {
         padding: 0 var(--size-150);
-        font-size: 16px;
+        font-size: 13px;
         height: 40px;
         min-width: 40px;
         line-height: 20px;
-        gap: var(--size-50);
+        gap: var(--size-100);
         svg {
             width: 20px;
             height: 20px;
@@ -34,7 +31,7 @@
     }
     &-medium {
         padding: 0 var(--size-200);
-        font-size: 16px;
+        font-size: 13px;
         height: 44px;
         min-width: 44px;
         line-height: 20px;
@@ -46,7 +43,7 @@
     }
     &-large {
         padding: 0 var(--size-300);
-        font-size: 18px;
+        font-size: 16px;
         min-height: 56px;
         min-width: 56px;
         line-height: 24px;
@@ -91,6 +88,9 @@
             background-color: var(--background-primary);
             color: var(--black-400);
         }
+    }
+    &[aria-expanded="true"] {
+        background-color: var(--background-neutral-hover);
     }
     &-solid {
         color: var(--foreground-primary);

@@ -68,6 +68,7 @@ button {
     .LabelSlot {
         margin-right: auto;
         padding-right: var(--size-200);
+        width: max-content;
     }
     .RightSlot {
         display: flex;
@@ -99,6 +100,7 @@ button {
             height: 24px;
             display: flex;
             align-items: center;
+            width: max-content;
             span {
                 color: var(--foreground-neutral-placeholder);
                 font-size: 14px;
@@ -151,6 +153,17 @@ button {
 .DropdownMenuSubTrigger[data-disabled] {
     color: var(--foreground-neutral-disabled);
     pointer-events: none;
+    .LeftSlot {
+        color: var(--foreground-neutral-disabled);
+    }
+    .RightSlot {
+        .Hotkey {
+            background-color: transparent;
+            span {
+                color: var(--foreground-neutral-disabled);
+            }
+        }
+    }
 }
 .DropdownMenuItem[data-highlighted],
 .DropdownMenuCheckboxItem[data-highlighted],

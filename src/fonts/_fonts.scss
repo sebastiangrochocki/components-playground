@@ -1,69 +1,86 @@
 @font-face {
     font-family: "OpenSans";
-    src: url("opensans/OpenSans.eot");
     src:
-        url("opensans/OpenSans.eot?#iefix") format("embedded-opentype"),
         url("opensans/OpenSans.woff2") format("woff2"),
         url("opensans/OpenSans.woff") format("woff"),
-        url("opensans/OpenSans.ttf") format("truetype"),
-        url("opensans/OpenSans.svg#OpenSans") format("svg");
+        url("opensans/OpenSans.ttf") format("truetype");
     font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "OpenSans-Medium";
+    src:
+        url("opensans/OpenSans-Medium.woff2") format("woff2"),
+        url("opensans/OpenSans-Medium.woff") format("woff"),
+        url("opensans/OpenSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans-SemiBold";
+    src:
+        url("opensans/OpenSans-SemiBold.woff2") format("woff2"),
+        url("opensans/OpenSans-SemiBold.woff") format("woff"),
+        url("opensans/OpenSans-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenSans-Light";
+    src:
+        url("opensans/OpenSans-Light.woff2") format("woff2"),
+        url("opensans/OpenSans-Light.woff") format("woff"),
+        url("opensans/OpenSans-Light.ttf") format("truetype");
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
     font-family: "OpenSans-Bold";
-    src: url("opensans/OpenSans-Bold.eot");
     src:
-        url("opensans/OpenSans-Bold.eot?#iefix") format("embedded-opentype"),
         url("opensans/OpenSans-Bold.woff2") format("woff2"),
         url("opensans/OpenSans-Bold.woff") format("woff"),
-        url("opensans/OpenSans-Bold.ttf") format("truetype"),
-        url("opensans/OpenSans-Bold.svg#OpenSans-Bold") format("svg");
+        url("opensans/OpenSans-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
-@font-face {
-    font-family: "DarkerGrotesque";
-    src: url("darker/DarkerGrotesque-Regular.eot");
-    src:
-        url("darker/DarkerGrotesque-Regular.eot?#iefix") format("embedded-opentype"),
-        url("darker/DarkerGrotesque-Regular.woff2") format("woff2"),
-        url("darker/DarkerGrotesque-Regular.woff") format("woff"),
-        url("darker/DarkerGrotesque-Regular.ttf") format("truetype"),
-        url("darker/DarkerGrotesque-Regular.svg#DarkerGrotesque-Regular") format("svg");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+// @font-face {
+//     font-family: "DarkerGrotesque";
+//     src:
+//         url("darker/DarkerGrotesque-Regular.woff2") format("woff2"),
+//         url("darker/DarkerGrotesque-Regular.woff") format("woff"),
+//         url("darker/DarkerGrotesque-Regular.ttf") format("truetype");
+//     font-weight: normal;
+//     font-style: normal;
+//     font-display: swap;
+// }
 
-@font-face {
-    font-family: "DarkerGrotesque-Bold";
-    src: url("darker/DarkerGrotesque-Bold.eot");
-    src:
-        url("darker/DarkerGrotesque-Bold.eot?#iefix") format("embedded-opentype"),
-        url("darker/DarkerGrotesque-Bold.woff2") format("woff2"),
-        url("darker/DarkerGrotesque-Bold.woff") format("woff"),
-        url("darker/DarkerGrotesque-Bold.ttf") format("truetype"),
-        url("darker/DarkerGrotesque-Bold.svg#DarkerGrotesque-Bold") format("svg");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
+// @font-face {
+//     font-family: "DarkerGrotesque-Bold";
+//     src:
+//         url("darker/DarkerGrotesque-Bold.woff2") format("woff2"),
+//         url("darker/DarkerGrotesque-Bold.woff") format("woff"),
+//         url("darker/DarkerGrotesque-Bold.ttf") format("truetype");
+//     font-weight: bold;
+//     font-style: normal;
+//     font-display: swap;
+// }
 
-@font-face {
-    font-family: "DarkerGrotesque-Light";
-    src: url("darker/DarkerGrotesque-Light.eot");
-    src:
-        url("darker/DarkerGrotesque-Light.eot?#iefix") format("embedded-opentype"),
-        url("darker/DarkerGrotesque-Light.woff2") format("woff2"),
-        url("darker/DarkerGrotesque-Light.woff") format("woff"),
-        url("darker/DarkerGrotesque-Light.ttf") format("truetype"),
-        url("darker/DarkerGrotesque-Light.svg#DarkerGrotesque-Light") format("svg");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
+// @font-face {
+//     font-family: "DarkerGrotesque-Light";
+//     src:
+//         url("darker/DarkerGrotesque-Light.woff2") format("woff2"),
+//         url("darker/DarkerGrotesque-Light.woff") format("woff"),
+//         url("darker/DarkerGrotesque-Light.ttf") format("truetype");
+//     font-weight: 300;
+//     font-style: normal;
+//     font-display: swap;
+// }
