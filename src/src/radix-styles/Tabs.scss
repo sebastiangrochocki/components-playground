@@ -53,12 +53,18 @@ input {
     content: "";
     display: block;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    width: 100%;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+    // height: 2px;
+    // width: 100%;
     background-color: var(--brand-1);
+    bottom: 3px;
+    left: 8px;
+    right: 8px;
+    height: 3px;
+    border-radius: 4px;
+    width: auto;
   }
 }
 .TabsTrigger:focus {

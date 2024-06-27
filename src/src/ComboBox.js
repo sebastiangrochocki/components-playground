@@ -8,7 +8,19 @@ import {
 import "./radix-styles/ComboBox.scss";
 
 const ComboBox = forwardRef(
-  ({ options, value, onChange, placeholder, isMulti, fluid }, ref) => {
+  (
+    {
+      options,
+      value,
+      onChange,
+      placeholder,
+      isMulti,
+      fluid,
+      onInputChange,
+      isClearable,
+    },
+    ref
+  ) => {
     const CustomDropdownIndicator = (props) => (
       <components.DropdownIndicator {...props}>
         {props.selectProps.menuIsOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
@@ -55,6 +67,8 @@ const ComboBox = forwardRef(
         fluid={fluid}
         options={options}
         value={value}
+        onInputChange={onInputChange}
+        isClearable={isClearable}
         onChange={onChange}
         placeholder={placeholder}
         classNamePrefix="ComboBoxTrigger"
