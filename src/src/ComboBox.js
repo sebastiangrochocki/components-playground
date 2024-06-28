@@ -18,6 +18,7 @@ const ComboBox = forwardRef(
       fluid,
       onInputChange,
       isClearable,
+      menuPlacement,
     },
     ref
   ) => {
@@ -70,6 +71,7 @@ const ComboBox = forwardRef(
         onInputChange={onInputChange}
         isClearable={isClearable}
         onChange={onChange}
+        menuPlacement={menuPlacement}
         placeholder={placeholder}
         classNamePrefix="ComboBoxTrigger"
         className={`ComboBox ${fluid ? "fluid" : ""}`}
