@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import { Paragraph, Flex, IconButton, Toast, ScrollArea } from "../src/index";
-import { SizeIcon, CopyIcon } from "@radix-ui/react-icons";
+import { SizeIcon, CopyIcon } from "sebikostudio-icons";
 
 const ReactLive = ({ children, scope, vertical }) => {
   const [isExpanded, setIsExpanded] = useState(false);

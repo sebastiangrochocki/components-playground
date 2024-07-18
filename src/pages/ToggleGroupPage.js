@@ -24,14 +24,14 @@ import {
   TextAlignCenterIcon,
   TextAlignLeftIcon,
   TextAlignRightIcon,
-} from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+} from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 import CodeFormatter from "./CodeFormatter";
 
 const ToggleGroupPage = () => {
   const codeString1 = `  
 import ToggleGroup from "./ToggleGroup";
-import { ViewGridIcon, ViewListIcon } from "@radix-ui/react-icons";
+import { ViewGridIcon, ViewListIcon } from "sebikostudio-icons";
 
 <ToggleGroup type="single" aria-label="View options">
   <ToggleGroup.Item value="grid" aria-label="Grid view">

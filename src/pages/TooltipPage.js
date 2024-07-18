@@ -19,16 +19,16 @@ import {
   SizeIcon,
   CopyIcon,
   ChatBubbleIcon,
-} from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+  BellIcon,
+} from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 import CodeFormatter from "./CodeFormatter";
 
 const TooltipPage = () => {
   const codeString1 = `  
 import React from "react";
 import { Tooltip, IconButton, Paragraph } from "blocksin-system";
-import { ChatBubbleIcon } from "@radix-ui/react-icons";
+import { ChatBubbleIcon } from "sebikostudio-icons";
 
 const Example = () => {
   return (

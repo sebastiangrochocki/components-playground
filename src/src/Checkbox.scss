@@ -55,6 +55,9 @@
             width: 20px;
             height: 20px;
             color: var(--foreground-primary);
+            * {
+                stroke-width: 1.25px;
+            }
         }
     }
 

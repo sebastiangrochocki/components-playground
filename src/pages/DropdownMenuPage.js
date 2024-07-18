@@ -19,16 +19,16 @@ import ReactLive from "./ReactLive";
 import {
   BellIcon,
   SliderIcon,
-  FigmaLogoIcon,
-  Component2Icon,
+  FigmaLogoFilledIcon,
+  Component1Icon,
   Cross2Icon,
   SizeIcon,
   CopyIcon,
   GearIcon,
   TimerIcon,
   DotsHorizontalIcon,
-} from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+} from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 import CodeFormatter from "./CodeFormatter";
 
 const DropdownMenuPage = () => {
@@ -39,7 +39,7 @@ const DropdownMenuPage = () => {
   const [item, setItem] = React.useState("Item1");
   const codeString1 = `  
 import { DropdownMenu, IconButton } from "blocksin-system";
-import { SliderIcon } from "./path/to/your/components";
+import { SliderIcon } from "sebikostudio-icons";
 
 const MyComponent = () => {
   return (
@@ -62,8 +62,8 @@ const MyComponent = () => {
     `;
   const scope = {
     SliderIcon,
-    FigmaLogoIcon,
-    Component2Icon,
+    FigmaLogoFilledIcon,
+    Component1Icon,
     DropdownMenu,
     Separator,
     Checkbox,
@@ -215,11 +215,11 @@ const MyComponent = () => {
               </DropdownMenu.Trigger>
               <DropdownMenu.Content side="bottom" align="start">
                 <DropdownMenu.Item icon={CopyIcon}>Item 1</DropdownMenu.Item>
-                <DropdownMenu.Item icon={FigmaLogoIcon}>
+                <DropdownMenu.Item icon={FigmaLogoFilledIcon}>
                   Item 2
                 </DropdownMenu.Item>
                 <DropdownMenu.Sub>
-                  <DropdownMenu.SubTrigger icon={Component2Icon}>
+                  <DropdownMenu.SubTrigger icon={Component1Icon}>
                     Item3
                   </DropdownMenu.SubTrigger>
                   <DropdownMenu.SubContent>
@@ -346,11 +346,11 @@ const MyComponent = () => {
     
     <DropdownMenu.Content side="bottom" align="start">
       <DropdownMenu.Item icon={CopyIcon}>Item 1</DropdownMenu.Item>
-      <DropdownMenu.Item icon={FigmaLogoIcon}>
+      <DropdownMenu.Item icon={FigmaLogoFilledIcon}>
         Item 2
       </DropdownMenu.Item>
       <DropdownMenu.Sub>
-        <DropdownMenu.SubTrigger icon={Component2Icon}>
+        <DropdownMenu.SubTrigger icon={Component1Icon}>
           Item3
         </DropdownMenu.SubTrigger>
         <DropdownMenu.SubContent>
@@ -399,11 +399,11 @@ const MyComponent = () => {
 
     <DropdownMenu.Content side="bottom" align="start">
       <DropdownMenu.Item icon={CopyIcon}>Quick actions</DropdownMenu.Item>
-      <DropdownMenu.Item icon={FigmaLogoIcon}>
+      <DropdownMenu.Item icon={FigmaLogoFilledIcon}>
         Some settings
       </DropdownMenu.Item>
       <DropdownMenu.Sub>
-        <DropdownMenu.SubTrigger icon={Component2Icon}>
+        <DropdownMenu.SubTrigger icon={Component1Icon}>
           Some actions
         </DropdownMenu.SubTrigger>
         <DropdownMenu.SubContent>

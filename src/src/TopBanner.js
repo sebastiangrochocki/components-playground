@@ -1,8 +1,8 @@
 import React from "react";
-import Flex from "./Flex"; // Adjust the import path
-import Paragraph from "./Paragraph"; // Adjust the import path
-import IconButton from "./IconButton"; // Adjust the import path
-import { Cross1Icon } from "@radix-ui/react-icons"; // Adjust the import path
+import Flex from "./Flex";
+import Paragraph from "./Paragraph";
+import IconButton from "./IconButton";
+import { Cross1Icon } from "sebikostudio-icons";
 import "./TopBanner.scss";
 
 const TopBanner = ({ username, notification, onDismiss }) => {
@@ -11,8 +11,7 @@ const TopBanner = ({ username, notification, onDismiss }) => {
   }
 
   const { title, text, style } = notification;
-  const bannerClass = style ? `TopBanner ${style}` : "TopBanner"; // Add the style as a class
-
+  const bannerClass = style ? `TopBanner ${style}` : "TopBanner";
   return (
     <Flex customClass={bannerClass} align={"center"} justify={"between"}>
       <Flex direction={"column"}>

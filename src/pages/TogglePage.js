@@ -22,16 +22,15 @@ import {
   CopyIcon,
   BellIcon,
   ViewGridIcon,
-  GridIcon,
-  GroupIcon,
-} from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+  BoxIcon,
+} from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 import CodeFormatter from "./CodeFormatter";
 
 const TogglePage = () => {
   const codeString1 = `  
 import Toggle from "./Toggle";
-import { ViewGridIcon } from "@radix-ui/react-icons";
+import { ViewGridIcon } from "sebikostudio-icons";
 
 <Toggle onPressedChange={(pressed) => console.log(pressed)}>
   <ViewGridIcon />
@@ -62,8 +61,7 @@ import { ViewGridIcon } from "@radix-ui/react-icons";
     BellIcon,
     Paragraph,
     Toggle,
-    GridIcon,
-    GroupIcon,
+    BoxIcon,
     Tooltip,
   };
 
@@ -192,7 +190,7 @@ import { ViewGridIcon } from "@radix-ui/react-icons";
       <Tooltip.Trigger asChild>
         <label style={{width: "fit-content"}}>
           <Toggle aria-label="Toggle grid lines" checked={showGridLines} onPressedChange={toggleGridLines}>
-            <GroupIcon />
+            <BoxIcon />
           </Toggle>
         </label>
       </Tooltip.Trigger>

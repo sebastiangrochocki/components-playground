@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { Flex, Paragraph } from "../src/index";
+import { Flex, Paragraph, Loader } from "../src/index";
 
 import {
   Chart as ChartJS,
@@ -13,7 +13,7 @@ import {
   Legend,
   Filler,
 } from "chart.js";
-import { DownloadIcon } from "@radix-ui/react-icons";
+import { DownloadIcon } from "sebikostudio-icons";
 
 ChartJS.register(
   CategoryScale,
@@ -32,7 +32,7 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
     datasets: [{ data: [] }],
   });
   const [currentWeekDownloads, setCurrentWeekDownloads] = useState(0); // State for current week downloads
-
+  const [isLoading, setIsLoading] = useState(false);
   const labelColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--foreground-neutral-subtle")
     .trim();
@@ -47,6 +47,14 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
     plugins: {
       legend: {
         display: false, // Hide the legend
+      },
+    },
+    layout: {
+      padding: {
+        left: 0, // Remove left padding
+        right: 0,
+        top: 0,
+        bottom: 0,
       },
     },
     drawBorder: false,
@@ -89,6 +97,7 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
 
   useEffect(() => {
     const fetchDownloadCounts = async () => {
+      setIsLoading(true);
       const currentDate = new Date();
       const currentYear = currentDate.getFullYear();
       const currentWeek = Math.ceil(
@@ -143,10 +152,11 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
             setCurrentWeekDownloads(downloadData.downloads);
           }
         }
+        setIsLoading(false);
       }
 
       const brandColor = getComputedStyle(document.documentElement)
-        .getPropertyValue("--brand-1")
+        .getPropertyValue("--foreground-neutral-subtle")
         .trim();
 
       // Create the gradient after the chart data is fetched
@@ -165,9 +175,10 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
             fill: true,
             backgroundColor: gradient,
             borderColor: brandColor,
-            borderWidth: 4,
+            borderWidth: 3,
             tension: 0,
             stepped: false,
+            radius: 0,
           },
         ],
       });
@@ -188,11 +199,12 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
       <div
         style={{
           maxHeight: "200px",
-          width: "120%",
-          marginLeft: "-10%",
+          width: "106%",
+          marginLeft: "-3%",
           marginBottom: "-40px",
         }}
       >
+        {isLoading && <Loader />}
         <Line data={chartData} options={chartOptions} />
       </div>
     </Flex>

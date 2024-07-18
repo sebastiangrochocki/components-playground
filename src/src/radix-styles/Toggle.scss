@@ -36,6 +36,9 @@ button {
             svg {
                 width: 16px;
                 height: 16px;
+                * {
+                    stroke-width: 1.5625px;
+                }
             }
         }
     }
@@ -54,6 +57,9 @@ button {
         width: 20px;
         height: 20px;
         display: block;
+        * {
+            stroke-width: 1.25px;
+        }
     }
 }
 // .ToggleGroupItem:first-child {

@@ -20,7 +20,7 @@ import {
   CopyIcon,
   BellIcon,
   TimerIcon,
-} from "@radix-ui/react-icons";
+} from "sebikostudio-icons";
 import CodeFormatter from "./CodeFormatter";
 
 const ButtonPage = () => {

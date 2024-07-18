@@ -1,6 +1,5 @@
 .button {
     font-family: var(--font-accent-semibold);
-    // font-weight: bold;
     text-decoration: none;
     position: relative;
     &:focus-visible {
@@ -27,6 +26,9 @@
         svg {
             width: 20px;
             height: 20px;
+            * {
+                stroke-width: 1.25px;
+            }
         }
     }
     &-medium {
@@ -39,6 +41,9 @@
         svg {
             width: 20px;
             height: 20px;
+            * {
+                stroke-width: 1.25px;
+            }
         }
     }
     &-large {
@@ -51,6 +56,9 @@
         svg {
             width: 24px;
             height: 24px;
+            * {
+                stroke-width: 1.25px;
+            }
         }
     }
     &-fluid {

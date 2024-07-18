@@ -38,10 +38,10 @@ import {
   Calendar,
 } from "../src/index";
 import {
-  Component2Icon,
+  Component1Icon,
   CopyIcon,
   Cross2Icon,
-  FigmaLogoIcon,
+  FigmaLogoFilledIcon,
   Pencil1Icon,
   SliderIcon,
   ChatBubbleIcon,
@@ -50,8 +50,8 @@ import {
   CheckIcon,
   ViewGridIcon,
   ViewHorizontalIcon,
-} from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+} from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 // import Logo from "./assets/AppLogo2.svg";
 // import Logo2 from "../Logo";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -85,7 +85,7 @@ const Hero = () => {
   const user = {
     firstName: "David",
     email: "dav@gmail.com",
-    avatar: "./assets/beaver.jpeg",
+    avatar: "./assets/avatar.png",
     role: "Admin",
   };
   //
@@ -545,9 +545,9 @@ const Hero = () => {
             </DropdownMenu.Trigger>
             <DropdownMenu.Content side="bottom" align="start">
               <DropdownMenu.Item icon={CopyIcon}>Item 1</DropdownMenu.Item>
-              <DropdownMenu.Item icon={FigmaLogoIcon}>Item 2</DropdownMenu.Item>
+              <DropdownMenu.Item icon={FigmaLogoFilledIcon}>Item 2</DropdownMenu.Item>
               <DropdownMenu.Sub>
-                <DropdownMenu.SubTrigger icon={Component2Icon}>
+                <DropdownMenu.SubTrigger icon={Component1Icon}>
                   Item3
                 </DropdownMenu.SubTrigger>
                 <DropdownMenu.SubContent>
@@ -637,7 +637,7 @@ const Hero = () => {
               </DropdownMenu.Trigger>
               <DropdownMenu.Content side="bottom" sideOffset={8} align="center">
                 <DropdownMenu.Item
-                  icon={FigmaLogoIcon}
+                  icon={FigmaLogoFilledIcon}
                   onClick={() => setShowDialog(true)}
                 >
                   Show Dialog

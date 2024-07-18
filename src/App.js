@@ -48,8 +48,6 @@ import SliderPage from "./pages/SliderPage";
 //
 import Lottie from "lottie-react";
 import loaderAnimation from "./assets/BlocksIn-Intro.json";
-// import { IconButton, Separator, Switch, Flex } from "./src/index";
-// import { PlayIcon } from "@radix-ui/react-icons";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import NpmDownloads from "./pages/NpmDownloads";
 import Home from "./Home";
@@ -102,12 +100,15 @@ function App() {
     return savedDarkMode === "true";
   });
 
+  const [bgColor, setBgColor] = useState();
   useEffect(() => {
     // Set the dark mode class based on the dark state
     if (dark) {
       document.documentElement.classList.add("darkmode");
+      setBgColor("#282A34");
     } else {
       document.documentElement.classList.remove("darkmode");
+      setBgColor("#EBEDEF");
     }
     // Save the dark mode setting to local storage
     localStorage.setItem("dark", dark.toString());
@@ -162,6 +163,7 @@ function App() {
               setDark={setDark}
               dark={dark}
               resetAnimation={resetAnimation}
+              bgColor={bgColor}
             />
           }
         >

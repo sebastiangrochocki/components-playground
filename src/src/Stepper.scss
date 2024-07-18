@@ -48,6 +48,11 @@
     font-size: 16px;
     font-weight: 500;
     padding-bottom: 1px;
+    svg {
+        * {
+            stroke-width: 1.25px;
+        }
+    }
 }
 
 .step.current {

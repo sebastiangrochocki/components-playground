@@ -15,9 +15,9 @@ import {
   Card,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+import { Cross2Icon, SizeIcon, CopyIcon, TextIcon } from "sebikostudio-icons";
+import { BellIcon } from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 import CodeFormatter from "./CodeFormatter";
 
 const InputPage = () => {
@@ -47,6 +47,7 @@ import { Input } from "blocksin-system";
     BellIcon,
     Paragraph,
     Input,
+    TextIcon,
   };
 
   //
@@ -83,6 +84,13 @@ import { Input } from "blocksin-system";
       description:
         "The placeholder text displayed inside the input field. Default is 'Enter first name'.",
       default: "Enter first name",
+    },
+    {
+      property: "icon",
+      type: "Component (optional)",
+      description:
+        "A React component (icon) to be displayed on the right side of the Input field.",
+      default: "-",
     },
     {
       property: "errormsg",
@@ -253,9 +261,13 @@ import { Input } from "blocksin-system";
             {`
 <Flex direction="row" gap={100}>
   <Input
-  label="Search"
-  placeholder="Enter search keyword"
-  type="search"
+  label="Your Initials"
+  placeholder="Enter your Initials"
+  type="text"
+  pattern="^[A-Z]+$"
+  icon={TextIcon}
+  validation={true}
+  errormsg="Use capital letters only."
   />
 </Flex>
       `}

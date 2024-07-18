@@ -15,13 +15,8 @@ import {
   Youtube,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import {
-  Cross2Icon,
-  SizeIcon,
-  CopyIcon,
-  BellIcon,
-} from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+import { Cross2Icon, SizeIcon, CopyIcon, BellIcon } from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 import CodeFormatter from "./CodeFormatter";
 
 const YoutubePage = () => {

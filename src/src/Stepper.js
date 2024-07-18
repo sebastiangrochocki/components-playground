@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import "./Stepper.scss";
-import { CheckIcon } from "@radix-ui/react-icons";
+import { CheckIcon } from "sebikostudio-icons";
 
 const Stepper = forwardRef(
   (

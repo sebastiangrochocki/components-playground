@@ -1,7 +1,7 @@
 import React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import "./radix-styles/DropdownMenu.scss";
-import { CheckIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import { CheckIcon, ChevronRightIcon } from "sebikostudio-icons";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 

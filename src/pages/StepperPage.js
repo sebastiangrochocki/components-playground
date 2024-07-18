@@ -23,10 +23,10 @@ import {
   BellIcon,
   FilePlusIcon,
   UploadIcon,
-  UpdateIcon,
+  RepeatIcon,
   HomeIcon,
-} from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+} from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 import CodeFormatter from "./CodeFormatter";
 
 const StepperPage = () => {
@@ -49,7 +49,7 @@ const StepperPage = () => {
     BellIcon,
     FilePlusIcon,
     UploadIcon,
-    UpdateIcon,
+    RepeatIcon,
     HomeIcon,
     IconButton,
     Flex,
@@ -71,7 +71,7 @@ const handleStepClick = (step) => {
   steps={5}
   currentStep={currentStep}
   orientation="horizontal"
-  icons={[CopyIcon, FilePlusIcon, UploadIcon, UpdateIcon, HomeIcon]}
+  icons={[CopyIcon, FilePlusIcon, UploadIcon, RepeatIcon, HomeIcon]}
   dynamic={true}
   onStepClick={handleStepClick}
 />
@@ -157,7 +157,7 @@ const handleStepClick = (step) => {
               steps={5}
               currentStep={currentStep}
               orientation="horizontal"
-              icons={[CopyIcon, FilePlusIcon, UploadIcon, UpdateIcon, HomeIcon]}
+              icons={[CopyIcon, FilePlusIcon, UploadIcon, RepeatIcon, HomeIcon]}
               dynamic={true}
               onStepClick={handleStepClick}
             />
@@ -258,7 +258,7 @@ const handleStepClick = (step) => {
     steps={5}
     currentStep={currentStep}
     orientation="horizontal"
-    icons={[CopyIcon, FilePlusIcon, UploadIcon, UpdateIcon, HomeIcon]}
+    icons={[CopyIcon, FilePlusIcon, UploadIcon, RepeatIcon, HomeIcon]}
     dynamic={true}
     onStepClick={handleStepClick}
   />

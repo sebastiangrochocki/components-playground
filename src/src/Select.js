@@ -1,9 +1,5 @@
 import * as SelectPrimitive from "@radix-ui/react-select";
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from "@radix-ui/react-icons";
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "sebikostudio-icons";
 import React from "react";
 import "./radix-styles/Select.scss";
 

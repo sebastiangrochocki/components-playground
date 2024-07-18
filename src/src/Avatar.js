@@ -5,13 +5,12 @@ import Tooltip from "./Tooltip";
 import AvatarDemo1 from "./assets/AvatarDemo1.svg";
 import AvatarDemo2 from "./assets/AvatarDemo2.svg";
 import AvatarDemo3 from "./assets/AvatarDemo3.svg";
-import AvatarDemo4 from "./assets/AvatarDemo4.svg";
 
 const Avatar = forwardRef(
   ({ avatar, altText, role, size = "large", text }, ref) => {
     // Function to randomly select an avatar
     const getRandomAvatar = () => {
-      const avatars = [AvatarDemo1, AvatarDemo2, AvatarDemo3, AvatarDemo4];
+      const avatars = [AvatarDemo1, AvatarDemo2, AvatarDemo3];
       const randomIndex = Math.floor(Math.random() * avatars.length);
       return avatars[randomIndex];
     };

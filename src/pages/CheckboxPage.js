@@ -23,9 +23,9 @@ import {
   BellIcon,
   TwitterLogoIcon,
   GitHubLogoIcon,
-  FigmaLogoIcon,
-} from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+  FigmaLogoFilledIcon,
+} from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 
 const CheckboxPage = () => {
   // eslint-disable-next-line
@@ -51,7 +51,7 @@ const CheckboxPage = () => {
     Heading,
     BellIcon,
     Paragraph,
-    FigmaLogoIcon,
+    FigmaLogoFilledIcon,
     GitHubLogoIcon,
     TwitterLogoIcon,
   };
@@ -209,7 +209,7 @@ import { Checkbox } from "blocksin-system";
       <GitHubLogoIcon style={{width: "20px", height: "20px"}}/>
     </Flex>
     <Flex justify="center" align="center" style={{width: "48px", height: "48px"}}>
-      <FigmaLogoIcon style={{width: "20px", height: "20px"}}/>
+      <FigmaLogoFilledIcon style={{width: "20px", height: "20px"}}/>
     </Flex>
   </Flex>
   <Flex direction={"row"} align={"center"} gap={100}>

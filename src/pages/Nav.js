@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Flex, Button, Switch, IconButton } from "../src/index";
+import { Flex, Button, Switch, IconButton, Separator } from "../src/index";
 import Logo from "../Logo";
-import { PlayIcon } from "@radix-ui/react-icons";
+import { HeartIcon, PlayIcon } from "sebikostudio-icons";
 import { useNavigate } from "react-router-dom";
 
 const Nav = ({ setDark, dark, resetAnimation }) => {
@@ -26,13 +26,14 @@ const Nav = ({ setDark, dark, resetAnimation }) => {
   return (
     <>
       <Flex gap={100} customClass={navClasses}>
-        <a href="/" style={{ color: "var(--white)" }}>
+        <a href="/" style={{ color: "var(--white)", cursor: "pointer" }}>
           <Logo />
         </a>
         <Flex
           gap={100}
-          style={{ marginLeft: "var(--size-400)" }}
+          style={{ marginLeft: "var(--size-200)", height: "100%" }}
           customClass="ButtonsContainer"
+          align="center"
         >
           {/* <Button
             onClick={() => {
@@ -42,7 +43,9 @@ const Nav = ({ setDark, dark, resetAnimation }) => {
           >
             Start
           </Button> */}
+          <Separator vertical />
           <Button
+            size="small"
             onClick={() => {
               navigate("/introduction");
             }}
@@ -51,6 +54,7 @@ const Nav = ({ setDark, dark, resetAnimation }) => {
             Introduction
           </Button>
           <Button
+            size="small"
             onClick={() => {
               window.open("https://www.npmjs.com/package/blocksin-system");
             }}
@@ -59,21 +63,27 @@ const Nav = ({ setDark, dark, resetAnimation }) => {
             NPM
           </Button>
           <Button
+            size="small"
             onClick={() => {
-              window.open("https://blocksin.com/");
+              window.open("https://icons.sebikostudio.com/");
             }}
             variant="ghost"
           >
-            BlocksIn App
+            <HeartIcon />
+            Icons
           </Button>
         </Flex>
-        <Flex style={{ marginLeft: "auto" }} gap={300}>
+
+        <Flex
+          style={{ marginLeft: "auto", height: "100%" }}
+          align="center"
+          gap={300}
+        >
           <Switch id="darkmode" onCheckedChange={setDark} checked={dark}>
             Dark is {dark ? "on" : "off"}
           </Switch>
-          {/* <Separator vertical /> */}
-
-          <IconButton size="medium" variant="outline" onClick={resetAnimation}>
+          <Separator vertical />
+          <IconButton size="mini" variant="solid" onClick={resetAnimation}>
             <PlayIcon />
           </IconButton>
         </Flex>

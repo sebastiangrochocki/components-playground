@@ -81,7 +81,7 @@ button {
             width: 16px;
             height: 16px;
             border-radius: 20px;
-            border: 1px solid var(--brand-1);
+            border: 1px solid currentColor;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -90,7 +90,7 @@ button {
                 height: 10px;
                 border-radius: 10px;
                 display: block;
-                background-color: var(--brand-1);
+                background-color: currentColor;
             }
         }
         .Hotkey {
@@ -122,6 +122,9 @@ button {
             width: 20px;
             height: auto;
             display: block;
+            * {
+                stroke-width: 1.25px;
+            }
         }
     }
 }

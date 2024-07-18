@@ -8,52 +8,55 @@ import {
   Input,
   ScrollArea,
   Toast,
-  Paragraph,
+  // Paragraph,
 } from "./src/index";
 // import Section from "./pages/Section";
 import Logo2 from "./Logo";
 import NpmDownloads from "./pages/NpmDownloads";
 import "./pages/DesignSystem.scss";
-import Logo from "./Logo";
+import SebikoLogo from "./SebikoLogo";
 import axios from "axios";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Autoplay } from "swiper/modules";
-import Chart from "./assets/Chart.png";
-import InBulk from "./assets/inbulk.png";
-import FIgmaIcons from "./assets/figmaicons.png";
+// import { Autoplay } from "swiper/modules";
+// import Chart from "./assets/Chart.png";
+// import InBulk from "./assets/inbulk.png";
+// import FIgmaIcons from "./assets/figmaicons.png";
 
 import {
   FileTextIcon,
   ButtonIcon,
-  ColorWheelIcon,
   CopyIcon,
   AvatarIcon,
   BadgeIcon,
   CalendarIcon,
-  InputIcon,
   CheckboxIcon,
   CodeIcon,
-  CardStackIcon,
   DropdownMenuIcon,
   BoxIcon,
   HeadingIcon,
-  ImageIcon,
-  ReloadIcon,
   TextIcon,
-  SwitchIcon,
   TableIcon,
   DashboardIcon,
-  ChatBubbleIcon,
-  ExclamationTriangleIcon,
   PersonIcon,
-  SewingPinIcon,
-  VideoIcon,
-  DividerHorizontalIcon,
-  HobbyKnifeIcon,
-  CommitIcon,
+  ToolbarIcon,
   SliderIcon,
-} from "@radix-ui/react-icons";
+  CircleIcon,
+  TopBannerComponentIcon,
+  ScrollIcon,
+  RepeatIcon,
+  StepperIcon,
+  VideoCameraIcon,
+  TooltipIcon,
+  ToggleGroupIcon,
+  Input2Icon,
+  Switch2Icon,
+  AvatarsIcon,
+  ImageIcon,
+  ToastComponentIcon,
+  Cross1Icon,
+  SparklesIcon,
+} from "sebikostudio-icons";
 import {
   // BrowserRouter as Router,
   // Routes,
@@ -64,7 +67,7 @@ import {
 } from "react-router-dom";
 import Hero from "./pages/Hero";
 
-const Home = ({ setDark, dark, resetAnimation }) => {
+const Home = ({ setDark, dark, resetAnimation, bgColor }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -89,44 +92,44 @@ const Home = ({ setDark, dark, resetAnimation }) => {
 
   const routes = [
     { path: "introduction", title: "Introduction", icon: <FileTextIcon /> },
-    { path: "colors", title: "Colors", icon: <ColorWheelIcon /> },
+    { path: "colors", title: "Colors", icon: <CircleIcon /> },
     { path: "avatar", title: "Avatar", icon: <AvatarIcon /> },
-    { path: "avatar-group", title: "AvatarGroup", icon: <AvatarIcon /> },
+    { path: "avatar-group", title: "AvatarGroup", icon: <AvatarsIcon /> },
     { path: "badge", title: "Badge", icon: <BadgeIcon /> },
     { path: "badge-level", title: "BadgeLevel", icon: <BadgeIcon /> },
     { path: "button", title: "Button", icon: <ButtonIcon /> },
     { path: "calendar", title: "Calendar", icon: <CalendarIcon /> },
     { path: "card", title: "Card", icon: <BoxIcon /> },
 
-    { path: "combobox", title: "ComboBox", icon: <InputIcon /> },
+    { path: "combobox", title: "ComboBox", icon: <Input2Icon /> },
     { path: "checkbox", title: "Checkbox", icon: <CheckboxIcon /> },
     { path: "codehighlight", title: "CodeHighlight", icon: <CodeIcon /> },
-    { path: "toast", title: "Toast", icon: <CardStackIcon /> },
+    { path: "toast", title: "Toast", icon: <ToastComponentIcon /> },
     { path: "dropdownmenu", title: "DropdownMenu", icon: <DropdownMenuIcon /> },
     { path: "flex", title: "Flex", icon: <BoxIcon /> },
     { path: "heading", title: "Heading", icon: <HeadingIcon /> },
     { path: "iframe", title: "Iframe", icon: <ImageIcon /> },
-    { path: "input", title: "Input", icon: <InputIcon /> },
+    { path: "input", title: "Input", icon: <Input2Icon /> },
     { path: "icon-button", title: "Icon Button", icon: <ButtonIcon /> },
-    { path: "loader", title: "Loader", icon: <ReloadIcon /> },
+    { path: "loader", title: "Loader", icon: <RepeatIcon /> },
     { path: "paragraph", title: "Paragraph", icon: <TextIcon /> },
     { path: "pill", title: "Pill", icon: <BadgeIcon /> },
 
-    { path: "spinner", title: "Spinner", icon: <ReloadIcon /> },
-    { path: "switch", title: "Switch", icon: <SwitchIcon /> },
+    { path: "spinner", title: "Spinner", icon: <RepeatIcon /> },
+    { path: "switch", title: "Switch", icon: <Switch2Icon /> },
     { path: "table", title: "Table", icon: <TableIcon /> },
     { path: "tabs", title: "Tabs", icon: <DashboardIcon /> },
     { path: "tags", title: "Tags", icon: <BadgeIcon /> },
-    { path: "textarea", title: "TextArea", icon: <InputIcon /> },
-    { path: "toggle", title: "Toggle", icon: <BadgeIcon /> },
-    { path: "toggle-group", title: "ToggleGroup", icon: <BadgeIcon /> },
-    { path: "tooltip", title: "Tooltip", icon: <ChatBubbleIcon /> },
-    { path: "toolbar", title: "Toolbar", icon: <HobbyKnifeIcon /> },
+    { path: "textarea", title: "TextArea", icon: <Input2Icon /> },
+    { path: "toggle", title: "Toggle", icon: <ToggleGroupIcon /> },
+    { path: "toggle-group", title: "ToggleGroup", icon: <ToggleGroupIcon /> },
+    { path: "tooltip", title: "Tooltip", icon: <TooltipIcon /> },
+    { path: "toolbar", title: "Toolbar", icon: <ToolbarIcon /> },
 
     {
       path: "top-banner",
       title: "TopBanner",
-      icon: <ExclamationTriangleIcon />,
+      icon: <TopBannerComponentIcon />,
     },
     {
       path: "user-on-hold-item",
@@ -135,12 +138,12 @@ const Home = ({ setDark, dark, resetAnimation }) => {
     },
     { path: "user-list-item", title: "UserListItem", icon: <PersonIcon /> },
     { path: "user-item", title: "UserItem", icon: <PersonIcon /> },
-    { path: "youtube", title: "Youtube", icon: <VideoIcon /> },
-    { path: "scrollarea", title: "ScrollArea", icon: <SewingPinIcon /> },
-    { path: "select", title: "Select", icon: <CheckboxIcon /> },
-    { path: "separator", title: "Separator", icon: <DividerHorizontalIcon /> },
+    { path: "youtube", title: "Youtube", icon: <VideoCameraIcon /> },
+    { path: "scrollarea", title: "ScrollArea", icon: <ScrollIcon /> },
+    { path: "select", title: "Select", icon: <DropdownMenuIcon /> },
+    { path: "separator", title: "Separator", icon: <CircleIcon /> },
     { path: "slider", title: "Slider", icon: <SliderIcon /> },
-    { path: "stepper", title: "Stepper", icon: <CommitIcon /> },
+    { path: "stepper", title: "Stepper", icon: <StepperIcon /> },
   ];
 
   const [searchQuery, setSearchQuery] = useState(""); // Declare search query state
@@ -230,11 +233,11 @@ const Home = ({ setDark, dark, resetAnimation }) => {
   //
   const [showToastCopy, setShowToastCopy] = useState(false);
   const [toastMessage, setToastMessage] = useState(""); // New state for toast message
-  const documentationUrl = "https://www.npmjs.com/package/blocksin-system";
+  // const documentationUrl = "https://www.npmjs.com/package/blocksin-system";
 
-  const handleOpenDocumentation = () => {
-    window.open(documentationUrl, "_blank");
-  };
+  // const handleOpenDocumentation = () => {
+  //   window.open(documentationUrl, "_blank");
+  // };
   const npmCommand = "npm i blocksin-system";
 
   const handleCopyToClipboard = () => {
@@ -264,8 +267,9 @@ const Home = ({ setDark, dark, resetAnimation }) => {
   };
   return (
     <Flex direction={"column"} customClass={"DesignSystem"} align={"center"}>
-      <Nav setDark={setDark} dark={dark} resetAnimation={resetAnimation} />
-
+      {location.pathname !== "/" && (
+        <Nav setDark={setDark} dark={dark} resetAnimation={resetAnimation} />
+      )}
       <Toast
         showToast={showToastCopy}
         setShowToast={setShowToastCopy}
@@ -277,7 +281,8 @@ const Home = ({ setDark, dark, resetAnimation }) => {
 
       {location.pathname === "/" && (
         <>
-          <Flex direction="column" customClass="PageHeader" gap={200}>
+          <Flex direction="column" customClass="PageHeader frame" gap={200}>
+            <span className="frameTitle">Hero Frame 1000003277</span>
             <Flex direction="column" gap={500}>
               <Flex
                 direction="column"
@@ -289,7 +294,16 @@ const Home = ({ setDark, dark, resetAnimation }) => {
                   marginTop: "var(--size-200)",
                 }}
               >
-                <Logo2 />
+                <Flex
+                  gap={300}
+                  align="center"
+                  justify="center"
+                  style={{ marginBottom: "var(--size-200)" }}
+                >
+                  <Logo2 />
+                  <Cross1Icon />
+                  <SebikoLogo />
+                </Flex>
                 <Heading
                   level={2}
                   weight="bold"
@@ -301,27 +315,36 @@ const Home = ({ setDark, dark, resetAnimation }) => {
                 >
                   BlocksIn System v.{latestVersion}
                 </Heading>
-                <Heading level={4}>React Component Library</Heading>
+                <Heading level={4}>40+ React Components</Heading>
                 <Flex
-                  direction="row"
+                  direction="column"
                   gap={100}
                   align="center"
                   style={{
-                    marginTop: "var(--size-400)",
+                    marginTop: "var(--size-600)",
                     width: "100%",
                     maxWidth: "440px",
                   }}
                   customClass="CTAs"
                 >
-                  <Button fluid variant="solid" onClick={handleCopyToClipboard}>
-                    {npmCommand} <CopyIcon />
+                  <Button
+                    fluid
+                    variant="solid"
+                    size="large"
+                    onClick={() => {
+                      navigate("/introduction");
+                    }}
+                  >
+                    <SparklesIcon />
+                    Intro
                   </Button>
                   <Button
                     fluid
-                    variant="outline"
-                    onClick={handleOpenDocumentation}
+                    variant="ghost"
+                    size="large"
+                    onClick={handleCopyToClipboard}
                   >
-                    npmjs.com
+                    {npmCommand} <CopyIcon />
                   </Button>
                 </Flex>
               </Flex>
@@ -330,7 +353,7 @@ const Home = ({ setDark, dark, resetAnimation }) => {
               </Flex>
             </Flex>
           </Flex>
-          <Flex customClass="Slider" direction="column" gap={200}>
+          {/* <Flex customClass="Slider" direction="column" gap={200} style={{zIndex: "1"}}>
             <Heading level={3} weight="bold" style={{ lineHeight: "1.2" }}>
               Apps built with BlocksIn System
             </Heading>
@@ -450,85 +473,82 @@ const Home = ({ setDark, dark, resetAnimation }) => {
                 </SwiperSlide>
               </Swiper>
             </Flex>
-          </Flex>
+          </Flex> */}
         </>
       )}
       <Flex gap={400} customClass={"DesignSystemBodyContainer"}>
         <div className="flareGreen" style={{ position: "absolute" }}></div>
-
-        <Flex customClass={`sidebarMenu`} direction={"column"}>
-          <label className="Logo">
-            <a href="/">
-              <Logo />
-            </a>
-          </label>
-          <Flex
-            direction="column"
-            style={{ position: "relative" }}
-            customClass="search"
-            fluid
-          >
-            <Input
-              label="Search"
-              placeholder="Search for page"
-              errormsg={false}
-              type="search"
+        {location.pathname !== "/" && (
+          <Flex customClass={`sidebarMenu`} direction={"column"}>
+            <Flex
+              direction="column"
+              style={{ position: "relative" }}
+              customClass="search"
               fluid
-              value={searchQuery}
-              onChange={handleSearchChange} // Add onChange handler
-              onFocus={() => setShowDropdown(true)} // Show dropdown on focus
-            />
-            {showDropdown && (
-              <div
+            >
+              <Input
+                label="Search"
+                placeholder="Search for page"
+                errormsg={false}
+                type="search"
+                fluid
+                value={searchQuery}
+                onChange={handleSearchChange} // Add onChange handler
+                onFocus={() => setShowDropdown(true)} // Show dropdown on focus
+              />
+              {showDropdown && (
+                <div
+                  style={{
+                    position: "absolute",
+                    boxSizing: "border-box",
+                    padding: "var(--size-50)",
+                    top: "52px",
+                    width: "100%",
+                    zIndex: "99",
+                    backgroundColor: "var(--background-neutral-container)",
+                    borderRadius: "8px",
+                    boxShadow: "var(--shadow-level-2)",
+                  }}
+                >
+                  <ScrollArea style={{ maxHeight: "100%" }}>
+                    {filteredRoutes.map((route) => (
+                      <Button
+                        key={route.path}
+                        size="medium"
+                        fluid
+                        variant="ghost"
+                        onClick={() => handleDropdownItemClick(route)}
+                        aria-pressed={
+                          activePage === route.title ? "true" : undefined
+                        }
+                      >
+                        {route.icon}
+                        <span>{route.title}</span>
+                      </Button>
+                    ))}
+                  </ScrollArea>
+                </div>
+              )}
+            </Flex>
+            {/* <Heading level={4} weight="bold">
+              Components
+            </Heading> */}
+            <Flex style={{ overflow: "hidden" }}>
+              <ScrollArea
                 style={{
-                  position: "absolute",
-                  boxSizing: "border-box",
-                  padding: "var(--size-50)",
-                  top: "52px",
-                  width: "100%",
-                  zIndex: "99",
-                  backgroundColor: "var(--background-neutral-container)",
-                  borderRadius: "8px",
-                  boxShadow: "var(--shadow-level-2)",
+                  maxHeight: "100vh",
+                  height: "auto",
                 }}
               >
-                <ScrollArea style={{ maxHeight: "40vh" }}>
-                  {filteredRoutes.map((route) => (
-                    <Button
-                      key={route.path}
-                      size="medium"
-                      fluid
-                      variant="ghost"
-                      onClick={() => handleDropdownItemClick(route)}
-                      aria-pressed={
-                        activePage === route.title ? "true" : undefined
-                      }
-                    >
-                      {route.icon}
-                      <span>{route.title}</span>
-                    </Button>
-                  ))}
-                </ScrollArea>
-              </div>
-            )}
+                {renderSidebarMenu()}
+              </ScrollArea>
+            </Flex>
           </Flex>
-          <Heading level={4} weight="bold">
-            Menu
-          </Heading>
-          <Flex>
-            <ScrollArea
-              style={{
-                maxHeight: "70vh",
-              }}
-            >
-              {renderSidebarMenu()}
-            </ScrollArea>
-          </Flex>
-        </Flex>
+        )}
         <Flex direction={"column"} customClass={"DesignSystemBody"}>
           <Flex customClass={"detector"}></Flex>
           <Outlet />
-          {location.pathname === "/" && <Hero />}
+          {location.pathname === "/" && <Hero bgColor={bgColor} />}
         </Flex>
       </Flex>
     </Flex>

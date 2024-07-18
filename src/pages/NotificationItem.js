@@ -1,7 +1,7 @@
 import React from "react";
 import AvatarPlaceholder from "./AvatarDemo2.svg"; // Adjust the import path as needed
 import "./NotificationItem.scss";
-import { EnvelopeOpenIcon } from "@radix-ui/react-icons";
+import { EnvelopeOpenIcon } from "sebikostudio-icons";
 import { Button, Flex, Paragraph } from "../src/index";
 
 const NotificationItem = ({

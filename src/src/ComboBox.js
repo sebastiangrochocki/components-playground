@@ -1,10 +1,6 @@
 import React, { forwardRef } from "react";
 import Select, { components } from "react-select";
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  Cross2Icon,
-} from "@radix-ui/react-icons";
+import { ChevronDownIcon, ChevronUpIcon, Cross2Icon } from "sebikostudio-icons";
 import "./radix-styles/ComboBox.scss";
 
 const ComboBox = forwardRef(

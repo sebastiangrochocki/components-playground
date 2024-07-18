@@ -14,9 +14,9 @@ import {
   Table,
 } from "../src/index";
 import ReactLive from "./ReactLive";
-import { Cross2Icon, SizeIcon, CopyIcon } from "@radix-ui/react-icons";
-import { BellIcon } from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+import { Cross2Icon, SizeIcon, CopyIcon } from "sebikostudio-icons";
+import { BellIcon } from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 
 const FlexPage = () => {
   const codeString1 = `  

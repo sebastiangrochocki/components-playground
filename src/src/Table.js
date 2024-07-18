@@ -9,7 +9,7 @@ import {
   ChevronRightIcon,
   ChevronDownIcon,
   ChevronUpIcon,
-} from "@radix-ui/react-icons";
+} from "sebikostudio-icons";
 import Paragraph from "./Paragraph";
 
 const Table = ({

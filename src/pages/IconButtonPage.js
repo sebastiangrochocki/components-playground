@@ -28,7 +28,7 @@ import {
   PlayIcon,
   PauseIcon,
   StopIcon,
-} from "@radix-ui/react-icons";
+} from "sebikostudio-icons";
 import CodeFormatter from "./CodeFormatter";
 
 const IconButtonPage = () => {

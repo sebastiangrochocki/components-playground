@@ -20,8 +20,8 @@ import {
   CopyIcon,
   BellIcon,
   StarFilledIcon,
-} from "@radix-ui/react-icons";
-import Beaver from "../assets/beaver.jpeg";
+} from "sebikostudio-icons";
+import Beaver from "../assets/avatar.png";
 import CodeFormatter from "./CodeFormatter";
 
 const UserListItemPage = () => {
