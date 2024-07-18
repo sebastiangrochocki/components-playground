@@ -587,8 +587,11 @@ canvas {
         // > .flex {
         //     padding: var(--size-200) var(--size-100);
         // }
-        margin-top: var(--size-800);
-        margin-bottom: 0;
+        margin-top: var(--size-200);
+        // margin-bottom: 0;
+        transform: none;
+        inset: 0;
+        position: relative;
     }
     .ButtonsContainer {
         display: none;
