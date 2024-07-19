@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { Flex, Paragraph, Loader } from "../src/index";
-
+import { Flex, Paragraph } from "../src/index";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,6 +13,7 @@ import {
   Filler,
 } from "chart.js";
 import { DownloadIcon } from "sebikostudio-icons";
+import downloadsJson from "./downloads.json";
 
 ChartJS.register(
   CategoryScale,
@@ -28,18 +28,27 @@ ChartJS.register(
 
 const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
   const [chartData, setChartData] = useState({
-    labels: [],
-    datasets: [{ data: [] }],
+    labels: downloadsJson.labels,
+    datasets: [
+      {
+        data: downloadsJson.data,
+        fill: true,
+        backgroundColor: downloadsJson.gradient,
+        borderColor: downloadsJson.color,
+        borderWidth: 3,
+        tension: 0,
+        stepped: false,
+        radius: 0,
+      },
+    ],
   });
-  const [currentWeekDownloads, setCurrentWeekDownloads] = useState(0); // State for current week downloads
-  const [isLoading, setIsLoading] = useState(false);
+  console.log(chartData);
+  const [currentWeekDownloads, setCurrentWeekDownloads] = useState(
+    downloadsJson.currentWeekDownloads || 0
+  ); // State for current week downloads
   const labelColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--foreground-neutral-subtle")
     .trim();
-
-  //   const gridColor = getComputedStyle(document.documentElement)
-  //     .getPropertyValue("--border-neutral-subtle")
-  //     .trim();
 
   const chartOptions = {
     responsive: true,
@@ -97,7 +106,6 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
 
   useEffect(() => {
     const fetchDownloadCounts = async () => {
-      setIsLoading(true);
       const currentDate = new Date();
       const currentYear = currentDate.getFullYear();
       const currentWeek = Math.ceil(
@@ -152,7 +160,6 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
             setCurrentWeekDownloads(downloadData.downloads);
           }
         }
-        setIsLoading(false);
       }
 
       const brandColor = getComputedStyle(document.documentElement)
@@ -204,7 +211,6 @@ const NpmDownloadsChart = ({ packageName = "blocksin-system" }) => {
           marginBottom: "-40px",
         }}
       >
-        {isLoading && <Loader />}
         <Line data={chartData} options={chartOptions} />
       </div>
     </Flex>
